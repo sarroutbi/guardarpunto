@@ -23,7 +23,7 @@ A continuación se muestra el diagrama Entidad/Relación de la base de datos de 
 
 ## **Integrantes**
 
-Marta Fernández de la Mela Salcedo
-Susana Pineda de Luelmo
-Adrián David Morillas Marco
+1. Marta Fernández de la Mela Salcedo
+2. Susana Pineda de Luelmo
+3. Adrián David Morillas Marco
 
