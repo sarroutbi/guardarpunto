@@ -7,7 +7,6 @@ import javax.persistence.*;
 
 @Entity
 public class Usuarios {
-
 	/*Atributos*/
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,25 +24,17 @@ public class Usuarios {
 	@Column
 	private String biografia; 
 	
-	@ManyToMany(mappedBy="usuarios")
-	private List<Juego> Juegos;
 	/*Relaciones*/
 	@ManyToMany(mappedBy="users")
 	private List<Juego> juegos= new ArrayList<Juego>();
 	
-	@ManyToMany(mappedBy="usuarios")
-	private List<Usuarios> amigos;
 	@ManyToMany(mappedBy="amigos") /*Almacena los usuarios, para que luego pueda mapearse 
 									a si misma cuando busque a los amigos*/
 	private List<Usuarios> usuarios= new ArrayList<Usuarios>();
 	
-	@OneToMany(mappedBy="usuarios")
-	private List<Comentario> coments;
 	@ManyToMany
 	private List<Usuarios> amigos= new ArrayList<Usuarios>();
 	
-	public Integer getID() {
-		return id;
 	@OneToMany(mappedBy="user")
 	private List<Comentario> coments= new ArrayList<Comentario>();
 
@@ -53,9 +44,6 @@ public class Usuarios {
 	public List<Juego> getJuegos() {
 		return juegos;
 	}
-	
-	public void setID(int nid) {
-		id=nid;
 
 	public void setJuegos(List<Juego> juegos) {
 		this.juegos = juegos;
@@ -96,48 +84,32 @@ public class Usuarios {
 	}
 
 	public String getNombre() {
-		
 		return nombre;
 	}
-	
-		nombre = n;
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
 
 	public String getEmail() {
-		
 		return email;
 	}
-	
-		email = n;
 
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getContrasena() {
-		
 
 	public String getContrasenna() {
 		return contrasenna;
 	}
-	
-	public void setContrasena(String n) {
-		contrasenna = n;
 
 	public void setContrasenna(String contrasenna) {
 		this.contrasenna = contrasenna;
 	}
-	public String getBio() {
 
 	public String getBiografia() {
 		return biografia;
 	}
-	
-	public void setBio(String n) {
-		biografia = n;
 
 	public void setBiografia(String biografia) {
 		this.biografia = biografia;

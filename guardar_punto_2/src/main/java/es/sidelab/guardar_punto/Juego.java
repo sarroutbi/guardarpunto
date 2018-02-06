@@ -35,22 +35,16 @@ public class Juego {
 	@Column
 	private String resumen;
 	
-	
-	@ManyToMany(mappedBy="juego")
-	private List<Usuarios> users;
 	/*Relaciones de la tabla*/
 	@ManyToMany
 	private List<Usuarios> users=new ArrayList<Usuarios>();
 	
 	@OneToMany(mappedBy="juego")
-	private List<Review> reviews;
 	private List<Review> reviews=new ArrayList<Review>();
 	
 	@OneToMany(mappedBy="juego")
-	private List<Comentario> coments;
 	private List<Comentario> coments=new ArrayList<Comentario>();
 		
-
 	/*Handlers*/
 	public Integer getId() {
 		return id;

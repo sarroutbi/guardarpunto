@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 @Entity
 public class Review {
+	/*Atributos de la entidad*/	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -24,6 +25,7 @@ public class Review {
 	@ManyToOne
 	private Usuarios user;
 	
+	/*Handlers*/
 	public Integer getId() {
 		return id;
 	}
