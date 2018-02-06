@@ -6,7 +6,6 @@ import javax.persistence.*;
 
 @Entity
 public class Review {
-		
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -17,13 +16,14 @@ public class Review {
 	@Column
 	private Float puntuacion;
 	
+	/*Relaciones de la clase*/
+	
 	@ManyToOne
 	private Juego juego;
 	
 	@ManyToOne
 	private Usuarios user;
 	
-
 	public Integer getId() {
 		return id;
 	}
