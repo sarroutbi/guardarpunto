@@ -2,10 +2,14 @@ package es.sidelab.guardar_punto;
 
 import javax.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Juego {
+	
+	/*Atributos de la clase*/
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -31,17 +35,17 @@ public class Juego {
 	@Column
 	private String resumen;
 	
-	
-	@ManyToMany(mappedBy="juego")
-	private List<Usuarios> users;
-	
-	@OneToMany(mappedBy="juego")
-	private List<Review> reviews;
+	/*Relaciones de la tabla*/
+	@ManyToMany
+	private List<Usuarios> users=new ArrayList<Usuarios>();
 	
 	@OneToMany(mappedBy="juego")
-	private List<Comentario> coments;
+	private List<Review> reviews=new ArrayList<Review>();
+	
+	@OneToMany(mappedBy="juego")
+	private List<Comentario> coments=new ArrayList<Comentario>();
 		
-
+	/*Handlers*/
 	public Integer getId() {
 		return id;
 	}
