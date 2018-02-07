@@ -42,6 +42,11 @@ body {
 #elem{
 	color:#73c2ac;
 }
+#elemselect{
+	background-color: #286858 !important;
+	color:#73c2ac !important;
+	text-shadow:3px 2px 2px #014a33;
+}
 .nav > li > a:active, .nav > li > a:focus {
 	background-color: #286858 !important;
 	color:#73c2ac !important;
@@ -200,3 +205,25 @@ h2.seccionJuegos {
     color: rgba(21,77,63);
 }
 
+/* Css pantalla emergente */
+#tituloRegistro{
+	font-family: myFont2;
+	color:#0e2020;
+	font-size: 220%;
+	text-shadow:3px 2px 2px #a9d5cb;
+}
+#tit{
+	color:#0e2020;
+}
+#regBtn{
+	background-color: #286858;
+    color: white;
+    padding: 7px 7px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+	font-size: 23px;
+	border-radius: 0px;
+	text-shadow:3px 2px 2px rgba(21,77,63,0.59);
+}
