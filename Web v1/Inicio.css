@@ -1,57 +1,65 @@
 @font-face {
-    font-family: myFont;
-    src: url(AGENCYB.TTF);
+	font-family: myFont;
+	src: url(AGENCYB.TTF);
 }
+
 @font-face {
-    font-family: myFont2;
-    src: url(Space.otf);
+	font-family: myFont2;
+	src: url(Space.otf);
 }
 
 body {
-  min-height: 2000px;
-  padding-top: 70px; 
-  background-color: #a9d5cb;
+	min-height: 2000px;
+	padding-top: 70px;
+	background-color: #a9d5cb;
 }
 
-
-
-#log{
+#log {
 	font-family: myFont2;
-	font-size:120%;
-	color:#73c2ac;
+	font-size: 120%;
+	color: #73c2ac;
 }
-#buscador{
+
+#buscador {
 	margin-top: 6px;
 	margin-right: 15%;
 	margin-left: 20%;
 	margin-bottom: 6px;
 	font-family: myFont;
-	font-size:200%;
+	font-size: 200%;
 }
 
-#navbar{
+#navbar {
 	background-color: #0e2020;
 }
-#elementosNavBar{
+
+#elementosNavBar {
 	position: relative;
 	margin-left: 20%;
 	margin-right: 10%;
 	font-family: myFont;
-	font-size:150%;	
-}
-#elem{
-	color:#73c2ac;
-}
-.nav > li > a:active, .nav > li > a:focus {
-	background-color: #286858 !important;
-	color:#73c2ac !important;
+	font-size: 150%;
 }
 
-#der{
+#elem {
+	color: #73c2ac;
+}
+
+#elemselect {
+	background-color: #286858 !important;
+	color: #73c2ac !important;
+	text-shadow: 3px 2px 2px #014a33;
+}
+
+.nav>li>a:active, .nav>li>a:focus {
+	background-color: #286858 !important;
+	color: #73c2ac !important;
+}
+
+#der {
 	margin-top: 30px;
 	/*background-color: #286858; */
 	background-color: #a9d5cb;
-	
 }
 
 #centro {
@@ -70,18 +78,18 @@ body {
 	font-family: myFont;
 	background-color: #286858;
 	margin: 10px;
-	padding: 15px;	
+	padding: 15px;
 	border-radius: 10px;
 	border-bottom-style: solid;
-    border-bottom-color: #185344;
+	border-bottom-color: #185344;
 }
 
 /* Titulo seccion dentro de los flexbox */
-h3.tituloSeccion {	
+h3.tituloSeccion {
 	font-size: 30px;
 	text-align: left;
 	color: #73c2ac;
-	text-shadow:3px 2px 2px #014a33;
+	text-shadow: 3px 2px 2px #014a33;
 	margin-top: 0px;
 	padding-bottom: 5px;
 	border-bottom: 1px solid #73c2ac;
@@ -89,38 +97,38 @@ h3.tituloSeccion {
 
 /* Propiedades de los inputs del login */
 input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
 }
 
 #loginBtn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 7px 7px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
+	background-color: #4CAF50;
+	color: white;
+	padding: 7px 7px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 100%;
 	font-size: 23px;
 }
 
 #registrarseBtn {
-    background-color: #f44336;
-    color: white;
-    padding: 7px 7px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
+	background-color: #f44336;
+	color: white;
+	padding: 7px 7px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 100%;
 	font-size: 23px;
 }
 
 button:hover {
-    opacity: 0.8;
+	opacity: 0.8;
 }
 
 label {
@@ -129,7 +137,6 @@ label {
 }
 
 /*** Seccion TUS JUEGOS ***/
-
 .tusJuegosContainer {
 	display: flex;
 	flex-direction: row;
@@ -139,10 +146,10 @@ label {
 }
 
 .tusJuegosContainer>div {
-  margin-left: 10px;
-  margin-bottom: 10px;
-  font-size: 15px;
-  flex-basis: 75px  
+	margin-left: 10px;
+	margin-bottom: 10px;
+	font-size: 15px;
+	flex-basis: 75px
 }
 
 /* Enlaces en la seccion tus juegos */
@@ -151,7 +158,7 @@ label {
 }
 
 .miJuego>a:hover, .miJuego>a:active {
-    color: #74c1ac;
+	color: #74c1ac;
 }
 
 /*** Seccion NOTICIAS ***/
@@ -165,12 +172,11 @@ label {
 }
 
 /*** Seccion JUEGOS DESTACADOS ***/
-
 h2.seccionJuegos {
-	margin-top:30px; 
-	font-family: myFont2; 
+	margin-top: 30px;
+	font-family: myFont2;
 	color: #286858;
-	text-shadow:3px 2px 2px rgba(21,77,63,0.59);
+	text-shadow: 3px 2px 2px rgba(21, 77, 63, 0.59);
 	padding-bottom: 7px;
 	border-bottom: 3px solid #286858;
 }
@@ -185,10 +191,10 @@ h2.seccionJuegos {
 }
 
 .juegosDestacadosContainer>div {
-  margin-left: 10px;
-  margin-bottom: 10px;
-  font-size: 20px;
-  flex-basis: 100px  
+	margin-left: 10px;
+	margin-bottom: 10px;
+	font-size: 20px;
+	flex-basis: 100px
 }
 
 /* Enlaces en la seccion de juegos destacados */
@@ -197,6 +203,30 @@ h2.seccionJuegos {
 }
 
 .juegoDestacado>a:hover, .miJuego>a:active {
-    color: rgba(21,77,63);
+	color: rgba(21, 77, 63);
 }
 
+/*css para pantalla emergente*/
+#tituloRegistro {
+	font-family: myFont2;
+	color: #0e2020;
+	font-size: 220%;
+	text-shadow: 3px 2px 2px #a9d5cb;
+}
+
+#tit {
+	color: #0e2020;
+}
+
+#regBtn {
+	background-color: #286858;
+	color: white;
+	padding: 7px 7px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	font-size: 23px;
+	border-radius: 0px;
+	text-shadow: 3px 2px 2px rgba(21, 77, 63, 0.59);
+}
