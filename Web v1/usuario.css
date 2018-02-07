@@ -1,0 +1,148 @@
+@font-face {
+    font-family: myFont;
+    src: url(AGENCYB.TTF);
+}
+@font-face {
+    font-family: myFont2;
+    src: url(Space.otf);
+}
+
+body {
+  min-height: 2000px;
+  padding-top: 70px; 
+  background-color: #a9d5cb;
+}
+
+
+
+#log{
+	font-family: myFont2;
+	font-size:120%;
+	color:#73c2ac;
+}
+#buscador{
+	margin-top: 6px;
+	margin-right: 15%;
+	margin-left: 20%;
+	margin-bottom: 6px;
+	font-family: myFont;
+	font-size:200%;
+
+}
+
+#navbar{
+	background-color: #0e2020;
+}
+#elementosNavBar{
+	position: relative;
+	margin-left: 20%;
+	margin-right: 10%;
+	font-family: myFont;
+	font-size:150%;
+	
+}
+#elem{
+	color:#73c2ac;
+}
+#elemselect{
+	background-color: #286858 !important;
+	color:#73c2ac !important;
+	text-shadow:3px 2px 2px #014a33;
+}
+.nav > li > a:active, .nav > li > a:focus {
+	background-color: #286858 !important;
+	color:#73c2ac !important;
+}
+
+#der{
+	background-color: #286858;
+	margin-top: 3%;
+	border-radius: 10px;
+	
+}
+#tit{
+
+	font-family: myFont;
+	font-size: 240%;
+	margin-left: 5%;
+	margin-top: 1%;
+	margin-bottom: 4%;
+	margin-right: 5%;
+	color: #73c2ac;
+	text-shadow:3px 2px 2px #014a33;
+	border-bottom: 1px solid #73c2ac;
+}
+#amig{
+	width: 90%;
+	margin-top: 6%;
+	margin-bottom: 10%;
+	border-radius: 5%;
+}
+#comment-model{
+	width: 95%;
+	background-color: #c8f2e9;
+	margin-left: 2%;
+	margin-right: 2%;
+	margin-bottom: 3%;
+	border-radius: 4px;
+}
+#avatar{
+	width: 90%;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	border-radius: 4px;
+}
+#texto{
+	font-family: myFont;
+	font-size:180%;
+	color:#0e2020;
+	margin-left: 2%;
+	margin-top: 10%;
+}
+#comentario{
+	font-family: myFont;
+	font-size:130%;
+	color:#0e2020;
+	margin-left: 2%;
+}
+#infoPerfil{
+	margin-top: 5%;
+	margin-bottom: 5%;
+}
+#fotoPerfil{
+	margin-top: 3%;
+	border-radius: 10px;
+	width: 85%;
+}
+#name{
+	font-family: myFont;
+	font-size:200%;
+	color:#0e2020;
+	margin-left: 2%;
+	margin-top: 10%;
+}
+#bio{
+	font-family: myFont;
+	font-size:130%;
+	color:#0e2020;
+	margin-left: 2%;
+}
+#jugados{
+	background-color: #286858;
+	margin-top: 2%;
+	border-radius: 10px;
+	margin-right: 10%;
+	margin-bottom: 3%;
+}
+#games{
+	font-family: myFont;
+	font-size:250%;
+	color: #286858;
+	margin-left: 2%;
+	margin-right: 5%;
+	margin-top: 5%;
+	text-shadow:3px 2px 2px rgba(21,77,63,0.59);
+	border-bottom: 3px solid #286858;
+
+}
+
