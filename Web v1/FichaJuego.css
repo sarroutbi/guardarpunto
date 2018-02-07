@@ -66,7 +66,7 @@ body {
 }
 
 /*Flexbox lado derecho */
-.login, .tusJuegos, .noticias {
+.login, .tusJuegos, .comentarios {
 	font-family: myFont;
 	background-color: #286858;
 	margin: 10px;
@@ -154,8 +154,8 @@ label {
     color: #74c1ac;
 }
 
-/*** Seccion NOTICIAS ***/
-.noticia {
+/*** Seccion COMENTARIOS ***/
+.comentario {
 	background-color: white;
 	border-radius: 5px;
 	padding-top: 2px;
@@ -164,9 +164,9 @@ label {
 	margin-bottom: 7px;
 }
 
-/*** Seccion JUEGOS DESTACADOS ***/
+/*** Seccion FICHA JUEGO ***/
 
-h2.seccionJuegos {
+h2.listaJuegos {
 	margin-top:30px; 
 	font-family: myFont2; 
 	color: #286858;
@@ -175,28 +175,106 @@ h2.seccionJuegos {
 	border-bottom: 3px solid #286858;
 }
 
-.juegosDestacadosContainer {
-	font-family: myFont;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-	margin-top: 20px;
-	flex-wrap: wrap;
+.colImagen {
+  position: relative;
+  float: left;
+  z-index: 3;
+  width: 18.8%;
+  height: 274px;
+  margin: 19px 0 0 3%;
 }
 
-.juegosDestacadosContainer>div {
-  margin-left: 10px;
-  margin-bottom: 10px;
-  font-size: 20px;
-  flex-basis: 100px  
+.text {
+  position: relative;
+  float: left;
+  font-size: 1em;
+  color: rgb(0, 0, 0);
 }
 
-/* Enlaces en la seccion de juegos destacados */
-.juegoDestacado>a:link {
+#anadirALista {
+	margin-top: 10px;	
+}
+
+.dropdown-toggle {
+	width: 100%;
+}
+
+.tituloDato {
+  z-index: 0;
+  width: 9.9166666666%;
+  min-height: 100px;
+  margin: 20px 0 0 3.2161458333%;
+  font-weight: bold;
+}
+
+.dato {
+  z-index: 1;
+  width: 22.4666666666%;
+  min-height: 100px;
+  margin: 20px 0 0 2.1158854166%;
+}
+
+.resumen {
+  z-index: 2;
+  width: 50.8333333333%;
+  min-height: 176px;
+  margin: 10px 0 0 3.16927%;
+}
+
+.cuadroPuntuacion {
+	background-color: #286858;
+	color: #73c2ac;
+	font-size: 50px;
+	float: right;
+	padding: 10px;
+}
+
+/*** Seccion REVIEWS ***/
+
+.seccionReviews {
+	position: relative;
+	margin-top: 350px;
+}
+
+h3.seccionReviews {
+	margin-top:30px; 
+	font-family: myFont2; 
 	color: #286858;
+	text-shadow:3px 2px 2px rgba(21,77,63,0.59);
+	padding-bottom: 7px;
+	border-bottom: 3px solid #286858;
 }
 
-.juegoDestacado>a:hover, .miJuego>a:active {
-    color: rgba(21,77,63);
+#reviewPtosEnviar {
+	float: right;	
+	width: 18%;
 }
+
+textarea {
+	border-radius: 7px;
+	resize: none;
+}
+
+/* Estrellas review */
+.checked {
+	color: orange;
+}
+
+/*** lista de reviews ***/
+
+ul {
+	padding-left: 0px;
+}
+
+li.review {
+	margin-top: 15px;
+	background: white;
+	padding: 7px;
+	border-radius: 10px;
+}
+
+.resto {	
+	margin-left: 20px;
+}
+
 
