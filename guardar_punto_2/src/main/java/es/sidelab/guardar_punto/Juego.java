@@ -15,10 +15,34 @@ public class Juego {
 	private Integer id;
 	
 	@Column
-	private String Titulo;
+	private String title;
 	
+	public List<Usuarios> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<Usuarios> users) {
+		this.users = users;
+	}
+
+	public List<Review> getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
+	}
+
+	public List<Comentario> getComents() {
+		return coments;
+	}
+
+	public void setComents(List<Comentario> coments) {
+		this.coments = coments;
+	}
+
 	@Column
-	private String Compannia;
+	private String compannia;
 	
 	@Column
 	private String anyo;
@@ -30,7 +54,7 @@ public class Juego {
 	private Integer valoracion;
 	
 	@Column 
-	private String Genero;
+	private String genero;
 	
 	@Column
 	private String resumen;
@@ -54,20 +78,20 @@ public class Juego {
 		this.id = id;
 	}
 
-	public String getTitulo() {
-		return Titulo;
+	public String getTitle() {
+		return this.title;
 	}
 
-	public void setTitulo(String titulo) {
-		Titulo = titulo;
+	public void setTitle(String titulo) {
+		this.title = titulo;
 	}
 
 	public String getCompannia() {
-		return Compannia;
+		return compannia;
 	}
 
-	public void setCompannia(String compannia) {
-		Compannia = compannia;
+	public void setCompannia(String companniaa) {
+		compannia = companniaa;
 	}
 
 	public String getAnyo() {
@@ -95,11 +119,11 @@ public class Juego {
 	}
 
 	public String getGenero() {
-		return Genero;
+		return genero;
 	}
 
-	public void setGenero(String genero) {
-		Genero = genero;
+	public void setGenero(String generos) {
+		genero = generos;
 	}
 
 	public String getResumen() {
