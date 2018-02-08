@@ -1,0 +1,186 @@
+@font-face {
+    font-family: myFont;
+    src: url(AGENCYB.TTF);
+}
+@font-face {
+    font-family: myFont2;
+    src: url(Space.otf);
+}
+
+body {
+  min-height: 2000px;
+  padding-top: 70px; 
+  background-color: #a9d5cb;
+}
+
+
+
+#log{
+	font-family: myFont2;
+	font-size:120%;
+	color:#73c2ac;
+}
+#buscador{
+	margin-top: 6px;
+	margin-right: 15%;
+	margin-left: 20%;
+	margin-bottom: 6px;
+	font-family: myFont;
+	font-size:200%;
+}
+
+#navbar{
+	background-color: #0e2020;
+}
+#elementosNavBar{
+	position: relative;
+	margin-left: 20%;
+	margin-right: 10%;
+	font-family: myFont;
+	font-size:150%;	
+}
+#elem{
+	color:#73c2ac;
+}
+.nav > li > a:active, .nav > li > a:focus {
+	background-color: #286858 !important;
+	color:#73c2ac !important;
+}
+
+#der{
+	margin-top: 30px;
+	/*background-color: #286858; */
+	background-color: #a9d5cb;
+	
+}
+
+#centro {
+	margin-top: 20px;
+}
+
+.derecha {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-top: 10px;
+}
+
+/*Flexbox lado derecho */
+.login, .tusJuegos, .noticias {
+	font-family: myFont;
+	background-color: #286858;
+	margin: 10px;
+	padding: 15px;	
+	border-radius: 10px;
+	border-bottom-style: solid;
+    border-bottom-color: #185344;
+}
+
+/* Titulo seccion dentro de los flexbox */
+h3.tituloSeccion {	
+	font-size: 30px;
+	text-align: left;
+	color: #73c2ac;
+	text-shadow:3px 2px 2px #014a33;
+	margin-top: 0px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #73c2ac;
+}
+
+/* Propiedades de los inputs del login */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+#loginBtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 7px 7px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+	font-size: 23px;
+}
+
+#registrarseBtn {
+    background-color: #f44336;
+    color: white;
+    padding: 7px 7px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+	font-size: 23px;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+label {
+	color: #97d1c1;
+	font-size: 23px;
+}
+
+/*** Seccion TUS JUEGOS ***/
+
+.tusJuegosContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	margin-top: 10px;
+	flex-wrap: wrap;
+}
+
+.tusJuegosContainer>div {
+  margin-left: 10px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  flex-basis: 75px  
+}
+
+/* Enlaces en la seccion tus juegos */
+.miJuego>a:link {
+	color: #97d1c1;
+}
+
+.miJuego>a:hover, .miJuego>a:active {
+    color: #74c1ac;
+}
+
+/*** Seccion NOTICIAS ***/
+.noticia {
+	background-color: white;
+	border-radius: 5px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-left: 9px;
+	margin-bottom: 7px;
+}
+
+/*** Seccion LISTA DE JUEGOS ***/
+
+h2.listaJuegos {
+	margin-top:30px; 
+	font-family: myFont2; 
+	color: #286858;
+	text-shadow:3px 2px 2px rgba(21,77,63,0.59);
+	padding-bottom: 7px;
+	border-bottom: 3px solid #286858;
+}
+
+/* Enlaces en la seccion de juegos destacados */
+.juegoDestacado>a:link {
+	color: #286858;
+}
+
+.juegoDestacado>a:hover, .miJuego>a:active {
+    color: rgba(21,77,63);
+}
+
