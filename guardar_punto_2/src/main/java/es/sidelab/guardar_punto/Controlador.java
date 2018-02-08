@@ -18,13 +18,13 @@ public class Controlador {
 	@Autowired
 	private UsuariosRepository repositoryUsuario;
 
+	
 	@PostConstruct
 	public void init() {
 		Usuarios us = new Usuarios();
 		us.setId(7);
 		us.setNombre("Jimichi");
-		repositoryUsuario.save(us);
-		
+		repositoryUsuario.save(us);		
 	}
 
 	@GetMapping("/")
