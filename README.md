@@ -15,7 +15,7 @@ Las entidades serían:
 
 ## **Descripción del servicio interno**
 
-Los usuarios podrán compartir imágenes que podrán ser escalables.
+Los usuarios podrán compartir imágenes que podrán ser escalables. ASí mismo, se enviará un mensaje vía e-mail una vez un usuario se haya registrado.
 
 ## **Diagrama Entidad/Relación**
 A continuación se muestra el diagrama Entidad/Relación de la base de datos de la web:
