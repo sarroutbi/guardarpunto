@@ -17,29 +17,7 @@ public class Juego {
 	@Column
 	private String title;
 	
-	public List<Usuarios> getUsers() {
-		return users;
-	}
-
-	public void setUsers(List<Usuarios> users) {
-		this.users = users;
-	}
-
-	public List<Review> getReviews() {
-		return reviews;
-	}
-
-	public void setReviews(List<Review> reviews) {
-		this.reviews = reviews;
-	}
-
-	public List<Comentario> getComents() {
-		return coments;
-	}
-
-	public void setComents(List<Comentario> coments) {
-		this.coments = coments;
-	}
+	
 
 	@Column
 	private String compannia;
@@ -60,9 +38,13 @@ public class Juego {
 	private String resumen;
 	
 	/*Relaciones de la tabla*/
-	@ManyToMany
+	@ManyToMany 
 	private List<Usuarios> users=new ArrayList<Usuarios>();
 	
+	@OneToMany (mappedBy="juegos_estado")
+	private List<Estado> juego_estado=new ArrayList<Estado>();
+	
+
 	@OneToMany(mappedBy="juego")
 	private List<Review> reviews=new ArrayList<Review>();
 	
@@ -133,7 +115,29 @@ public class Juego {
 	public void setResumen(String resumen) {
 		this.resumen = resumen;
 	}
+	public List<Usuarios> getUsers() {
+		return users;
+	}
 
+	public void setUsers(List<Usuarios> users) {
+		this.users = users;
+	}
+
+	public List<Review> getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
+	}
+
+	public List<Comentario> getComents() {
+		return coments;
+	}
+
+	public void setComents(List<Comentario> coments) {
+		this.coments = coments;
+	}
 	
 	
 }

@@ -40,6 +40,12 @@ public class Usuarios {
 
 	@OneToMany(mappedBy="user")
 	private List<Review> review= new ArrayList<Review>();
+	
+	@OneToMany(mappedBy="estado_user")
+	private List<Estado> estados= new ArrayList<Estado>();
+	
+	
+	
 	/*Handlers*/
 	public List<Juego> getJuegos() {
 		return juegos;
