@@ -61,31 +61,13 @@
     </div>
 
     <!-- Uno por cada amigo -->
+    {{#amigos}}
     <div class="col-md-2" id="amigo">
-      <p id="name" align="center">Jimichi</p>
-      <a href=""><img id="foto" src="https://pm1.narvii.com/6239/0830a5254294f42181c2b29b5e4e6ffc3ccfbcf6_hq.jpg"></a>
-      <div id="text">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
+      <p id="name" align="center">{{nombre}}</p>
+      <a href="/Usuario/{{id}}"><img id="foto" src="https://pm1.narvii.com/6239/0830a5254294f42181c2b29b5e4e6ffc3ccfbcf6_hq.jpg"></a>
+      <div id="text">{{biografia}}</div>
     </div>
-
-    <div class="col-md-2" id="amigo">
-      <p id="name" align="center">Jimichi</p>
-      <a href=""><img id="foto" src="https://pm1.narvii.com/6239/0830a5254294f42181c2b29b5e4e6ffc3ccfbcf6_hq.jpg"></a>
-      <div id="text">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
-    </div>
-
-
-    <div class="col-md-2" id="amigo">
-      <p id="name" align="center">Jimichi</p>
-      <a href=""><img id="foto" src="https://pm1.narvii.com/6239/0830a5254294f42181c2b29b5e4e6ffc3ccfbcf6_hq.jpg"></a>
-      <div id="text">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
-    </div>
-
-
-    <div class="col-md-2" id="amigo">
-      <p id="name" align="center">Jimichi</p>
-      <a href=""><img id="foto" src="https://pm1.narvii.com/6239/0830a5254294f42181c2b29b5e4e6ffc3ccfbcf6_hq.jpg"></a>
-      <div id="text">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
-    </div>
+	{{/amigos}}
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

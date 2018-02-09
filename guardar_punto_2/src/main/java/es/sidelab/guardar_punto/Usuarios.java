@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.springframework.data.annotation.PersistenceConstructor;
+
 @Entity
 public class Usuarios {
 	/*Atributos*/
@@ -28,12 +30,12 @@ public class Usuarios {
 	@ManyToMany(mappedBy="users")
 	private List<Juego> juegos= new ArrayList<Juego>();
 	
-	@ManyToMany(mappedBy="amigos") /*Almacena los usuarios, para que luego pueda mapearse 
-									a si misma cuando busque a los amigos*/
-	private List<Usuarios> usuarios= new ArrayList<Usuarios>();
+	/*@ManyToMany(mappedBy="amigos") 
+	private List<Usuarios> usuarios= new ArrayList<Usuarios>();*/
 	
-	@ManyToMany
-	private List<Usuarios> amigos= new ArrayList<Usuarios>();
+	@ManyToMany(mappedBy="amigo") 
+	private List<Amigo> usuario1= new ArrayList<Amigo>();
+	
 	
 	@OneToMany(mappedBy="user")
 	private List<Comentario> coments= new ArrayList<Comentario>();
@@ -44,7 +46,15 @@ public class Usuarios {
 	@OneToMany(mappedBy="estado_user")
 	private List<Estado> estados= new ArrayList<Estado>();
 	
-	
+	public Usuarios() {
+		
+	}
+	@PersistenceConstructor
+	public Usuarios(Integer id, String name) {
+		super();
+		this.id = id;
+		nombre= name;
+	}
 	
 	/*Handlers*/
 	public List<Juego> getJuegos() {
@@ -55,21 +65,15 @@ public class Usuarios {
 		this.juegos = juegos;
 	}
 
-	public List<Usuarios> getUsuarios() {
-		return usuarios;
+	public List<Amigo> getUsuarios() {
+		return this.usuario1;
 	}
 
-	public void setUsuarios(List<Usuarios> usuarios) {
-		this.usuarios = usuarios;
+	public void setUsuarios(List<Amigo> usuarios) {
+		this.usuario1 = usuarios;
 	}
 
-	public List<Usuarios> getAmigos() {
-		return amigos;
-	}
-
-	public void setAmigos(List<Usuarios> amigos) {
-		this.amigos = amigos;
-	}
+	
 
 	public List<Review> getReview() {
 		return review;

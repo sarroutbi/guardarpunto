@@ -113,12 +113,12 @@
       <!-- Division derecha de la pantalla -->
       <!-- Columna derecha con amigos, comentarios, login... -->
       <div id="der" class="col-md-3">
-        <div class="row"><h3 id="tit" href=""> Amigos </div></h3>
+        <div class="row"><h3 id="tit" href="Amigos/"> Amigos </div></h3>
         <div class="row" id="fotAm"> 
           <!-- Imagen primer amigo -->
           {{#listaAmigos}}
           <div class="col-md-3">
-            <a href="Usuarios/{{id}}"><img id="amig" src=""></a>  <!-- falta foto del amigo -->
+            <a href="User/{{id}}"><img id="amig" src=""></a>  <!-- falta foto del amigo -->
           </div>
           {{/listaAmigos}}
 
@@ -130,14 +130,14 @@
  		{{#listaComentarios}}
           <div id="comment-model" class="row">
             <div class="col-md-3">
-              <a href="Comentario/Juego/{{id}}"> <!-- enlace al juego (?) -->
+              <a href="Juego/{{id}}"> <!-- enlace al juego (?) -->
                 <img id="avatar" src="Comentario/Juego/{{}}"> <!-- Falta imagen al juego -->
               </a>
             </div>
             <div class="col-md-9">
               <div class="text">
-                <a id="texto" href="">{{Comentario.Usuarios.id}}:</a><!-- (?) -->
-                 <p id="comentario" >{{Comentario.texto}}</p> <!-- (?) -->
+                <a id="texto" href="">{{Usuarios.id}}:</a><!-- (?) -->
+                 <p id="comentario" >{{texto}}</p> <!-- (?) -->
               </div>
             </div>
           </div>
@@ -158,7 +158,7 @@
             <div class="col-md-9">
               <div class="text">
                 <a id="texto" href="">{{nombre}}:</a>
-                 <p id="comentario" >{{Review.texto}}</p> 
+                 <p id="comentario" >{{texto}}</p> 
               </div>
             </div>
           </div>
