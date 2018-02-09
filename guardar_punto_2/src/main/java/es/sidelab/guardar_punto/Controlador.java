@@ -21,10 +21,28 @@ public class Controlador {
 	
 	@PostConstruct
 	public void init() {
-		Usuarios us = new Usuarios();
-		us.setId(7);
-		us.setNombre("Jimichi");
-		repositoryUsuario.save(us);		
+		Usuarios jm = new Usuarios(1,"Jimichi");
+		Usuarios tae = new Usuarios(2, "Tae");
+		Usuarios jC = new Usuarios(3, "Jungkook");
+		Usuarios rm = new Usuarios(4, "RM");
+		Usuarios dvd = new Usuarios(5, "David");
+		repositoryUsuario.save(jm);
+		repositoryUsuario.save(tae);
+		repositoryUsuario.save(jC);
+		repositoryUsuario.save(rm);
+		repositoryUsuario.save(dvd);
+		
+		List<Usuarios> amigos = new ArrayList<Usuarios>();
+		amigos.add(tae);
+		amigos.add(jC);
+		amigos.add(rm);
+		amigos.add(dvd);
+		jm.setUsuarios(amigos);
+		jm.setAmigos(amigos);
+		
+		
+		
+		
 	}
 
 	@GetMapping("/")
@@ -33,23 +51,27 @@ public class Controlador {
 		return "Inicio";
 	}
 	
-	@GetMapping("/usuario/{id}")
-	public String Usuario(Model model,@PathVariable Integer id) {
-		Usuarios user = repositoryUsuario.findOne(id);
+	
+	@GetMapping("/Amigos/{id:[\\d]+}")
+	public String amigos(Model model,@PathVariable Integer id) {
+		//int idUsuario = Integer.parseInt(id);
+		Usuarios usuario = repositoryUsuario.findOne(id);
+		List<Usuarios> amigos = new ArrayList<Usuarios>(usuario.getAmigos());
 		
-		/*model.addAttribute("nombre",user.getNombre());
-		model.addAttribute("biografia",user.getBiografia());
+		model.addAttribute("amigos",amigos);
 		
-		model.addAttribute("listaJugando",user.getJuegos());
-		model.addAttribute("listaJugados",user.getJuegos());
-		model.addAttribute("listaPendientes",user.getJuegos());
-		
-		model.addAttribute("listaAmigos",user.getAmigos());
-		model.addAttribute("listaComentarios",user.getComents());
-		model.addAttribute("listaReviews",user.getReview());
-		*/
-		return "Usuario";
+		return "Amigos";
 	}
-
+	
+	@GetMapping("/Usuario")
+	public String usuario(Model model) {
+		return "user";
+	}
+	
+	@GetMapping("/Review")
+	public String rev(Model model) {
+		return "Reviews";
+	}
+	
 	
 }

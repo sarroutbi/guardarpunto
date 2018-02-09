@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.springframework.data.annotation.PersistenceConstructor;
+
 @Entity
 public class Usuarios {
 	/*Atributos*/
@@ -44,7 +46,15 @@ public class Usuarios {
 	@OneToMany(mappedBy="estado_user")
 	private List<Estado> estados= new ArrayList<Estado>();
 	
-	
+	public Usuarios() {
+		
+	}
+	@PersistenceConstructor
+	public Usuarios(Integer id, String name) {
+		super();
+		this.id = id;
+		nombre= name;
+	}
 	
 	/*Handlers*/
 	public List<Juego> getJuegos() {
