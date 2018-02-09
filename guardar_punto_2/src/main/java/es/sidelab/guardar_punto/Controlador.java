@@ -37,8 +37,8 @@ public class Controlador {
 		amigos.add(jC);
 		amigos.add(rm);
 		amigos.add(dvd);
-		jm.setUsuarios(amigos);
-		jm.setAmigos(amigos);
+		//jm.setUsuarios(amigos);
+		//jm.setAmigos(amigos);
 		
 		
 		
@@ -56,9 +56,9 @@ public class Controlador {
 	public String amigos(Model model,@PathVariable Integer id) {
 		//int idUsuario = Integer.parseInt(id);
 		Usuarios usuario = repositoryUsuario.findOne(id);
-		List<Usuarios> amigos = new ArrayList<Usuarios>(usuario.getAmigos());
+		//List<Usuarios> amigos = new ArrayList<Usuarios>(usuario.getAmigos());
 		
-		model.addAttribute("amigos",amigos);
+		//model.addAttribute("amigos",amigos);
 		
 		return "Amigos";
 	}

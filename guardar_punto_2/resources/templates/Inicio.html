@@ -1,3 +1,5 @@
+<!-- Version con mustache -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +14,7 @@
 
 <title>GuardarPunto</title>
 <!-- Custom styles for this template -->
-<link href="Inicio.css" rel="stylesheet">
+<link href="../css/Inicio.css" rel="stylesheet">
 
 <!-- SCRIPTS -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -34,15 +36,12 @@
 	crossorigin="anonymous"></script>
 
 <!--Enlaces para la pantalla de registro-->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <!-- Script propio para botones y demas-->
-<script src="InicioJS.js"></script>
+<script src="../js/InicioJS.js"></script>
 
 <style>
 body {
@@ -61,7 +60,7 @@ body {
 			<ul id="elementosNavBar" class="nav navbar-nav">
 				<li><a id="log" href="#">Guardar Punto</a></li>
 				<li><a id="elemselect" href="#">Inicio</a></li>
-				<li><a id="elem" href="#Juegos">Juegos</a></li>
+				<li><a id="elem" href="/Juegos">Juegos</a></li>
 				<li><a id="elem" href="#Perfil">Perfil</a></li>
 				<li><a id="elem" href="#Reviews">Reviews</a></li>
 				<li><a id="elem" href="#Amigos">Amigos</a></li>
@@ -85,100 +84,15 @@ body {
 			<h2 class="seccionJuegos">Juegos destacados</h2>
 			<div class="juegosDestacados">
 				<div class="flex-container juegosDestacadosContainer">
+                    {{#listaJuegosDestacados}}
 					<div class="juegoDestacado" style="text-align: center;">
-						<a href="enlace al juego"> <img
-							src="http://samplereality.com/gmu/portal/archive/files/896b074ebe325e7f4c099c4f828b743d.jpg"width="80px" height="113px"> <br /> 
-							<a href="enlace al juego">Portal</a>
+						<a href="juego/{{id}}"> 
+                            <img src="{{imagen}}" width="80px" height="113px"> 
+                            <br /> 
+							<a href="juego/{{id}}">{{titulo}}</a>
 						</a>
-					</div>
-					<div class="juegoDestacado" style="text-align: center;">
-						<a href="enlace al juego"> 
-						<img src="http://samplereality.com/gmu/portal/archive/files/896b074ebe325e7f4c099c4f828b743d.jpg"
-							 width="80px" height="113px"> <br /> 
-							<a href="enlace al juego">Portal</a>
-						</a>
-					</div>
-					<div class="juegoDestacado" style="text-align: center;">
-						<a href="enlace al juego"> 
-						<img src="http://samplereality.com/gmu/portal/archive/files/896b074ebe325e7f4c099c4f828b743d.jpg"  width="80px" height="113px"> <br /> 
-							<a href="enlace al juego">Portal</a>
-						</a>
-					</div>
-					<div class="juegoDestacado" style="text-align: center;">
-						<a href="enlace al juego"> 
-						<img src="http://samplereality.com/gmu/portal/archive/files/896b074ebe325e7f4c099c4f828b743d.jpg" width="80px" height="113px"> <br /> 
-							<a href="enlace al juego">Portal</a>
-						</a>
-					</div>
-					<div class="juegoDestacado" style="text-align: center;">
-						<a href="enlace al juego"> 
-						<img src="http://samplereality.com/gmu/portal/archive/files/896b074ebe325e7f4c099c4f828b743d.jpg"width="80px" height="113px"> <br /> 
-							 <a href="enlace al juego">Portal</a>
-						</a>
-					</div>
-					<div class="juegoDestacado" style="text-align: center;">
-						<a href="enlace al juego"> <img
-							src="http://samplereality.com/gmu/portal/archive/files/896b074ebe325e7f4c099c4f828b743d.jpg"
-							/ width="80px" height="113px"> <br /> <a
-							href="enlace al juego">Portal</a>
-						</a>
-					</div>
-					<div class="juegoDestacado" style="text-align: center;">
-						<a href="enlace al juego"> <img
-							src="http://samplereality.com/gmu/portal/archive/files/896b074ebe325e7f4c099c4f828b743d.jpg"
-							/ width="80px" height="113px"> <br /> <a
-							href="enlace al juego">Portal</a>
-						</a>
-					</div>
-					<div class="juegoDestacado" style="text-align: center;">
-						<a href="enlace al juego"> <img
-							src="http://samplereality.com/gmu/portal/archive/files/896b074ebe325e7f4c099c4f828b743d.jpg"
-							/ width="80px" height="113px"> <br /> <a
-							href="enlace al juego">Portal</a>
-						</a>
-					</div>
-					<div class="juegoDestacado" style="text-align: center;">
-						<a href="enlace al juego"> <img
-							src="http://samplereality.com/gmu/portal/archive/files/896b074ebe325e7f4c099c4f828b743d.jpg"
-							/ width="80px" height="113px"> <br /> <a
-							href="enlace al juego">Portal</a>
-						</a>
-					</div>
-					<div class="juegoDestacado" style="text-align: center;">
-						<a href="enlace al juego"> <img
-							src="http://samplereality.com/gmu/portal/archive/files/896b074ebe325e7f4c099c4f828b743d.jpg"
-							/ width="80px" height="113px"> <br /> <a
-							href="enlace al juego">Portal</a>
-						</a>
-					</div>
-					<div class="juegoDestacado" style="text-align: center;">
-						<a href="enlace al juego"> <img
-							src="http://samplereality.com/gmu/portal/archive/files/896b074ebe325e7f4c099c4f828b743d.jpg"
-							/ width="80px" height="113px"> <br /> <a
-							href="enlace al juego">Portal</a>
-						</a>
-					</div>
-					<div class="juegoDestacado" style="text-align: center;">
-						<a href="enlace al juego"> <img
-							src="http://samplereality.com/gmu/portal/archive/files/896b074ebe325e7f4c099c4f828b743d.jpg"
-							/ width="80px" height="113px"> <br /> <a
-							href="enlace al juego">Portal</a>
-						</a>
-					</div>
-					<div class="juegoDestacado" style="text-align: center;">
-						<a href="enlace al juego"> <img
-							src="http://samplereality.com/gmu/portal/archive/files/896b074ebe325e7f4c099c4f828b743d.jpg"
-							/ width="80px" height="113px"> <br /> <a
-							href="enlace al juego">Portal</a>
-						</a>
-					</div>
-					<div class="juegoDestacado" style="text-align: center;">
-						<a href="enlace al juego"> <img
-							src="http://samplereality.com/gmu/portal/archive/files/896b074ebe325e7f4c099c4f828b743d.jpg"
-							/ width="80px" height="113px"> <br /> <a
-							href="enlace al juego">Portal</a>
-						</a>
-					</div>
+					</div>	
+                    {{/listaJuegosDestacados}}				
 				</div>
 			</div>
 
@@ -191,17 +105,16 @@ body {
 					<h3 class="tituloSeccion">Login</h3>
 
 					<form action="" id="loginForm">
-						<label><b>Usuario</b></label> <input type="text"
-							placeholder="Nombre de usuario" name="usuario" required /> <label><b>Contraseña</b></label>
-						<input type="password" placeholder="Contraseña" name="password"
-							required />
+						<label><b>Usuario</b></label> 
+                        <input type="text" placeholder="Nombre de usuario" name="usuario" required /> 
+                        
+                        <label><b>Contraseña</b></label>
+						<input type="password" placeholder="Contraseña" name="password"	required />
 
 						<button type="button" id="loginBtn" onclick="ocultarLogin()">Login</button>
 						<!--Habria que cambiarlo para enviar datos, de momento solo oculta el panel para mostrar el de juegos-->
 					</form>
-					<button type="button" id="registrarseBtn"
-						class="btn btn-info btn-lg" data-toggle="modal"
-						data-target="#myModal">Registrarse</button>
+					<button type="button" id="registrarseBtn" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Registrarse</button>
 
 					<!-- Modal -->
 					<div class="modal fade" id="myModal" role="dialog">
@@ -235,48 +148,15 @@ body {
 				<div class="tusJuegos" style="display: none" id="tusJuegos">
 					<h3 class="tituloSeccion">Tus juegos</h3>
 					<div class="flex-container tusJuegosContainer">
+                        {{#listaJuegosUsuario}}
 						<div class="miJuego" style="text-align: center;">
-							<a href="enlace al juego"> <img
-								src="http://samplereality.com/gmu/portal/archive/files/896b074ebe325e7f4c099c4f828b743d.jpg"
-								/ width="80px" height="113px"> <br /> <a
-								href="enlace al juego">Portal</a>
+							<a href="juego/{{id}}"> 
+                                <img src="{{imagen}}" width="80px" height="113px"> 
+                                <br /> 
+                                <a href="juego/{{id}}">{{Titulo}}</a>
 							</a>
-						</div>
-						<div class="miJuego" style="text-align: center;">
-							<a href="enlace al juego"> <img
-								src="http://samplereality.com/gmu/portal/archive/files/896b074ebe325e7f4c099c4f828b743d.jpg"
-								/ width="80px" height="113px"> <br /> <a
-								href="enlace al juego">Portal</a>
-							</a>
-						</div>
-						<div class="miJuego" style="text-align: center;">
-							<a href="enlace al juego"> <img
-								src="http://samplereality.com/gmu/portal/archive/files/896b074ebe325e7f4c099c4f828b743d.jpg"
-								/ width="80px" height="113px"> <br /> <a
-								href="enlace al juego">Portal</a>
-							</a>
-						</div>
-						<div class="miJuego" style="text-align: center;">
-							<a href="enlace al juego"> <img
-								src="http://samplereality.com/gmu/portal/archive/files/896b074ebe325e7f4c099c4f828b743d.jpg"
-								/ width="80px" height="113px"> <br /> <a
-								href="enlace al juego">Portal</a>
-							</a>
-						</div>
-						<div class="miJuego" style="text-align: center;">
-							<a href="enlace al juego"> <img
-								src="http://samplereality.com/gmu/portal/archive/files/896b074ebe325e7f4c099c4f828b743d.jpg"
-								/ width="80px" height="113px"> <br /> <a
-								href="enlace al juego">Portal</a>
-							</a>
-						</div>
-						<div class="miJuego" style="text-align: center;">
-							<a href="enlace al juego"> <img
-								src="http://samplereality.com/gmu/portal/archive/files/896b074ebe325e7f4c099c4f828b743d.jpg"
-								/ width="80px" height="113px"> <br /> <a
-								href="enlace al juego">Portal</a>
-							</a>
-						</div>
+						</div>		
+						{{/listaJuegosUsuario}}
 					</div>
 				</div>
 

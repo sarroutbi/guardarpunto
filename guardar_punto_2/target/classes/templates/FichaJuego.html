@@ -2,9 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
@@ -12,7 +12,7 @@
 
     <title>GuardarPunto - Ficha Juego</title>
     <!-- Custom styles for this template -->
-    <link href="FichaJuego.css" rel="stylesheet">
+    <link href="../css/FichaJuegoCSS.css" rel="stylesheet" type="text/css">
 
     <!-- SCRIPTS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -30,8 +30,14 @@
     <!-- Font Awesome Icon Library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       
+    
+    <!--Enlaces para la pantalla de registro-->
+    <link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+      
       <!-- Script propio para botones y demas-->
-    <script src="FichaJuego.js"></script>
+    <script src="../js/FichaJuego.js"></script>
 
     <style>
     body { background-color: #a9d5cb; }
@@ -46,16 +52,16 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div id="navbar" class="navbar-collapse collapse">
           <ul id="elementosNavBar" class="nav navbar-nav">
-            <li><a id="log" href="#">Guardar Punto</a></li>
-            <li><a id="elem" href="#">Inicio</a></li>
-            <li><a id="elem" href="#Juegos">Juegos</a></li>
+            <li><a id="log" href="/">Guardar Punto</a></li>
+            <li><a id="elem" href="/">Inicio</a></li>
+            <li><a id="elem" href="/Juegos">Juegos</a></li>
             <li><a id="elem" href="#Perfil">Perfil</a></li>
             <li><a id="elem" href="#Reviews">Reviews</a></li>
             <li><a id="elem" href="#Amigos">Amigos</a></li>  
           </ul>
           <form id="buscador" class="form-inline">
                 <input id="bus" class="form-control mr-sm-2" type="text" placeholder="Buscar">
-                <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>-->
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
           </form>
         
       </div>
@@ -67,10 +73,10 @@
 
       <div  id="centro" class="col-md-7">
         <!-- posicion resto de elementos-->
-        <h2 class="listaJuegos">Título del juego</h2>
+        <h2 class="listaJuegos">{{juego.titulo}}</h2>
         <div class="datosJuego">
               <div class="colImagen">
-                    <img src="http://samplereality.com/gmu/portal/archive/files/896b074ebe325e7f4c099c4f828b743d.jpg" width="160px" height="226px">
+                    <img src="{{juego.imagen}}" width="160px" height="226px">
                     <div id="anadirALista">
                         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Añadir a lista
                         <span class="caret"></span></button>
@@ -89,17 +95,15 @@
                 <p>Plataforma:</p>
             </div>
               <div class="text dato">
-                <p>Valve</p>
-                <p>1234</p>
-                <p>Puzles</p>
-                <p>PC</p>
+                <p>{{juego.compannia}}</p>
+                <p>{{juego.anno}}</p>
+                <p>{{juego.genero}}</p>
+                <p>{{juego.plataforma}}</p>
             </div>
-            <div class="cuadroPuntuacion">5.0</div>
+            <div class="cuadroPuntuacion">{{juego.puntuacion}}</div>
             <div class="text resumen" style="word-wrap: break-word;">
                 <h4 style="font-weight: bold;">Resumen</h4>
-                <p>lñkhsdlfbdddshjvjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjcccccccccccccccccccccccccccccccccccccccccccccjjjjjjjjjjjj
-                    ljbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
-                    kccccccccccccccccccccccccchhhhhhhñf</p>
+                <p>{{juego.resumen}}</p>
             </div>
         </div>
 
@@ -118,12 +122,13 @@
             </div>
 
             <ul id="listaReviews" style="list-style-type : none;">
+                {{#listaReviews}}
                 <li class="review" style="display: flex;">
                     <div class="imgUsuario" style="float: left;">
-                        <img src="http://samplereality.com/gmu/portal/archive/files/896b074ebe325e7f4c099c4f828b743d.jpg"/ width="80px" height="113px">
+                        <img src="{{imagenUsuario}}"/ width="80px" height="113px">
                     </div>
                     <div class="resto">
-                        <p style="font-weight: bold;">Nombre usuario</p>
+                        <p style="font-weight: bold;">{{nombreUsuario}}</p>
                         <div class="estrellas">
                             <a href="google.com"><span class="fa fa-star checked"></span></a>
                             <span class="fa fa-star"></span>
@@ -131,28 +136,15 @@
                             <span class="fa fa-star"></span>
                             <span class="fa fa-star"></span>
                         </div>
-                        <p>Primeras líneas de la review</p>
+                        <p>{{primeraLinea}}...</p>
 
                         <div id="textoCompleto" class="collapse" style="word-wrap: break-word;">
-                            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                            {{textoReview}}
                         </div>
                         <a href="#textoCompleto" data-toggle="collapse">Leer más</a>
                     </div>
-                </li>
-                <li class="review">
-                    <p>Nombre usuario</p>
-                    <p>*****</p>
-                    <p>Primeras líneas de la review</p>
-
-                    <div id="textoCompleto" class="collapse" style="word-wrap: break-word;">
-                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                    </div>
-                    <a href="#textoCompleto" data-toggle="collapse">Leer más</a>
-                </li>
+                </li>                
+            {{/listaReviews}}
             </ul>
 
         </div>
@@ -172,92 +164,80 @@
 
                 <!-- Lista de comentarios -->
                 <ul id="listaComentarios" style="list-style-type : none;">
+                    {{#listaComentario}}
                     <li class="comentario" style="display: flex;">
                         <div class="imgUsuario" style="float: left;">
-                            <img src="http://samplereality.com/gmu/portal/archive/files/896b074ebe325e7f4c099c4f828b743d.jpg"/ width="40px" height="56.5px">
+                            <img src="{{imgUsuario}}"/ width="40px" height="56.5px">
                         </div>
                         <div class="resto">
-                            <p style="font-weight: bold; font-size: 15px;">Nombre usuario</p>
+                            <p style="font-weight: bold; font-size: 15px;">{{nombreUsuario}}</p>
                         
-                            <p>Comentariooooooooooo</p>
+                            <p>{{texto}}</p>
                         </div>
-                    </li>
-                    <li class="comentario" style="display: flex;">
-                        <div class="imgUsuario" style="float: left;">
-                            <img src="http://samplereality.com/gmu/portal/archive/files/896b074ebe325e7f4c099c4f828b743d.jpg"/ width="40px" height="56.5px">
-                        </div>
-                        <div class="resto">
-                            <p style="font-weight: bold; font-size: 15px;">Nombre usuario</p>
-                        
-                            <p>Comentariooooooooooo</p>
-                        </div>
-                    </li>
+                    </li>                   
+                {{/listaComentario}}
                 </ul>
                                              
             </div>
 
             <div class="login" id="login">
-                <h3 class="tituloSeccion">Login</h3>
+					<h3 class="tituloSeccion">Login</h3>
 
-                <form action="" id="loginForm">
-                    <label><b>Usuario</b></label>
-                    <input type="text" placeholder="Nombre de usuario" name="usuario" required />
+					<form action="" id="loginForm">
+						<label><b>Usuario</b></label> 
+                        <input type="text" placeholder="Nombre de usuario" name="usuario" required /> 
+                        
+                        <label><b>Contraseña</b></label>
+						<input type="password" placeholder="Contraseña" name="password"	required />
 
-                    <label><b>Contraseña</b></label>
-                    <input type="password" placeholder="Contraseña" name="password" required />
+						<button type="button" id="loginBtn" onclick="ocultarLogin()">Login</button>
+						<!--Habria que cambiarlo para enviar datos, de momento solo oculta el panel para mostrar el de juegos-->
+					</form>
+					<button type="button" id="registrarseBtn" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Registrarse</button>
 
-                    <button type="button" id="loginBtn" onclick="ocultarLogin()">Login</button> <!--Habria que cambiarlo para enviar datos, de momento solo oculta el panel para mostrar el de juegos-->
-                    <button type="button" id="registrarseBtn">Registrarse</button>
-                </form>
-            </div>
+					<!-- Modal -->
+					<div class="modal fade" id="myModal" role="dialog">
+						<div class="modal-dialog">
 
-            <div class="tusJuegos" style="display: none" id="tusJuegos">
-                <h3 class="tituloSeccion">Tus juegos</h3>
-                    <div class="flex-container tusJuegosContainer">
-                      <div class="miJuego" style="text-align:center;">
-                          <a href="enlace al juego">
-                              <img src="http://samplereality.com/gmu/portal/archive/files/896b074ebe325e7f4c099c4f828b743d.jpg"/ width="80px" height="113px">
-                              <br />
-                              <a href="enlace al juego">Portal</a>
-                          </a>
-                      </div>
-                    <div class="miJuego" style="text-align:center;">
-                          <a href="enlace al juego">
-                              <img src="http://samplereality.com/gmu/portal/archive/files/896b074ebe325e7f4c099c4f828b743d.jpg"/ width="80px" height="113px">
-                              <br />
-                              <a href="enlace al juego">Portal</a>
-                          </a>
-                    </div>
-                    <div class="miJuego" style="text-align:center;">
-                          <a href="enlace al juego">
-                              <img src="http://samplereality.com/gmu/portal/archive/files/896b074ebe325e7f4c099c4f828b743d.jpg"/ width="80px" height="113px">
-                              <br />
-                              <a href="enlace al juego">Portal</a>
-                          </a>
-                    </div>
-                    <div class="miJuego" style="text-align:center;">
-                          <a href="enlace al juego">
-                              <img src="http://samplereality.com/gmu/portal/archive/files/896b074ebe325e7f4c099c4f828b743d.jpg"/ width="80px" height="113px">
-                              <br />
-                              <a href="enlace al juego">Portal</a>
-                          </a>
-                    </div>
-                    <div class="miJuego" style="text-align:center;">
-                          <a href="enlace al juego">
-                              <img src="http://samplereality.com/gmu/portal/archive/files/896b074ebe325e7f4c099c4f828b743d.jpg"/ width="80px" height="113px">
-                              <br />
-                              <a href="enlace al juego">Portal</a>
-                          </a>
-                    </div>
-                    <div class="miJuego" style="text-align:center;">
-                          <a href="enlace al juego">
-                              <img src="http://samplereality.com/gmu/portal/archive/files/896b074ebe325e7f4c099c4f828b743d.jpg"/ width="80px" height="113px">
-                              <br />
-                              <a href="enlace al juego">Portal</a>
-                          </a>
-                    </div>
-                </div>
-            </div>  
+							<!-- Modal content-->
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<div id="tituloRegistro" align="center">Guardar Punto</div>
+								</div>
+								<div class="modal-body">
+									<form action="" id="regForm">
+										<label id="tit"><b>Usuario</b></label> <input type="text"
+											placeholder="Nombre de usuario" name="usuario" required /> <label
+											id="tit"><b>Contraseña</b></label> <input type="password"
+											placeholder="Contraseña" name="password" required />
+										<button type="button" id="regBtn" class="btn btn-default"
+											data-dismiss="modal" onclick="ocultarLogin()">Registrarse</button>
+										<!--Habria que cambiarlo para enviar datos, de momento solo oculta el panel para mostrar el de juegos-->
+									</form>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Final de la pantalla de registro-->
+				</div>
+
+				<div class="tusJuegos" style="display: none" id="tusJuegos">
+					<h3 class="tituloSeccion">Tus juegos</h3>
+					<div class="flex-container tusJuegosContainer">
+                        {{#listaJuegosUsuario}}
+						<div class="miJuego" style="text-align: center;">
+							<a href="juego/{{id}}"> 
+                                <img src="{{imagen}}" width="80px" height="113px"> 
+                                <br /> 
+                                <a href="juego/{{id}}">{{Titulo}}</a>
+							</a>
+						</div>		
+						{{/listaJuegosUsuario}}
+					</div>
+				</div>
 
         </div>
       </div>
