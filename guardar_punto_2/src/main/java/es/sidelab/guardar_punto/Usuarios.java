@@ -134,7 +134,12 @@ public class Usuarios {
 	public void setComents(List<Comentario> coments) {
 		this.coments = coments;
 	}
-	
+	public void setAmigos(List<Usuarios> amigos) {
+		this.amigos = amigos;
+	}
+	public List<Usuarios> getAmigos(){
+		return amigos;
+	}
 	
 	
 	

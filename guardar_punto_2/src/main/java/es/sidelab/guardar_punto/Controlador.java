@@ -45,7 +45,29 @@ public class Controlador {
 		repositoryUsuario.save(guille);
 		repositoryUsuario.save(agus);
 		
-		//AMIGOS - esto no lo pillo 		
+		//AMIGOS - esto no lo pillo 	
+		List<Usuarios> amigosMarta = new ArrayList<Usuarios>();
+		amigosMarta.add(susi);
+		amigosMarta.add(adri);
+		amigosMarta.add(sergio);
+		amigosMarta.add(agus);
+		marta.setAmigos(amigosMarta);
+		repositoryUsuario.save(marta);
+		
+		List<Usuarios> amigosSusi = new ArrayList<Usuarios>();
+		amigosSusi.add(guille);
+		amigosSusi.add(sergio);
+		amigosSusi.add(agus);
+		amigosSusi.add(marta);
+		susi.setAmigos(amigosSusi);
+		repositoryUsuario.save(susi);
+		
+		List<Usuarios> amigosAdri = new ArrayList<Usuarios>();
+		amigosAdri.add(marta);
+		amigosAdri.add(susi);
+		amigosAdri.add(sergio);
+		adri.setAmigos(amigosAdri);
+		repositoryUsuario.save(adri);
 		
 		//JUEGOS
 		Juego portal = new Juego ("Portal", "Valve", "2007", "PC", 0.0f, "Puzles", "Resumen de Portal");
@@ -146,9 +168,9 @@ public class Controlador {
 	public String amigos(Model model,@PathVariable Integer id) {
 		//int idUsuario = Integer.parseInt(id);
 		Usuarios usuario = repositoryUsuario.findOne(id);
-		//List<Usuarios> amigos = new ArrayList<Usuarios>(usuario.getAmigos());
+		List<Usuarios> amigos = new ArrayList<Usuarios>(usuario.getAmigos());
 		
-		//model.addAttribute("amigos",amigos);
+	    model.addAttribute("amigos",amigos);
 		
 		return "Amigos";
 	}
@@ -160,8 +182,12 @@ public class Controlador {
 		return "Usuario";
 	}
 	
-	@GetMapping("/Review")
-	public String rev(Model model) {
+	@GetMapping("/Review/{id:[\\d]+}")
+	public String rev(Model model,@PathVariable Integer id) {
+		Usuarios usuario = repositoryUsuario.findOne(id);
+		List<Review> reviews = new ArrayList<Review>(usuario.getReview());
+		
+		model.addAttribute("listaReviews",reviews);
 		return "Reviews";
 	}
 	
