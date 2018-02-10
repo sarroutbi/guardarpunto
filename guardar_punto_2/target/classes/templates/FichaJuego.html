@@ -59,10 +59,10 @@
             <li><a id="elem" href="#Reviews">Reviews</a></li>
             <li><a id="elem" href="#Amigos">Amigos</a></li>  
           </ul>
-          <form id="buscador" class="form-inline">
-                <input id="bus" class="form-control mr-sm-2" type="text" placeholder="Buscar">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-          </form>
+          <form id="buscador" class="form-inline" action="/buscar" method="post">
+				<input id="bus" class="form-control mr-sm-2" type="text" placeholder="Buscar" name="txt">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+		  </form>
         
       </div>
     </nav>
@@ -158,8 +158,12 @@
                 <h3 class="tituloSeccion">Comentarios</h3>
 
                 <div class="anadirComentario" style="margin-bottom: 8px;">
-                    <textarea id="nuevoComentario" rows="2" style="width: 100%;" maxlength="100">Nuevo comentario</textarea>
-                    <button type="submit">Enviar</button>
+                	<form action="/nuevoComentario" method="post">
+	                    <textarea id="nuevoComentario" rows="2" style="width: 100%;" maxlength="100" name="texto">Nuevo comentario</textarea>
+	                    <input type="hidden" name="id_juego" value="{{juego.id}}"/>
+	                    <input type="hidden" name="id_usuario" value="1"/>
+	                    <button type="submit">Enviar</button>
+                  	</form>
                 </div>
 
                 <!-- Lista de comentarios -->

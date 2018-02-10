@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
@@ -225,6 +226,13 @@ public class Controlador {
 		return "FichaJuego";
 	}
 	
+	//Pagina que muestra los resultados de la busqueda (juegos o usuarios)
+	@PostMapping("/buscar")
+	public String Busqueda (Model model, String txt) {
+		model.addAttribute("listaJuegosEncontrados", repositoryJuego.findByTitleIgnoreCaseLike("%"+txt+"%"));
+		model.addAttribute("listaUsuariosEncontrados", repositoryUsuario.findByNombreIgnoreCaseLike("%"+txt+"%"));
+		return "Busqueda";
+	}
 	
 	@GetMapping("/Amigos/{id}")
 	public String amigos(Model model,@PathVariable String id) {
@@ -259,9 +267,7 @@ public class Controlador {
 		
 		return "Usuario";
 	}
-	
-	
-	
+		
 	@GetMapping("/Review/{id}")
 	public String rev(Model model,@PathVariable String id) {
 		int num = Integer.parseInt(id);
@@ -272,5 +278,20 @@ public class Controlador {
 		return "Reviews";
 	}
 	
+	//Añadir nuevo comentario a un juego. De momento, vienen todos del mismo usuario.
+	@PostMapping("/nuevoComentario")
+	public String nuevoComentario (Model model, Comentario comentario) {
+		Integer idUsuario = Integer.parseInt(comentario.getId_usuario());
+		Integer idJuego = Integer.parseInt(comentario.getId_juego());
+		//Asignar el usuario (siempre el 1 de momento) y el juego
+		comentario.setUser(repositoryUsuario.findOne(idUsuario));
+		comentario.setJuego(repositoryJuego.findOne(idJuego));
+		//Guardar nuevo comentario en el repositorio
+		repositoryComentario.save(comentario);
+		
+		//Volver a cargar la pagina del juego		
+		fichaJuego (model, comentario.getJuego().getId().toString());
+		return "FichaJuego";
+	}
 	
 }

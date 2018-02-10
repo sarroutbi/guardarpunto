@@ -47,10 +47,10 @@
             <li><a id="elem" href="#Reviews">Reviews</a></li>
             <li><a id="elem" href="Amigos/{{id}}">Amigos</a></li>  
           </ul>
-          <form id="buscador" class="form-inline">
-                <input id="bus" class="form-control mr-sm-2" type="text" placeholder="Buscar">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-          </form>
+          <form id="buscador" class="form-inline" action="/buscar" method="post">
+				<input id="bus" class="form-control mr-sm-2" type="text" placeholder="Buscar" name="txt">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+		  </form>
         
       </div>
     </nav>

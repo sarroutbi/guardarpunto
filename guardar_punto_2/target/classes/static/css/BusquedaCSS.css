@@ -172,8 +172,8 @@ label {
 	margin-bottom: 7px;
 }
 
-/*** Seccion JUEGOS DESTACADOS ***/
-h2.seccionJuegos {
+/*** Seccion JUEGOS ENCONTRADOS ***/
+h2.seccionBusqueda {
 	margin-top: 30px;
 	font-family: myFont2;
 	color: #286858;
@@ -182,7 +182,7 @@ h2.seccionJuegos {
 	border-bottom: 3px solid #286858;
 }
 
-.juegosDestacadosContainer {
+.juegosEncontradosContainer, .usuariosEncontradosContainer {
 	font-family: myFont;
 	display: flex;
 	flex-direction: row;
@@ -191,7 +191,7 @@ h2.seccionJuegos {
 	flex-wrap: wrap;
 }
 
-.juegosDestacadosContainer>div {
+.juegosEncontradosContainer>div, .usuariosEncontradosContainer>div {
 	margin-left: 10px;
 	margin-bottom: 10px;
 	font-size: 20px;
@@ -199,11 +199,11 @@ h2.seccionJuegos {
 }
 
 /* Enlaces en la seccion de juegos destacados */
-.juegoDestacado>a:link {
+.juegoEncontrado>a:link, .usuarioEncontrado {
 	color: #286858;
 }
 
-.juegoDestacado>a:hover, .miJuego>a:active {
+.juegoEncontrado>a:hover, .usuarioEncontrado>a:hover, .miJuego>a:active {
 	color: rgba(21, 77, 63);
 }
 

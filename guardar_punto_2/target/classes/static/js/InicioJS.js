@@ -5,4 +5,7 @@ function ocultarLogin() {
 
     login.style.display = "none";
     tusJuegos.style.display = "block";
+    
+    guardarUsuario (0);
 }
+

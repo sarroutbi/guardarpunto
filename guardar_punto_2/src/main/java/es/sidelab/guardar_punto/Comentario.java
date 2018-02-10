@@ -25,6 +25,9 @@ public class Comentario {
 	@ManyToOne
 	private Usuarios user;
 	
+	//Variables para añadir nuevos comentarios desde la ficha del juego 
+	private String id_juego, id_usuario;	
+
 	public Comentario () {
 		
 	}
@@ -66,5 +69,23 @@ public class Comentario {
 
 	public void setTexto(String texto) {
 		this.texto = texto;
+	}
+	
+	//Para añadir nuevos comentarios desde la ficha del juego 
+	
+	public String getId_juego() {
+		return id_juego;
+	}
+
+	public void setId_juego(String id_juego) {
+		this.id_juego = id_juego;
+	}
+
+	public String getId_usuario() {
+		return id_usuario;
+	}
+
+	public void setId_usuario(String id_usuario) {
+		this.id_usuario = id_usuario;
 	}
 }
