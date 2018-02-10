@@ -2,6 +2,8 @@ package es.sidelab.guardar_punto;
 
 import javax.persistence.*;
 
+import org.springframework.data.annotation.PersistenceConstructor;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,9 +17,7 @@ public class Juego {
 	private Integer id;
 	
 	@Column
-	private String title;
-	
-	
+	private String title;	
 
 	@Column
 	private String compannia;
@@ -29,7 +29,7 @@ public class Juego {
 	private String plataforma;
 	
 	@Column
-	private Integer valoracion;
+	private float valoracion;
 	
 	@Column 
 	private String genero;
@@ -44,12 +44,28 @@ public class Juego {
 	@OneToMany (mappedBy="juegos_estado")
 	private List<Estado> juego_estado=new ArrayList<Estado>();
 	
-
 	@OneToMany(mappedBy="juego")
 	private List<Review> reviews=new ArrayList<Review>();
 	
 	@OneToMany(mappedBy="juego")
 	private List<Comentario> coments=new ArrayList<Comentario>();
+	
+	public Juego () {
+		
+	}
+	
+	@PersistenceConstructor
+	public Juego (String t, String c, String a, String p, float v, String g, String r) {
+		super ();
+		
+		title = t;
+		compannia = c;
+		anyo = a;
+		plataforma = p;
+		valoracion = v;
+		genero = g;
+		resumen = r;	
+	}
 		
 	/*Handlers*/
 	public Integer getId() {
@@ -92,11 +108,11 @@ public class Juego {
 		this.plataforma = plataforma;
 	}
 
-	public Integer getValoracion() {
+	public float getValoracion() {
 		return valoracion;
 	}
 
-	public void setValoracion(Integer valoracion) {
+	public void setValoracion(float valoracion) {
 		this.valoracion = valoracion;
 	}
 

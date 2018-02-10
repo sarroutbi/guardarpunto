@@ -4,6 +4,8 @@ package es.sidelab.guardar_punto;
 
 import javax.persistence.*;
 
+import org.springframework.data.annotation.PersistenceConstructor;
+
 @Entity
 public class Comentario {
 	
@@ -22,6 +24,16 @@ public class Comentario {
 	
 	@ManyToOne
 	private Usuarios user;
+	
+	public Comentario () {
+		
+	}
+	
+	@PersistenceConstructor
+	public Comentario (String t) {
+		super();
+		texto = t;
+	}
 	
 	/*Handlers*/
 	public Juego getJuego() {

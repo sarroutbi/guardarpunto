@@ -8,11 +8,17 @@ import java.util.ArrayList;
 
 @Entity
 public class Amigo {
+	
 	@Id
 	private Integer id;
 	
 	@ManyToMany
 	private List<Usuarios> amigo =new ArrayList<Usuarios>();
+	
+	public Amigo (Integer i, ArrayList<Usuarios> amigos) {
+		id = i;
+		amigo = amigos;
+	}
 
 	public Integer getId() {
 		return id;

@@ -4,6 +4,8 @@ package es.sidelab.guardar_punto;
 
 import javax.persistence.*;
 
+import org.springframework.data.annotation.PersistenceConstructor;
+
 @Entity
 public class Review {
 	/*Atributos de la entidad*/	
@@ -24,6 +26,17 @@ public class Review {
 	
 	@ManyToOne
 	private Usuarios user;
+	
+	public Review () {
+		
+	}
+	
+	@PersistenceConstructor
+	public Review (String t, Float p) {
+		super();
+		texto = t;
+		puntuacion = p;
+	}
 	
 	/*Handlers*/
 	public Integer getId() {
@@ -48,6 +61,22 @@ public class Review {
 
 	public void setPuntuacion(Float puntuacion) {
 		this.puntuacion = puntuacion;
+	}
+
+	public Juego getJuego() {
+		return juego;
+	}
+
+	public void setJuego(Juego juego) {
+		this.juego = juego;
+	}
+
+	public Usuarios getUser() {
+		return user;
+	}
+
+	public void setUser(Usuarios user) {
+		this.user = user;
 	}
 	
 	

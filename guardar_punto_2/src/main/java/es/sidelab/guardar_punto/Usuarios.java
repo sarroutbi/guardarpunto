@@ -49,11 +49,22 @@ public class Usuarios {
 	public Usuarios() {
 		
 	}
+	
 	@PersistenceConstructor
 	public Usuarios(Integer id, String name) {
 		super();
 		this.id = id;
 		nombre= name;
+	}
+	
+	@PersistenceConstructor
+	public Usuarios(String name, String e, String c, String b) {
+		super();
+		
+		nombre= name;
+		email = e;
+		contrasenna = c;
+		biografia = b;
 	}
 	
 	/*Handlers*/
@@ -72,7 +83,6 @@ public class Usuarios {
 	public void setUsuarios(List<Amigo> usuarios) {
 		this.usuario1 = usuarios;
 	}
-
 	
 
 	public List<Review> getReview() {
@@ -82,8 +92,6 @@ public class Usuarios {
 	public void setReview(List<Review> review) {
 		this.review = review;
 	}
-
-
 	
 	public Integer getId() {
 		return id;
