@@ -45,7 +45,7 @@
             <li><a id="elem" href="#Juegos">Juegos</a></li>
             <li><a id="elemselect" href="#Perfil">Perfil</a></li>
             <li><a id="elem" href="#Reviews">Reviews</a></li>
-            <li><a id="elem" href="#Amigos">Amigos</a></li>  
+            <li><a id="elem" href="Amigos/{{id}}">Amigos</a></li>  
           </ul>
           <form id="buscador" class="form-inline">
                 <input id="bus" class="form-control mr-sm-2" type="text" placeholder="Buscar">
@@ -118,7 +118,7 @@
           {{#listaAmigos}}
           <!-- Imagen primer amigo -->
           <div class="col-md-3">
-            <a href="Usuario/{{id}}"><img id="amig" src="https://pm1.narvii.com/6239/0830a5254294f42181c2b29b5e4e6ffc3ccfbcf6_hq.jpg"></a>  
+            <a href="/Usuario/{{id}}"><img id="amig" src="https://pm1.narvii.com/6239/0830a5254294f42181c2b29b5e4e6ffc3ccfbcf6_hq.jpg"></a>  
           </div>
           {{/listaAmigos}}
           
@@ -131,7 +131,7 @@
           <div id="comment-model" class="row">
           	{{#listaComentarios}}
             <div class="col-md-3">
-              <a href="Juego/{{juego.id}}"> <!-- enlace al juego -->
+              <a href="/juego/{{juego.id}}"> <!-- enlace al juego -->
                 <img id="avatar" src="https://pm1.narvii.com/6239/0830a5254294f42181c2b29b5e4e6ffc3ccfbcf6_hq.jpg">
               </a>
             </div>
@@ -152,7 +152,7 @@
           {{#listaReviews}}
           <div id="comment-model" class="row">
             <div class="col-md-3">
-              <a href="Juego/{{juego.id}}"> <!-- enlace al juego -->
+              <a href="/juego/{{juego.id}}"> <!-- enlace al juego -->
                 <img id="avatar" src="https://pm1.narvii.com/6239/0830a5254294f42181c2b29b5e4e6ffc3ccfbcf6_hq.jpg">
               </a>
             </div>

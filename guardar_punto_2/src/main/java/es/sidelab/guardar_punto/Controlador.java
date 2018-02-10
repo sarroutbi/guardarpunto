@@ -226,10 +226,11 @@ public class Controlador {
 	}
 	
 	
-	@GetMapping("/Amigos/{id:[\\d]+}")
-	public String amigos(Model model,@PathVariable Integer id) {
+	@GetMapping("/Amigos/{id}")
+	public String amigos(Model model,@PathVariable String id) {
 		//int idUsuario = Integer.parseInt(id);
-		Usuarios usuario = repositoryUsuario.findOne(id);
+		int num = Integer.parseInt(id);
+		Usuarios usuario = repositoryUsuario.findOne(num);
 		List<Usuarios> amigos = new ArrayList<Usuarios>(usuario.getAmigos());
 		
 	    model.addAttribute("amigos",amigos);
@@ -237,16 +238,34 @@ public class Controlador {
 		return "Amigos";
 	}
 	
-	@GetMapping("/Usuario")
-	public String usuario(Model model) {
-		model.addAttribute("nombre","Jimichi");
-		model.addAttribute("biografia", "biografia de Jimichi");
+	@GetMapping("/Usuario/{id}")
+	public String usuario(Model model,@PathVariable String id) {
+		int num = Integer.parseInt(id);
+		Usuarios usuario = repositoryUsuario.findOne(num);
+		
+		String name = usuario.getNombre();
+		String bio = usuario.getBiografia();
+		List<Usuarios> amigos = new ArrayList<Usuarios>(usuario.getAmigos());
+		List<Juego> juegos = new ArrayList<Juego>(usuario.getJuegos());
+		List<Comentario> comentarios = new ArrayList<Comentario>(usuario.getComents());
+		List<Review> reviews = new ArrayList<Review>(usuario.getReview());
+		
+		model.addAttribute("nombre",name);
+		model.addAttribute("biografia", bio);
+		model.addAttribute("listaAmigos",amigos);
+		model.addAttribute("listaJuegos",juegos);
+		model.addAttribute("listaComentarios",comentarios);
+		model.addAttribute("listaReviews",reviews);
+		
 		return "Usuario";
 	}
 	
-	@GetMapping("/Review/{id:[\\d]+}")
-	public String rev(Model model,@PathVariable Integer id) {
-		Usuarios usuario = repositoryUsuario.findOne(id);
+	
+	
+	@GetMapping("/Review/{id}")
+	public String rev(Model model,@PathVariable String id) {
+		int num = Integer.parseInt(id);
+		Usuarios usuario = repositoryUsuario.findOne(num);
 		List<Review> reviews = new ArrayList<Review>(usuario.getReview());
 		
 		model.addAttribute("listaReviews",reviews);
