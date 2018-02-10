@@ -79,11 +79,11 @@ public class Controlador {
 		repositoryUsuario.save(adri);
 		
 		//JUEGOS - Faltarian imagenes
-		Juego portal = new Juego ("Portal", "Valve", "2007", "PC", 0.0f, "Puzles", "Resumen de Portal");
-		Juego horizon = new Juego ("Horizon Zero Dawn", "Guerrilla Games", "2017", "PS4", 0.0f, "Aventura", "Resumen de Horizon Zero Dawn");
+		Juego portal = new Juego ("Portal", "Valve", "2007", "PC", 4.5f, "Puzles", "Resumen de Portal");
+		Juego horizon = new Juego ("Horizon Zero Dawn", "Guerrilla Games", "2017", "PS4", 3.9f, "Aventura", "Resumen de Horizon Zero Dawn");
 		Juego pkmnLuna = new Juego ("Pokémon Luna","Nintendo", "2017", "3DS", 0.0f, "RPG", "Resumen de Pokémon Luna");
 		Juego aa1 = new Juego ("Ace Atorney", "Capcom", "2005", "DS", 0.0f, "Novela Visual", "Resumen de Ace Attorney");
-		Juego wow = new Juego ("World of Warcraft", "Blizzard", "2004", "PC", 0.0f, "MMORPG", "Resumen de World of Warcraft");
+		Juego wow = new Juego ("World of Warcraft", "Blizzard", "2004", "PC", 3.7f, "MMORPG", "Resumen de World of Warcraft");
 		Juego civilization6 = new Juego ("Civilization VI", "2k Games", "2016", "PC", 0.0f, "Estrategia", "Resumen de Portal");
 		//pls añadan alguno mas 
 	
@@ -96,23 +96,23 @@ public class Controlador {
 		
 		//ESTADO JUEGOS
 		//Juegos Marta:
-		List<Estado> estadosMarta = new ArrayList<Estado>();
+		/*List<Estado> estadosMarta = new ArrayList<Estado>();
 		Estado e1 = new Estado(marta,portal,"jugado");
 		Estado e2 = new Estado(marta,horizon,"jugando");
 		Estado e3 = new Estado(marta,pkmnLuna,"jugando");
 		Estado e4 = new Estado(marta,wow,"pendiente");
 		
 		repositoryEstados.save(e1);
-		/*repositoryEstados.save(e2);
+		repositoryEstados.save(e2);
 		repositoryEstados.save(e3);
-		repositoryEstados.save(e4);*/
+		repositoryEstados.save(e4);
 		
 		estadosMarta.add(e1);
 		estadosMarta.add(e2);
 		estadosMarta.add(e3);
 		estadosMarta.add(e4);
 
-		marta.setEstados(estadosMarta);
+		marta.setEstados(estadosMarta);*/
 		//repositoryUsuario.save(marta);
 		
 		/*
@@ -138,27 +138,36 @@ public class Controlador {
 		//REVIEWS
 		Review rPortalMarta = new Review ("Review de Portal por Marta", 5.0f);
 		rPortalMarta.setJuego(portal); rPortalMarta.setUser(marta);
-		repositoryReview.save(rPortalMarta);
-		
+		repositoryReview.save(rPortalMarta);		
 		Review rPortalAdri = new Review ("Review de Portal por Adri", 4.0f);
 		rPortalAdri.setJuego(portal); rPortalAdri.setUser(adri);
 		repositoryReview.save(rPortalAdri);
+		//Como se han añadido dos reviews, hay que actualizar los votos
+		portal.setnVotos(2);
+		portal.setVotosTotal(9.0f);
+		repositoryJuego.save(portal);
 		
 		Review rWowSusi = new Review ("Review de World of Warcraft por Susi", 5.0f);
 		rWowSusi.setJuego(wow); rWowSusi.setUser(susi);
-		repositoryReview.save(rWowSusi);
-		
+		repositoryReview.save(rWowSusi);		
 		Review rWowGuille = new Review ("Review de World of Warcraft por Guille", 2.5f);
 		rWowGuille.setJuego(wow); rWowGuille.setUser(guille);
 		repositoryReview.save(rWowGuille);
+		//Como se han añadido dos reviews, hay que actualizar los votos
+		wow.setnVotos(2);
+		wow.setVotosTotal(7.5f);
+		repositoryJuego.save(wow);
 		
 		Review rHorizonAgus = new Review ("Review de Horizon Zero Dawn por Agus", 4.7f);
 		rHorizonAgus.setJuego(horizon); rHorizonAgus.setUser(agus);
-		repositoryReview.save(rHorizonAgus);
-		
+		repositoryReview.save(rHorizonAgus);		
 		Review rHorizonSergio = new Review ("Review de Horizon Zero Dawn por Sergio", 3.2f);
 		rHorizonSergio.setJuego(horizon); rHorizonSergio.setUser(sergio);
 		repositoryReview.save(rHorizonSergio);
+		//Como se han añadido dos reviews, hay que actualizar los votos
+		horizon.setnVotos(2);
+		horizon.setVotosTotal(7.9f);
+		repositoryJuego.save(horizon);
 		
 		//COMENTARIOS
 		Comentario rAAMarta = new Comentario ("Comentario de Ace Attorney por Marta");
@@ -197,11 +206,10 @@ public class Controlador {
 	}
 
 	//Pagina inicial. 
-	//Muestra algunos juegos destacados, almacenados previamente en una lista
+	//Muestra algunos juegos destacados, almacenados previamente en una lista	
 	@GetMapping("/")
 	public String Inicio(Model model) {
 		model.addAttribute("listaJuegosDestacados", listaJuegosDestacados);
-		
 		return "Inicio";
 	}
 	
@@ -323,6 +331,28 @@ public class Controlador {
 		
 		//Volver a cargar la pagina del juego		
 		fichaJuego (model, comentario.getJuego().getId().toString());
+		return "FichaJuego";
+	}
+	
+	//Añadir nueva review a un juego. De momento, vienen todos del mismo usuario.
+	@PostMapping("/nuevaReview")
+	public String nuevaReview (Model model, Review review) {
+		Integer idUsuario = Integer.parseInt(review.getId_usuario());
+		Integer idJuego = Integer.parseInt(review.getId_juego());
+		//Asignar el usuario (siempre el 1 de momento) y el juego
+		review.setUser(repositoryUsuario.findOne(idUsuario));
+		review.setJuego(repositoryJuego.findOne(idJuego));
+		//Asignar primera linea		
+		review.setPrimeraLinea(review.getTexto().substring(0, 10));
+		//Guardar nueva review en el repositorio
+		repositoryReview.save(review);
+		
+		//Actualizar puntuacion del juego y volverlo a guardar en la db
+		repositoryJuego.findOne(idJuego).calcularValoracion(review.getPuntuacion());	
+		repositoryJuego.save(repositoryJuego.findOne(idJuego));
+		
+		//Volver a cargar la pagina del juego		
+		fichaJuego (model, review.getJuego().getId().toString());
 		return "FichaJuego";
 	}
 	

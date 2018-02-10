@@ -256,10 +256,6 @@ textarea {
 	resize: none;
 }
 
-/* Estrellas review */
-.checked {
-	color: orange;
-}
 
 /*** lista de reviews ***/
 
@@ -278,6 +274,15 @@ li.review {
 	margin-left: 20px;
 }
 
+.cuadroPuntuacionReview {
+	background-color: #286858;
+	color: #73c2ac;
+	font-size: 20px;
+	float: left;
+	padding: 5px;
+	margin-bottom: 7px;
+	width: 40px;
+}
 
 /*css para pantalla emergente*/
 

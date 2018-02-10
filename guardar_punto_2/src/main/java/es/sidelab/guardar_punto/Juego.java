@@ -40,6 +40,12 @@ public class Juego {
 	@Column
 	private String imagen;
 	
+	//Variables para calcular la media
+	@Column 
+	private int nVotos = 0;
+	@Column 
+	private float votosTotal = 0.0f;
+	
 	/*Relaciones de la tabla*/
 	@ManyToMany 
 	private List<Usuarios> users=new ArrayList<Usuarios>();
@@ -157,6 +163,32 @@ public class Juego {
 
 	public void setComents(List<Comentario> coments) {
 		this.coments = coments;
+	}
+	
+	public int getnVotos() {
+		return nVotos;
+	}
+
+	public void setnVotos(int nVotos) {
+		this.nVotos = nVotos;
+	}
+
+	public float getVotosTotal() {
+		return votosTotal;
+	}
+
+	public void setVotosTotal(float votos) {
+		this.votosTotal = votos;
+	}
+
+	//Metodo para recalcular la valoracion cuando llega un voto nuevo
+	public void calcularValoracion (float v) {
+		nVotos++;
+		votosTotal += v;
+		valoracion = votosTotal/nVotos;
+		//Truncar
+		double scale = Math.pow(10, 1);
+	    valoracion = (float) (Math.round((double)valoracion * scale) / scale);
 	}
 	
 	

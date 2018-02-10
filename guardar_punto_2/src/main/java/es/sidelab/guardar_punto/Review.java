@@ -28,6 +28,9 @@ public class Review {
 	@ManyToOne
 	private Usuarios user;
 	
+	//Variables para añadir nuevas reviews desde la ficha del juego 
+	private String id_juego, id_usuario;	
+	
 	public Review () {
 		
 	}
@@ -80,6 +83,33 @@ public class Review {
 	public void setUser(Usuarios user) {
 		this.user = user;
 	}
+	
+	//Para añadir nuevas reviews desde la ficha del juego 
+	
+	public String getId_juego() {
+		return id_juego;
+	}
+
+	public void setId_juego(String id_juego) {
+		this.id_juego = id_juego;
+	}
+
+	public String getId_usuario() {
+		return id_usuario;
+	}
+
+	public void setId_usuario(String id_usuario) {
+		this.id_usuario = id_usuario;
+	}
+
+	public String getPrimeraLinea() {
+		return primeraLinea;
+	}
+
+	public void setPrimeraLinea(String primeraLinea) {
+		this.primeraLinea = primeraLinea;
+	}
+	
 	
 	
 	
