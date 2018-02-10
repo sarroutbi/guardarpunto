@@ -2,21 +2,13 @@ package es.sidelab.guardar_punto;
 
 import javax.persistence.*;
 //import java.util.List;
-@Entity
+@Entity@IdClass(EstadoId.class)
 public class Estado {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
 	@ManyToOne
 	private Usuarios estado_user;
-
+	
+	@Id
 	@ManyToOne
 	private Juego juegos_estado;
 

@@ -30,11 +30,11 @@ public class Usuarios {
 	@ManyToMany(mappedBy="users")
 	private List<Juego> juegos= new ArrayList<Juego>();
 	
-	/*@ManyToMany(mappedBy="amigos") 
-	private List<Usuarios> usuarios= new ArrayList<Usuarios>();*/
+	@ManyToMany(mappedBy="amigos")
+	private List<Usuarios> usuarios= new ArrayList<Usuarios>(); //Adri,Susi,Marta,etc
 	
-	@ManyToMany(mappedBy="amigo") 
-	private List<Amigo> usuario1= new ArrayList<Amigo>();
+	@ManyToMany
+	private List<Usuarios> amigos= new ArrayList<Usuarios>();//Amigos de adri, etc
 	
 	
 	@OneToMany(mappedBy="user")
@@ -77,13 +77,6 @@ public class Usuarios {
 		this.juegos = juegos;
 	}
 
-	public List<Amigo> getUsuarios() {
-		return this.usuario1;
-	}
-
-	public void setUsuarios(List<Amigo> usuarios) {
-		this.usuario1 = usuarios;
-	}
 	
 
 	public List<Review> getReview() {
