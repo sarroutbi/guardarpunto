@@ -25,6 +25,8 @@ public class Controlador {
 	private ReviewRepository repositoryReview;
 	@Autowired
 	private ComentariosRepository repositoryComentario;
+	@Autowired
+	private EstadoRepository repositoryEstados;
 	
 	//Listas auxiliares
 	//Lista de juegos destacados que se van a mostrar en la pagina de inicio
@@ -91,6 +93,47 @@ public class Controlador {
 		repositoryJuego.save(wow);
 		repositoryJuego.save(civilization6);
 		
+		//ESTADO JUEGOS
+		//Juegos Marta:
+		List<Estado> estadosMarta = new ArrayList<Estado>();
+		Estado e1 = new Estado(marta,portal,"jugado");
+		Estado e2 = new Estado(marta,horizon,"jugando");
+		Estado e3 = new Estado(marta,pkmnLuna,"jugando");
+		Estado e4 = new Estado(marta,wow,"pendiente");
+		
+		repositoryEstados.save(e1);
+		/*repositoryEstados.save(e2);
+		repositoryEstados.save(e3);
+		repositoryEstados.save(e4);*/
+		
+		estadosMarta.add(e1);
+		estadosMarta.add(e2);
+		estadosMarta.add(e3);
+		estadosMarta.add(e4);
+
+		marta.setEstados(estadosMarta);
+		//repositoryUsuario.save(marta);
+		
+		/*
+		//Juegos Susi:
+		List<Estado> estadosSusi = new ArrayList<Estado>();
+		estadosSusi.add(new Estado(susi,portal,"pendiente"));
+		estadosSusi.add(new Estado(susi,horizon,"pendiente"));
+		estadosSusi.add(new Estado(susi,pkmnLuna,"jugado"));
+		estadosSusi.add(new Estado(susi,wow,"jugando"));
+		susi.setEstados(estadosSusi);
+		repositoryUsuario.save(susi);
+		
+		//Juegos Adri:
+		List<Estado> estadosAdri = new ArrayList<Estado>();
+		estadosAdri.add(new Estado(adri,civilization6,"jugado"));
+		estadosAdri.add(new Estado(adri,horizon,"jugando"));
+		estadosAdri.add(new Estado(adri,aa1,"jugando"));
+		estadosAdri.add(new Estado(adri,wow,"pendiente"));
+		adri.setEstados(estadosAdri);
+		repositoryUsuario.save(adri);
+		*/
+		
 		//REVIEWS
 		Review rPortalMarta = new Review ("Review de Portal por Marta", 5.0f);
 		rPortalMarta.setJuego(portal); rPortalMarta.setUser(marta);
@@ -149,25 +192,7 @@ public class Controlador {
 		listaJuegosDestacados.add(civilization6);
 		
 		
-		/*
-		Usuarios jm = new Usuarios(1,"Jimichi");
-		Usuarios tae = new Usuarios(2, "Tae");
-		Usuarios jC = new Usuarios(3, "Jungkook");
-		Usuarios rm = new Usuarios(4, "RM");
-		Usuarios dvd = new Usuarios(5, "David");
-		repositoryUsuario.save(jm);
-		repositoryUsuario.save(tae);
-		repositoryUsuario.save(jC);
-		repositoryUsuario.save(rm);
-		repositoryUsuario.save(dvd);
 		
-		List<Usuarios> amigos = new ArrayList<Usuarios>();
-		amigos.add(tae);
-		amigos.add(jC);
-		amigos.add(rm);
-		amigos.add(dvd);*/
-		//jm.setUsuarios(amigos);
-		//jm.setAmigos(amigos);
 	}
 
 	//Pagina inicial. 
@@ -246,14 +271,21 @@ public class Controlador {
 		String name = usuario.getNombre();
 		String bio = usuario.getBiografia();
 		List<Usuarios> amigos = new ArrayList<Usuarios>(usuario.getAmigos());
-		List<Juego> juegos = new ArrayList<Juego>(usuario.getJuegos());
+		
+		
+		List<Juego> jugados = new ArrayList<Juego>(repositoryJuego.findByEstadoYUser("jugado", usuario.getId()));
+		List<Juego> jugando = new ArrayList<Juego>(repositoryJuego.findByEstadoYUser("jugando", usuario.getId()));
+		List<Juego> pendientes = new ArrayList<Juego>(repositoryJuego.findByEstadoYUser("pendiente", usuario.getId()));
+		
 		List<Comentario> comentarios = new ArrayList<Comentario>(usuario.getComents());
 		List<Review> reviews = new ArrayList<Review>(usuario.getReview());
 		
 		model.addAttribute("nombre",name);
 		model.addAttribute("biografia", bio);
 		model.addAttribute("listaAmigos",amigos);
-		model.addAttribute("listaJuegos",juegos);
+		model.addAttribute("listaJugados",jugados);
+		model.addAttribute("listaJugando",jugando);
+		model.addAttribute("listaPendientes",pendientes);
 		model.addAttribute("listaComentarios",comentarios);
 		model.addAttribute("listaReviews",reviews);
 		

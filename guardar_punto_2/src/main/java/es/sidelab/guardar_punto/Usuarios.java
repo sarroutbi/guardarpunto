@@ -140,6 +140,12 @@ public class Usuarios {
 	public List<Usuarios> getAmigos(){
 		return amigos;
 	}
+	public void setEstados(List<Estado> estado) {
+		estados = estado;
+	}
+	public List<Estado> getEstado(){
+		return estados;
+	}
 	
 	
 	
