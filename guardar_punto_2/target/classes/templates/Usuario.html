@@ -63,7 +63,7 @@
         <div class="row" id="infoPerfil"> 
           <!-- Foto perfil-->
             <div class="col-md-3" >
-              <img id="fotoPerfil" src={{}}> <!-- falta meter la imagen -->
+              <img id="fotoPerfil" src="https://pm1.narvii.com/6239/0830a5254294f42181c2b29b5e4e6ffc3ccfbcf6_hq.jpg">
             </div>
           <!-- Nombre y biografia -->
           <div class="col-md-7">
@@ -76,35 +76,35 @@
         <!-- FIN INFO PERFIL -->
 
         <!-- mis juegos -->
-        <h3 href="" id="games">Jugando</h3> <!-- href a la pantalla juegos -->
+        <h3 href="" id="games">Jugando</h3>
         <div class="row" id="jugados">
+        	{{#listaJuegos}}
           <!-- Juegos jugados (6)-->
-          {{#listaJugando}}
           <div class="col-md-2 col-md-offset-1">
-            <a href="Juego/{{id}}"><img id="amig" src={{}}></a> <!-- falta la imagen del juego -->
+            <a href="Juego/{{id}}"><img id="amig" src="https://scontent-sea1-1.cdninstagram.com/t51.2885-15/s480x480/e35/c0.90.720.720/12940223_245436752477725_884782831_n.jpg?ig_cache_key=MTIyNzY2MDQzMjY2MTk2Njc5NQ%3D%3D.2.c"></a>
           </div>
-          {{/listaJugando}}
+          	{{/listaJuegos}}
         </div>
 
         <h3 href="" id="games">Juegos Jugados</h3>
         <div class="row" id="jugados">
+        	{{#listaJuegos}}
           <!-- Juegos jugados (6)-->
-          {{#listaJugados}}
           <div class="col-md-2 col-md-offset-1">
-            <a href="Juego/{{id}}"><img id="amig" src={{}}></a> <!-- falta la imagen del juego -->
+            <a href="Juego/{{id}}"><img id="amig" src="https://scontent-sea1-1.cdninstagram.com/t51.2885-15/s480x480/e35/c0.90.720.720/12940223_245436752477725_884782831_n.jpg?ig_cache_key=MTIyNzY2MDQzMjY2MTk2Njc5NQ%3D%3D.2.c"></a>
           </div>
-          {{/listaJugados}}
-          
+           {{/listaJuegos}}
+         
         </div>
 
         <h3 href="" id="games">Juegos Pendientes</h3>
         <div class="row" id="jugados">
+        	{{#listaJuegos}}
           <!-- Juegos pendientes (6)-->
-          {{#listaPendientes}}
           <div class="col-md-2 col-md-offset-1">
-            <a href="Juego/{{id}}"><img id="amig" src={{}}></a> <!-- falta la imagen del juego -->
+            <a href="Juego/{{id}}"><img id="amig" src="https://scontent-sea1-1.cdninstagram.com/t51.2885-15/s480x480/e35/c0.90.720.720/12940223_245436752477725_884782831_n.jpg?ig_cache_key=MTIyNzY2MDQzMjY2MTk2Njc5NQ%3D%3D.2.c"></a>
           </div>
-          {{/listaPendientes}}
+           {{/listaJuegos}}
         </div>
 
 
@@ -113,31 +113,32 @@
       <!-- Division derecha de la pantalla -->
       <!-- Columna derecha con amigos, comentarios, login... -->
       <div id="der" class="col-md-3">
-        <div class="row"><h3 id="tit" href="Amigos/"> Amigos </div></h3>
+        <div class="row"><h3 id="tit" href=""> Amigos </div></h3>
         <div class="row" id="fotAm"> 
-          <!-- Imagen primer amigo -->
           {{#listaAmigos}}
+          <!-- Imagen primer amigo -->
           <div class="col-md-3">
-            <a href="User/{{id}}"><img id="amig" src=""></a>  <!-- falta foto del amigo -->
+            <a href="Usuario/{{id}}"><img id="amig" src="https://pm1.narvii.com/6239/0830a5254294f42181c2b29b5e4e6ffc3ccfbcf6_hq.jpg"></a>  
           </div>
           {{/listaAmigos}}
+          
+        </div>
 
         <!-- Division para comentarios -->
-        <div class="row"><h3 id="tit" href=""> Mis comentarios </div></h3> <!-- falta enlace a mis comentarios -->
+        <div class="row"><h3 id="tit" href=""> Mis comentarios </div></h3>
 
         <!-- Uno por cada comentario que se pueda ver -->
-        
- 		{{#listaComentarios}}
           <div id="comment-model" class="row">
+          	{{#listaComentarios}}
             <div class="col-md-3">
-              <a href="Juego/{{id}}"> <!-- enlace al juego (?) -->
-                <img id="avatar" src="Comentario/Juego/{{}}"> <!-- Falta imagen al juego -->
+              <a href="Juego/{{juego.id}}"> <!-- enlace al juego -->
+                <img id="avatar" src="https://pm1.narvii.com/6239/0830a5254294f42181c2b29b5e4e6ffc3ccfbcf6_hq.jpg">
               </a>
             </div>
             <div class="col-md-9">
               <div class="text">
-                <a id="texto" href="">{{Usuarios.id}}:</a><!-- (?) -->
-                 <p id="comentario" >{{texto}}</p> <!-- (?) -->
+                <a id="texto" href="">{{user.nombre}}</a>
+                 <p id="comentario" >{{{texto}}}</p> 
               </div>
             </div>
           </div>
@@ -148,21 +149,22 @@
           <!-- Division para Reviews  mismo formato que los comentarios-->
           <div class="row"><h3 id="tit" href=""> Mis Reviews </div></h3>
 
-		{{#listaReviews}}
+          {{#listaReviews}}
           <div id="comment-model" class="row">
             <div class="col-md-3">
-              <a href="Juego/{{id}}"> <!-- enlace al juego -->
-                <img id="avatar" src="Review/Juego/{{}}"><!-- falta imagen del juego -->
+              <a href="Juego/{{juego.id}}"> <!-- enlace al juego -->
+                <img id="avatar" src="https://pm1.narvii.com/6239/0830a5254294f42181c2b29b5e4e6ffc3ccfbcf6_hq.jpg">
               </a>
             </div>
             <div class="col-md-9">
               <div class="text">
-                <a id="texto" href="">{{nombre}}:</a>
-                 <p id="comentario" >{{texto}}</p> 
+                <a id="texto" href="">{{user.nombre}}</a>
+                 <p id="comentario" >{{{texto}}}</p> 
               </div>
             </div>
           </div>
-		{{/listaReviews}}
+          {{/listaReviews}}
+          
 
           <!-- FIN DIVISION REVIEWS -->
 

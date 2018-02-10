@@ -31,12 +31,12 @@ public class Controlador {
 		
 		/*** AÑADIR DATOS A LA BD ***/
 		//USUARIOS
-		Usuarios marta = new Usuarios ("Marta", "marta@gmail.com", "martapass", "Bio de Marta");
-		Usuarios susi = new Usuarios ("Susi", "susi@gmail.com", "susipass", "Bio de Susi");
-		Usuarios adri = new Usuarios ("Adri", "adria@gmail.com", "adripass", "Bio de Adri");
-		Usuarios sergio = new Usuarios ("Sergio", "sergio@gmail.com", "sergiopass", "Bio de Sergio");
-		Usuarios guille = new Usuarios ("Guille", "guille@gmail.com", "guillepass", "Bio de Guille");
-		Usuarios agus = new Usuarios ("Agus", "agus@gmail.com", "aguspass", "Bio de Agus");
+		Usuarios marta = new Usuarios (1,"Marta", "marta@gmail.com", "martapass", "Bio de Marta");
+		Usuarios susi = new Usuarios (2,"Susi", "susi@gmail.com", "susipass", "Bio de Susi");
+		Usuarios adri = new Usuarios (3,"Adri", "adria@gmail.com", "adripass", "Bio de Adri");
+		Usuarios sergio = new Usuarios (4,"Sergio", "sergio@gmail.com", "sergiopass", "Bio de Sergio");
+		Usuarios guille = new Usuarios (5,"Guille", "guille@gmail.com", "guillepass", "Bio de Guille");
+		Usuarios agus = new Usuarios (6,"Agus", "agus@gmail.com", "aguspass", "Bio de Agus");
 		
 		repositoryUsuario.save(marta);
 		repositoryUsuario.save(susi);
@@ -155,7 +155,9 @@ public class Controlador {
 	
 	@GetMapping("/Usuario")
 	public String usuario(Model model) {
-		return "user";
+		model.addAttribute("nombre","Jimichi");
+		model.addAttribute("biografia", "biografia de Jimichi");
+		return "Usuario";
 	}
 	
 	@GetMapping("/Review")

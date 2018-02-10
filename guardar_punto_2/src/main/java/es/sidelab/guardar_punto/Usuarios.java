@@ -58,9 +58,10 @@ public class Usuarios {
 	}
 	
 	@PersistenceConstructor
-	public Usuarios(String name, String e, String c, String b) {
+	public Usuarios(Integer id,String name, String e, String c, String b) {
 		super();
 		
+		this.id = id;
 		nombre= name;
 		email = e;
 		contrasenna = c;
