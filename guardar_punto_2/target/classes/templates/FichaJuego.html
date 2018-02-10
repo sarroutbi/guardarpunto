@@ -73,7 +73,7 @@
 
       <div  id="centro" class="col-md-7">
         <!-- posicion resto de elementos-->
-        <h2 class="listaJuegos">{{juego.titulo}}</h2>
+        <h2 class="listaJuegos">{{juego.title}}</h2>
         <div class="datosJuego">
               <div class="colImagen">
                     <img src="{{juego.imagen}}" width="160px" height="226px">
@@ -96,11 +96,11 @@
             </div>
               <div class="text dato">
                 <p>{{juego.compannia}}</p>
-                <p>{{juego.anno}}</p>
+                <p>{{juego.anyo}}</p>
                 <p>{{juego.genero}}</p>
                 <p>{{juego.plataforma}}</p>
             </div>
-            <div class="cuadroPuntuacion">{{juego.puntuacion}}</div>
+            <div class="cuadroPuntuacion">{{juego.valoracion}}</div>
             <div class="text resumen" style="word-wrap: break-word;">
                 <h4 style="font-weight: bold;">Resumen</h4>
                 <p>{{juego.resumen}}</p>
@@ -125,10 +125,10 @@
                 {{#listaReviews}}
                 <li class="review" style="display: flex;">
                     <div class="imgUsuario" style="float: left;">
-                        <img src="{{imagenUsuario}}"/ width="80px" height="113px">
+                        <img src=" " width="80px" height="113px">
                     </div>
                     <div class="resto">
-                        <p style="font-weight: bold;">{{nombreUsuario}}</p>
+                        <p style="font-weight: bold;">{{user.nombre}}</p>
                         <div class="estrellas">
                             <a href="google.com"><span class="fa fa-star checked"></span></a>
                             <span class="fa fa-star"></span>
@@ -138,10 +138,10 @@
                         </div>
                         <p>{{primeraLinea}}...</p>
 
-                        <div id="textoCompleto" class="collapse" style="word-wrap: break-word;">
-                            {{textoReview}}
+                        <div id="textoCompleto{{id}}" class="collapse" style="word-wrap: break-word;">
+                            {{texto}}
                         </div>
-                        <a href="#textoCompleto" data-toggle="collapse">Leer más</a>
+                        <a href="#textoCompleto{{id}}" data-toggle="collapse">Leer más</a>
                     </div>
                 </li>                
             {{/listaReviews}}
@@ -164,18 +164,18 @@
 
                 <!-- Lista de comentarios -->
                 <ul id="listaComentarios" style="list-style-type : none;">
-                    {{#listaComentario}}
+                    {{#listaComentarios}}
                     <li class="comentario" style="display: flex;">
                         <div class="imgUsuario" style="float: left;">
-                            <img src="{{imgUsuario}}"/ width="40px" height="56.5px">
+                            <img src="" width="40px" height="56.5px">
                         </div>
                         <div class="resto">
-                            <p style="font-weight: bold; font-size: 15px;">{{nombreUsuario}}</p>
+                            <p style="font-weight: bold; font-size: 15px;">{{user.nombre}}</p>
                         
                             <p>{{texto}}</p>
                         </div>
                     </li>                   
-                {{/listaComentario}}
+                {{/listaComentarios}}
                 </ul>
                                              
             </div>

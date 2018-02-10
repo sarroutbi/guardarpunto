@@ -37,6 +37,9 @@ public class Juego {
 	@Column
 	private String resumen;
 	
+	@Column
+	private String imagen;
+	
 	/*Relaciones de la tabla*/
 	@ManyToMany 
 	private List<Usuarios> users=new ArrayList<Usuarios>();
@@ -65,6 +68,7 @@ public class Juego {
 		valoracion = v;
 		genero = g;
 		resumen = r;	
+		imagen = "";
 	}
 		
 	/*Handlers*/

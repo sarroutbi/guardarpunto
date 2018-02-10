@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 @Controller
 public class Controlador {
 	
@@ -24,6 +25,11 @@ public class Controlador {
 	private ReviewRepository repositoryReview;
 	@Autowired
 	private ComentariosRepository repositoryComentario;
+	
+	//Listas auxiliares
+	//Lista de juegos destacados que se van a mostrar en la pagina de inicio
+	private List<Juego> listaJuegosDestacados = new ArrayList<Juego>();
+	
 
 	
 	@PostConstruct
@@ -45,7 +51,7 @@ public class Controlador {
 		repositoryUsuario.save(guille);
 		repositoryUsuario.save(agus);
 		
-		//AMIGOS - esto no lo pillo 	
+		//AMIGOS 	
 		List<Usuarios> amigosMarta = new ArrayList<Usuarios>();
 		amigosMarta.add(susi);
 		amigosMarta.add(adri);
@@ -69,7 +75,7 @@ public class Controlador {
 		adri.setAmigos(amigosAdri);
 		repositoryUsuario.save(adri);
 		
-		//JUEGOS
+		//JUEGOS - Faltarian imagenes
 		Juego portal = new Juego ("Portal", "Valve", "2007", "PC", 0.0f, "Puzles", "Resumen de Portal");
 		Juego horizon = new Juego ("Horizon Zero Dawn", "Guerrilla Games", "2017", "PS4", 0.0f, "Aventura", "Resumen de Horizon Zero Dawn");
 		Juego pkmnLuna = new Juego ("Pokémon Luna","Nintendo", "2017", "3DS", 0.0f, "RPG", "Resumen de Pokémon Luna");
@@ -135,6 +141,13 @@ public class Controlador {
 		rLunaSergio.setJuego(pkmnLuna); rLunaSergio.setUser(sergio);
 		repositoryComentario.save(rLunaSergio);
 		
+		/*** FIN DATOS BD ***/
+		
+		/*** Listas auxiliares ***/
+		listaJuegosDestacados.add(portal);
+		listaJuegosDestacados.add(horizon);
+		listaJuegosDestacados.add(civilization6);
+		
 		
 		/*
 		Usuarios jm = new Usuarios(1,"Jimichi");
@@ -157,10 +170,59 @@ public class Controlador {
 		//jm.setAmigos(amigos);
 	}
 
+	//Pagina inicial. 
+	//Muestra algunos juegos destacados, almacenados previamente en una lista
 	@GetMapping("/")
 	public String Inicio(Model model) {
-
+		model.addAttribute("listaJuegosDestacados", listaJuegosDestacados);
+		
 		return "Inicio";
+	}
+	
+	//Lista de TODOS los juegos que hay en la BD, divididos por la letra inicial
+	@GetMapping("/Juegos") 
+	public String Juegos (Model model) {
+		model.addAttribute("listaJuegosA", repositoryJuego.findByTitleIgnoreCaseStartingWith("A"));
+		model.addAttribute("listaJuegosB", repositoryJuego.findByTitleIgnoreCaseStartingWith("B"));
+		model.addAttribute("listaJuegosC", repositoryJuego.findByTitleIgnoreCaseStartingWith("C"));
+		model.addAttribute("listaJuegosD", repositoryJuego.findByTitleIgnoreCaseStartingWith("D"));
+		model.addAttribute("listaJuegosE", repositoryJuego.findByTitleIgnoreCaseStartingWith("E"));
+		model.addAttribute("listaJuegosF", repositoryJuego.findByTitleIgnoreCaseStartingWith("F"));
+		model.addAttribute("listaJuegosG", repositoryJuego.findByTitleIgnoreCaseStartingWith("G"));
+		model.addAttribute("listaJuegosH", repositoryJuego.findByTitleIgnoreCaseStartingWith("H"));
+		model.addAttribute("listaJuegosI", repositoryJuego.findByTitleIgnoreCaseStartingWith("I"));
+		model.addAttribute("listaJuegosJ", repositoryJuego.findByTitleIgnoreCaseStartingWith("J"));
+		model.addAttribute("listaJuegosK", repositoryJuego.findByTitleIgnoreCaseStartingWith("K"));
+		model.addAttribute("listaJuegosL", repositoryJuego.findByTitleIgnoreCaseStartingWith("L"));
+		model.addAttribute("listaJuegosM", repositoryJuego.findByTitleIgnoreCaseStartingWith("M"));
+		model.addAttribute("listaJuegosN", repositoryJuego.findByTitleIgnoreCaseStartingWith("N"));
+		model.addAttribute("listaJuegosO", repositoryJuego.findByTitleIgnoreCaseStartingWith("O"));
+		model.addAttribute("listaJuegosP", repositoryJuego.findByTitleIgnoreCaseStartingWith("P"));
+		model.addAttribute("listaJuegosQ", repositoryJuego.findByTitleIgnoreCaseStartingWith("Q"));
+		model.addAttribute("listaJuegosR", repositoryJuego.findByTitleIgnoreCaseStartingWith("R"));
+		model.addAttribute("listaJuegosS", repositoryJuego.findByTitleIgnoreCaseStartingWith("S"));
+		model.addAttribute("listaJuegosT", repositoryJuego.findByTitleIgnoreCaseStartingWith("T"));
+		model.addAttribute("listaJuegosU", repositoryJuego.findByTitleIgnoreCaseStartingWith("U"));
+		model.addAttribute("listaJuegosV", repositoryJuego.findByTitleIgnoreCaseStartingWith("V"));
+		model.addAttribute("listaJuegosW", repositoryJuego.findByTitleIgnoreCaseStartingWith("W"));
+		model.addAttribute("listaJuegosX", repositoryJuego.findByTitleIgnoreCaseStartingWith("X"));
+		model.addAttribute("listaJuegosY", repositoryJuego.findByTitleIgnoreCaseStartingWith("Y"));
+		model.addAttribute("listaJuegosZ", repositoryJuego.findByTitleIgnoreCaseStartingWith("Z"));
+		return "Juegos";
+	}
+	
+	//Ficha del juego indicado en el enlace
+	@GetMapping("/juego/{id}")
+	public String fichaJuego (Model model, @PathVariable String id) {		
+		int numero = Integer.parseInt(id);
+		//Buscarlo en la bd por el id
+		Juego juego = repositoryJuego.findOne(numero); 
+		//Añadir al model el juego, su lista de reviews y su lista de comentarios		
+		model.addAttribute("juego", juego);
+		model.addAttribute("listaReviews", juego.getReviews());
+		model.addAttribute("listaComentarios", juego.getComents());
+		
+		return "FichaJuego";
 	}
 	
 	

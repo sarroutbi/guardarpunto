@@ -15,6 +15,7 @@ public class Review {
 	
 	@Column 
 	private String texto;
+	private String primeraLinea;
 	
 	@Column
 	private Float puntuacion;
@@ -36,6 +37,7 @@ public class Review {
 		super();
 		texto = t;
 		puntuacion = p;
+		primeraLinea = texto.substring(0, 10);
 	}
 	
 	/*Handlers*/
