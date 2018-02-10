@@ -262,6 +262,7 @@ public class Controlador {
 	//Pagina que muestra los resultados de la busqueda (juegos o usuarios)
 	@PostMapping("/buscar")
 	public String Busqueda (Model model, String txt) {
+		System.out.println("Busqueda");
 		model.addAttribute("listaJuegosEncontrados", repositoryJuego.findByTitleIgnoreCaseLike("%"+txt+"%"));
 		model.addAttribute("listaUsuariosEncontrados", repositoryUsuario.findByNombreIgnoreCaseLike("%"+txt+"%"));
 		return "Busqueda";
@@ -354,6 +355,15 @@ public class Controlador {
 		//Volver a cargar la pagina del juego		
 		fichaJuego (model, review.getJuego().getId().toString());
 		return "FichaJuego";
+	}
+	
+	//Registrar nuevo usuario
+	@PostMapping("/nuevoUsuario")
+	public String nuevoUsuario (Model model, Usuarios usuario) {
+		//Guardar el nuevo usuario en la db
+		repositoryUsuario.save(usuario);
+		Inicio(model);
+		return "Inicio";
 	}
 	
 }

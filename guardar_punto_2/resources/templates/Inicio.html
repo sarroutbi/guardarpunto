@@ -62,7 +62,7 @@ body {
 				<li><a id="elemselect" href="#">Inicio</a></li>
 				<li><a id="elem" href="/Juegos">Juegos</a></li>
 				<li><a id="elem" href="/Usuario/1">Perfil</a></li>
-				<li><a id="elem" href="/Reviews/1">Reviews</a></li>
+				<li><a id="elem" href="/Review/1">Reviews</a></li>
 				<li><a id="elem" href="/Amigos/1">Amigos</a></li>
 			</ul>
 			<form id="buscador" class="form-inline" action="/buscar" method="post">
@@ -125,15 +125,17 @@ body {
 									<button type="button" class="close" data-dismiss="modal">&times;</button>
 									<div id="tituloRegistro" align="center">Guardar Punto</div>
 								</div>
-								<div class="modal-body">
-									<form action="" id="regForm">
-										<label id="tit"><b>Usuario</b></label> <input type="text"
-											placeholder="Nombre de usuario" name="usuario" required /> <label
-											id="tit"><b>Contraseña</b></label> <input type="password"
-											placeholder="Contraseña" name="password" required />
-										<button type="button" id="regBtn" class="btn btn-default"
-											data-dismiss="modal" onclick="ocultarLogin()">Registrarse</button>
-										<!--Habria que cambiarlo para enviar datos, de momento solo oculta el panel para mostrar el de juegos-->
+								<div class="modal-body">								
+									<form id="regForm" action="/nuevoUsuario" method="post">
+										<label class="tit"><b>Nombre de usuario</b></label> 
+										<input type="text" placeholder="Nombre de usuario" name="nombre" required /> 
+										<label class="tit"><b>Correo electrónico</b></label> 
+										<input type="text" placeholder="Correo electrónico" name="email" required /> 
+										<label class="tit"><b>Contraseña</b></label> 
+										<input type="password" placeholder="Contraseña" name="contrasenna" required />
+										<label class="tit"><b>Biografía</b></label> 
+										<input type="text" placeholder="Biografía" name="biografia"/> 
+										<button type="submit" id="regBtn" class="btn btn-default">Registrarse</button>										
 									</form>
 								</div>
 							</div>
