@@ -82,7 +82,7 @@ public class Controlador {
 		Juego portal = new Juego ("Portal", "Valve", "2007", "PC", 4.5f, "Puzles", "Resumen de Portal","https://tinyurl.com/y7e3hwjr");
 		Juego horizon = new Juego ("Horizon Zero Dawn", "Guerrilla Games", "2017", "PS4", 3.9f, "Aventura", "Resumen de Horizon Zero Dawn","https://tinyurl.com/ybgr7rp6");
 		Juego pkmnLuna = new Juego ("Pokémon Luna","Nintendo", "2017", "3DS", 0.0f, "RPG", "Resumen de Pokémon Luna","https://tinyurl.com/yc5kvsrs");
-		Juego aa1 = new Juego ("Ace Atorney", "Capcom", "2005", "DS", 0.0f, "Novela Visual", "Resumen de Ace Attorney","https://tinyurl.com/ybm7rrfa");
+		Juego aa1 = new Juego ("Ace Atorney", "Capcom", "2005", "DS", 0.0f, "Novela Visual", "Resumen de Ace Attorney","https://tinyurl.com/y99gq3cc");
 		Juego wow = new Juego ("World of Warcraft", "Blizzard", "2004", "PC", 3.7f, "MMORPG", "Resumen de World of Warcraft","https://tinyurl.com/y8tobc8r");
 		Juego civilization6 = new Juego ("Civilization VI", "2k Games", "2016", "PC", 0.0f, "Estrategia", "Resumen de Portal","https://tinyurl.com/ybxz33b9");
 		//pls añadan alguno mas 
