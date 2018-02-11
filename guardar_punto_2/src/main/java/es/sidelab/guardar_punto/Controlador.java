@@ -199,10 +199,7 @@ public class Controlador {
 		/*** Listas auxiliares ***/
 		listaJuegosDestacados.add(portal);
 		listaJuegosDestacados.add(horizon);
-		listaJuegosDestacados.add(civilization6);
-		
-		
-		
+		listaJuegosDestacados.add(civilization6);		
 	}
 
 	//Pagina inicial. 

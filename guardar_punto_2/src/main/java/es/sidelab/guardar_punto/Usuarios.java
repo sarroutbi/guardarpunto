@@ -77,8 +77,6 @@ public class Usuarios {
 		this.juegos = juegos;
 	}
 
-	
-
 	public List<Review> getReview() {
 		return review;
 	}
