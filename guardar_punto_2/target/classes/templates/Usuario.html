@@ -81,7 +81,7 @@
         	{{#listaJugando}}
           <!-- Juegos jugados (6)-->
           <div class="col-md-2 col-md-offset-1">
-            <a href="/juego/{{id}}"><img id="amig" src="https://scontent-sea1-1.cdninstagram.com/t51.2885-15/s480x480/e35/c0.90.720.720/12940223_245436752477725_884782831_n.jpg?ig_cache_key=MTIyNzY2MDQzMjY2MTk2Njc5NQ%3D%3D.2.c"></a>
+            <a href="/juego/{{id}}"><img id="amig" src="{{imagen}}"></a>
           </div>
           	{{/listaJugando}}
         </div>
@@ -91,7 +91,7 @@
         	{{#listaJugados}}
           <!-- Juegos jugados (6)-->
           <div class="col-md-2 col-md-offset-1">
-            <a href="/juego/{{id}}"><img id="amig" src="https://scontent-sea1-1.cdninstagram.com/t51.2885-15/s480x480/e35/c0.90.720.720/12940223_245436752477725_884782831_n.jpg?ig_cache_key=MTIyNzY2MDQzMjY2MTk2Njc5NQ%3D%3D.2.c"></a>
+			<a href="/juego/{{id}}"><img id="amig" src="{{imagen}}"></a>
           </div>
            {{/listaJugados}}
          
@@ -102,7 +102,7 @@
         	{{#listaPendientes}}
           <!-- Juegos pendientes (6)-->
           <div class="col-md-2 col-md-offset-1">
-            <a href="/juego/{{id}}"><img id="amig" src="https://scontent-sea1-1.cdninstagram.com/t51.2885-15/s480x480/e35/c0.90.720.720/12940223_245436752477725_884782831_n.jpg?ig_cache_key=MTIyNzY2MDQzMjY2MTk2Njc5NQ%3D%3D.2.c"></a>
+			<a href="/juego/{{id}}"><img id="amig" src="{{imagen}}"></a>
           </div>
            {{/listaPendientes}}
         </div>
@@ -118,7 +118,7 @@
           {{#listaAmigos}}
           <!-- Imagen primer amigo -->
           <div class="col-md-3">
-            <a href="/Usuario/{{id}}"><img id="amig" src="https://pm1.narvii.com/6239/0830a5254294f42181c2b29b5e4e6ffc3ccfbcf6_hq.jpg"></a>  
+            <a href="/Usuario/{{id}}"><img id="amig" src="{{imagen}}"></a>  
           </div>
           {{/listaAmigos}}
           
@@ -132,7 +132,7 @@
           	{{#listaComentarios}}
             <div class="col-md-3">
               <a href="/juego/{{juego.id}}"> <!-- enlace al juego -->
-                <img id="avatar" src="https://pm1.narvii.com/6239/0830a5254294f42181c2b29b5e4e6ffc3ccfbcf6_hq.jpg">
+                <img id="avatar" src="{{juego.imagen}}">
               </a>
             </div>
             <div class="col-md-9">
@@ -153,7 +153,7 @@
           <div id="comment-model" class="row">
             <div class="col-md-3">
               <a href="/juego/{{juego.id}}"> <!-- enlace al juego -->
-                <img id="avatar" src="https://pm1.narvii.com/6239/0830a5254294f42181c2b29b5e4e6ffc3ccfbcf6_hq.jpg">
+                <img id="avatar" src="{{juego.imagen}}">
               </a>
             </div>
             <div class="col-md-9">
