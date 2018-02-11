@@ -1,14 +1,15 @@
 package es.sidelab.guardar_punto;
 
-import java.io.Serializable;
+//import java.io.Serializable;
 
 import javax.persistence.*;
 
 import org.springframework.data.annotation.PersistenceConstructor;
 //import java.util.List;
-@Entity
+
 //@IdClass(EstadoId.class)
-public class Estado implements Serializable{
+@Entity
+public class Estado {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
