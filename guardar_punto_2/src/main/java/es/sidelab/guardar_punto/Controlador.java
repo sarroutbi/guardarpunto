@@ -96,24 +96,24 @@ public class Controlador {
 		
 		//ESTADO JUEGOS
 		//Juegos Marta:
-		/*List<Estado> estadosMarta = new ArrayList<Estado>();
+		List<Estado> estadosMarta = new ArrayList<Estado>();
 		Estado e1 = new Estado(marta,portal,"jugado");
 		Estado e2 = new Estado(marta,horizon,"jugando");
 		Estado e3 = new Estado(marta,pkmnLuna,"jugando");
 		Estado e4 = new Estado(marta,wow,"pendiente");
 		
 		repositoryEstados.save(e1);
-		repositoryEstados.save(e2);
+		/*repositoryEstados.save(e2);
 		repositoryEstados.save(e3);
 		repositoryEstados.save(e4);
-		
+		*/
 		estadosMarta.add(e1);
 		estadosMarta.add(e2);
 		estadosMarta.add(e3);
 		estadosMarta.add(e4);
 
-		marta.setEstados(estadosMarta);*/
-		//repositoryUsuario.save(marta);
+		marta.setEstados(estadosMarta);
+		repositoryUsuario.save(marta);
 		
 		/*
 		//Juegos Susi:

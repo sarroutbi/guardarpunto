@@ -1,19 +1,27 @@
 package es.sidelab.guardar_punto;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 import org.springframework.data.annotation.PersistenceConstructor;
 //import java.util.List;
-@Entity@IdClass(EstadoId.class)
-public class Estado {
+@Entity
+//@IdClass(EstadoId.class)
+public class Estado implements Serializable{
+	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+
+	//@Id
 	@ManyToOne
 	private Usuarios estado_user;
 	
-	@Id
+	//@Id
 	@ManyToOne
 	private Juego juegos_estado;
-
+    
 
 	@Column 
 	private String estado;
@@ -25,6 +33,7 @@ public class Estado {
 	public Estado(Usuarios user,Juego juego,String estado) {
 		estado_user = user;
 		juegos_estado = juego;
+		
 		this.estado = estado;	
 	}
 	
