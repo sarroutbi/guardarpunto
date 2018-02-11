@@ -119,18 +119,26 @@ public class Controlador {
 		//Juegos Susi:
 		List<Estado> estadosSusi = new ArrayList<Estado>();
 		estadosSusi.add(new Estado(susi,portal,"pendiente"));
+		repositoryEstados.save(new Estado(susi,portal,"pendiente"));
 		estadosSusi.add(new Estado(susi,horizon,"pendiente"));
+		repositoryEstados.save(new Estado(susi,horizon,"pendiente"));
 		estadosSusi.add(new Estado(susi,pkmnLuna,"jugado"));
+		repositoryEstados.save(new Estado(susi,pkmnLuna,"jugado"));
 		estadosSusi.add(new Estado(susi,wow,"jugando"));
+		repositoryEstados.save(new Estado(susi,wow,"jugando"));
 		susi.setEstados(estadosSusi);
 		repositoryUsuario.save(susi);
 		
 		//Juegos Adri:
 		List<Estado> estadosAdri = new ArrayList<Estado>();
 		estadosAdri.add(new Estado(adri,civilization6,"jugado"));
+		repositoryEstados.save(new Estado(adri,civilization6,"jugado"));
 		estadosAdri.add(new Estado(adri,horizon,"jugando"));
+		repositoryEstados.save(new Estado(adri,horizon,"jugando"));
 		estadosAdri.add(new Estado(adri,aa1,"jugando"));
+		repositoryEstados.save(new Estado(adri,aa1,"jugando"));
 		estadosAdri.add(new Estado(adri,wow,"pendiente"));
+		repositoryEstados.save(new Estado(adri,wow,"pendiente"));
 		adri.setEstados(estadosAdri);
 		repositoryUsuario.save(adri);
 		
@@ -363,6 +371,39 @@ public class Controlador {
 		repositoryUsuario.save(usuario);
 		Inicio(model);
 		return "Inicio";
+	}
+	
+	//Añadir un juego a la lista (de momento se añade siempre al jugador 1)
+	@GetMapping("/anadirLista/{estado}/{id_juego}/{id_usuario}")
+	public String anadirLista(Model model,@PathVariable String estado, @PathVariable String id_juego, @PathVariable String id_usuario) {
+		
+		//Este if es para evitar errores cuando carga el css y el js
+		if(!id_juego.equals("js") && !id_juego.equals("css") && !id_usuario.equals("js") && !id_usuario.equals("css")) {
+			//Obtener juego de la bd
+			int numeroj = Integer.parseInt(id_juego);		
+			Juego juego = repositoryJuego.findOne(numeroj);
+			//Obtener usuario de la bd
+			int numerou = Integer.parseInt(id_usuario);		
+			Usuarios usuario = repositoryUsuario.findOne(numerou);
+			
+			//Comprobar si el usuario tiene ya este juego en alguna lista
+			Estado state = repositoryEstados.findByJuegosestadoeAndEstadouser(juego, usuario);
+			if(state == null) {
+				//No esta en ninguna lista, hay que añadirlo al repositorio
+				List<Estado> estadosUsuario = new ArrayList<Estado>();
+				Estado e = new Estado(usuario, juego, estado);			
+				repositoryEstados.save(e);			
+				estadosUsuario.add(e);
+				usuario.setEstados(estadosUsuario);
+				repositoryUsuario.save(usuario);		
+			} else {
+				//Ya esta en alguna de las listas, hay que cambiar su estado
+				repositoryEstados.updateEstado(estado, usuario, juego);
+			}
+			return fichaJuego (model, juego.getId().toString());
+		}	
+		
+		return null;
 	}
 	
 }

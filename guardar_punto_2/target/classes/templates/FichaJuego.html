@@ -12,7 +12,7 @@
 
     <title>GuardarPunto - Ficha Juego</title>
     <!-- Custom styles for this template -->
-    <link href="../css/FichaJuegoCSS.css" rel="stylesheet" type="text/css">
+    <link href="/css/FichaJuegoCSS.css" rel="stylesheet" type="text/css">
 
     <!-- SCRIPTS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -37,7 +37,7 @@
     <!-- <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
       
       <!-- Script propio para botones y demas-->
-    <script src="../js/FichaJuego.js"></script>
+    <script src="/js/FichaJuego.js"></script>
 
     <style>
     body { background-color: #a9d5cb; }
@@ -81,9 +81,9 @@
                         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Añadir a lista
                         <span class="caret"></span></button>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Quiero jugar</a></li>
-                            <li><a href="#">Estoy jugando</a></li>
-                            <li><a href="#">Jugado</a></li>
+                            <li><a href="/anadirLista/pendiente/{{juego.id}}/1">Quiero jugar</a></li>
+                            <li><a href="/anadirLista/jugando/{{juego.id}}/1">Estoy jugando</a></li>
+                            <li><a href="/anadirLista/jugado/{{juego.id}}/1">Jugado</a></li>
                         </ul>
                     </div>
               </div>
@@ -226,10 +226,10 @@
 					<div class="flex-container tusJuegosContainer">
                         {{#listaJuegosUsuario}}
 						<div class="miJuego" style="text-align: center;">
-							<a href="juego/{{id}}"> 
+							<a href="/juego/{{id}}"> 
                                 <img src="{{imagen}}" width="80px" height="113px"> 
                                 <br /> 
-                                <a href="juego/{{id}}">{{Titulo}}</a>
+                                <a href="/juego/{{id}}">{{Titulo}}</a>
 							</a>
 						</div>		
 						{{/listaJuegosUsuario}}
