@@ -78,7 +78,7 @@ public class Controlador {
 		adri.setAmigos(amigosAdri);
 		repositoryUsuario.save(adri);
 		
-		//JUEGOS - Faltarian imagenes
+		//JUEGOS
 		Juego portal = new Juego ("Portal", "Valve", "2007", "PC", 4.5f, "Puzles", "Resumen de Portal","https://tinyurl.com/y7e3hwjr");
 		Juego horizon = new Juego ("Horizon Zero Dawn", "Guerrilla Games", "2017", "PS4", 3.9f, "Aventura", "Resumen de Horizon Zero Dawn","https://tinyurl.com/ybgr7rp6");
 		Juego pkmnLuna = new Juego ("Pokémon Luna","Nintendo", "2017", "3DS", 0.0f, "RPG", "Resumen de Pokémon Luna","https://tinyurl.com/yc5kvsrs");
@@ -303,6 +303,7 @@ public class Controlador {
 		List<Comentario> comentarios = new ArrayList<Comentario>(usuario.getComents());
 		List<Review> reviews = new ArrayList<Review>(usuario.getReview());
 		
+		model.addAttribute("id",num);
 		model.addAttribute("imagen",imagen);
 		model.addAttribute("nombre",name);
 		model.addAttribute("biografia", bio);
@@ -314,6 +315,25 @@ public class Controlador {
 		model.addAttribute("listaReviews",reviews);
 		
 		return "Usuario";
+	}
+	
+	//Cambios en el usuario
+	@PostMapping("/editarUsuario")
+	public String editarUsuario (Model model,Usuarios usuario) {
+			Integer idAux = usuario.getId();
+			String bioAux = usuario.getBiografia();
+			String imagenAux = usuario.getImagen();
+
+			Usuarios user = repositoryUsuario.findOne(idAux);
+			if(!bioAux.isEmpty()) {
+				user.setBiografia(bioAux);
+			}
+			if(!imagenAux.isEmpty()) {
+				user.setImagen(imagenAux);
+			}
+			repositoryUsuario.save(user);
+			usuario(model,usuario.getId().toString());
+			return "Usuario";
 	}
 		
 	@GetMapping("/Review/{id}")

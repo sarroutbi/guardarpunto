@@ -54,10 +54,11 @@ public class Usuarios {
 	}
 	
 	@PersistenceConstructor
-	public Usuarios(Integer id, String name) {
+	public Usuarios(Integer id, String biografia,String imagen) {
 		super();
 		this.id = id;
-		nombre= name;
+		this.biografia= biografia;
+		this.imagen = imagen;
 	}
 	
 	@PersistenceConstructor
@@ -155,7 +156,12 @@ public class Usuarios {
 	public List<Estado> getEstado(){
 		return estados;
 	}
-	
+	public void setUsuarios(List<Usuarios> usuarios) {
+		this.usuarios = usuarios;
+	}
+	public List<Usuarios> getUsuarios(){
+		return usuarios;
+	}
 	
 	
 	

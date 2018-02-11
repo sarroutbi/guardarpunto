@@ -145,4 +145,42 @@ body {
 	border-bottom: 3px solid #286858;
 
 }
+#btnEditarPerfil{
+	margin-top: 5%;
+}
+/*css para pantalla emergente*/
+#tituloRegistro {
+	font-family: myFont2;
+	color: #0e2020;
+	font-size: 220%;
+	text-shadow: 3px 2px 2px #a9d5cb;
+}
+
+#tit {
+	color: #0e2020;
+}
+
+
+#imagenyurl{
+	margin-right: 15%;
+	margin-left: 20%;
+}
+#btnOk{
+	margin-top: 7%;
+	margin-left: 75%;
+	
+}
+
+#imgCambio{
+	width: 100%;
+}
+#biografia{
+	margin-top:4%;
+	margin-left:20%;
+}
+#titBio{
+	font-family: myFont;
+	color: #0e2020;
+	font-size:200%;
+}
 
