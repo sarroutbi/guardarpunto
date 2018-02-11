@@ -64,7 +64,7 @@ public class Juego {
 	}
 	
 	@PersistenceConstructor
-	public Juego (String t, String c, String a, String p, float v, String g, String r) {
+	public Juego (String t, String c, String a, String p, float v, String g, String r, String im) {
 		super ();
 		
 		title = t;
@@ -74,7 +74,7 @@ public class Juego {
 		valoracion = v;
 		genero = g;
 		resumen = r;	
-		imagen = "";
+		imagen = im;
 	}
 		
 	/*Handlers*/

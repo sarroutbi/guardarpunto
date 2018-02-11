@@ -26,6 +26,9 @@ public class Usuarios {
 	@Column
 	private String biografia; 
 	
+	@Column
+	private String imagen;
+	
 	/*Relaciones*/
 	@ManyToMany(mappedBy="users")
 	private List<Juego> juegos= new ArrayList<Juego>();
@@ -58,7 +61,7 @@ public class Usuarios {
 	}
 	
 	@PersistenceConstructor
-	public Usuarios(Integer id,String name, String e, String c, String b) {
+	public Usuarios(Integer id,String name, String e, String c, String b,String im) {
 		super();
 		
 		this.id = id;
@@ -66,6 +69,7 @@ public class Usuarios {
 		email = e;
 		contrasenna = c;
 		biografia = b;
+		imagen = im;
 	}
 	
 	/*Handlers*/
@@ -110,6 +114,13 @@ public class Usuarios {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
 
 	public String getContrasenna() {
 		return contrasenna;
@@ -146,6 +157,7 @@ public class Usuarios {
 	public List<Estado> getEstado(){
 		return estados;
 	}
+	
 	
 	
 	
