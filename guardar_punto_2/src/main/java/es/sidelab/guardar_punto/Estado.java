@@ -17,44 +17,46 @@ public class Estado {
 
 	//@Id
 	@ManyToOne
-	private Usuarios estado_user;
+	private Usuarios estadouser;
 	
 	//@Id
 	@ManyToOne
-	private Juego juegos_estado;
+	private Juego juegosestado;
     
 
 	@Column 
-	private String estado;
+	private String state;
+	
 	
 	public Estado() {
 		
 	}
+	
 	@PersistenceConstructor
 	public Estado(Usuarios user,Juego juego,String estado) {
-		estado_user = user;
-		juegos_estado = juego;
+		estadouser = user;
+		juegosestado = juego;
 		
-		this.estado = estado;	
+		this.state = estado;	
 	}
 	
 	public Usuarios getEstado_user() {
-		return estado_user;
+		return estadouser;
 	}
 	public void setEstado_user(Usuarios estado_user) {
-		this.estado_user = estado_user;
+		this.estadouser = estado_user;
 	}
 	public Juego getJuegos_estado() {
-		return juegos_estado;
+		return juegosestado;
 	}
 	public void setJuegos_estado(Juego juegos_estado) {
-		this.juegos_estado = juegos_estado;
+		this.juegosestado = juegos_estado;
 	}
 	public String getEstado() {
-		return estado;
+		return state;
 	}
 	public void setEstado(String estado) {
-		this.estado = estado;
+		this.state = estado;
 	}
 	
 }

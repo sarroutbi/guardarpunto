@@ -40,12 +40,12 @@ public class Controlador {
 		
 		/*** AÑADIR DATOS A LA BD ***/
 		//USUARIOS
-		Usuarios marta = new Usuarios (1,"Marta", "marta@gmail.com", "martapass", "Bio de Marta");
-		Usuarios susi = new Usuarios (2,"Susi", "susi@gmail.com", "susipass", "Bio de Susi");
-		Usuarios adri = new Usuarios (3,"Adri", "adria@gmail.com", "adripass", "Bio de Adri");
-		Usuarios sergio = new Usuarios (4,"Sergio", "sergio@gmail.com", "sergiopass", "Bio de Sergio");
-		Usuarios guille = new Usuarios (5,"Guille", "guille@gmail.com", "guillepass", "Bio de Guille");
-		Usuarios agus = new Usuarios (6,"Agus", "agus@gmail.com", "aguspass", "Bio de Agus");
+		Usuarios marta = new Usuarios (1,"Marta", "marta@gmail.com", "martapass", "Bio de Marta","https://tinyurl.com/y82jvxxr");
+		Usuarios susi = new Usuarios (2,"Susi", "susi@gmail.com", "susipass", "Bio de Susi","https://tinyurl.com/yctpthbs");
+		Usuarios adri = new Usuarios (3,"Adri", "adria@gmail.com", "adripass", "Bio de Adri","https://tinyurl.com/yblm3kes");
+		Usuarios sergio = new Usuarios (4,"Sergio", "sergio@gmail.com", "sergiopass", "Bio de Sergio","https://tinyurl.com/ybmkvy3v");
+		Usuarios guille = new Usuarios (5,"Guille", "guille@gmail.com", "guillepass", "Bio de Guille","https://tinyurl.com/y9xjgzdc");
+		Usuarios agus = new Usuarios (6,"Agus", "agus@gmail.com", "aguspass", "Bio de Agus","https://tinyurl.com/ycu25tjm");
 		
 		repositoryUsuario.save(marta);
 		repositoryUsuario.save(susi);
@@ -79,12 +79,12 @@ public class Controlador {
 		repositoryUsuario.save(adri);
 		
 		//JUEGOS - Faltarian imagenes
-		Juego portal = new Juego ("Portal", "Valve", "2007", "PC", 4.5f, "Puzles", "Resumen de Portal");
-		Juego horizon = new Juego ("Horizon Zero Dawn", "Guerrilla Games", "2017", "PS4", 3.9f, "Aventura", "Resumen de Horizon Zero Dawn");
-		Juego pkmnLuna = new Juego ("Pokémon Luna","Nintendo", "2017", "3DS", 0.0f, "RPG", "Resumen de Pokémon Luna");
-		Juego aa1 = new Juego ("Ace Atorney", "Capcom", "2005", "DS", 0.0f, "Novela Visual", "Resumen de Ace Attorney");
-		Juego wow = new Juego ("World of Warcraft", "Blizzard", "2004", "PC", 3.7f, "MMORPG", "Resumen de World of Warcraft");
-		Juego civilization6 = new Juego ("Civilization VI", "2k Games", "2016", "PC", 0.0f, "Estrategia", "Resumen de Portal");
+		Juego portal = new Juego ("Portal", "Valve", "2007", "PC", 4.5f, "Puzles", "Resumen de Portal","https://tinyurl.com/y7e3hwjr");
+		Juego horizon = new Juego ("Horizon Zero Dawn", "Guerrilla Games", "2017", "PS4", 3.9f, "Aventura", "Resumen de Horizon Zero Dawn","https://tinyurl.com/ybgr7rp6");
+		Juego pkmnLuna = new Juego ("Pokémon Luna","Nintendo", "2017", "3DS", 0.0f, "RPG", "Resumen de Pokémon Luna","https://tinyurl.com/yc5kvsrs");
+		Juego aa1 = new Juego ("Ace Atorney", "Capcom", "2005", "DS", 0.0f, "Novela Visual", "Resumen de Ace Attorney","https://tinyurl.com/ybm7rrfa");
+		Juego wow = new Juego ("World of Warcraft", "Blizzard", "2004", "PC", 3.7f, "MMORPG", "Resumen de World of Warcraft","https://tinyurl.com/y8tobc8r");
+		Juego civilization6 = new Juego ("Civilization VI", "2k Games", "2016", "PC", 0.0f, "Estrategia", "Resumen de Portal","https://tinyurl.com/ybxz33b9");
 		//pls añadan alguno mas 
 	
 		repositoryJuego.save(portal);
@@ -103,10 +103,10 @@ public class Controlador {
 		Estado e4 = new Estado(marta,wow,"pendiente");
 		
 		repositoryEstados.save(e1);
-		/*repositoryEstados.save(e2);
+		repositoryEstados.save(e2);
 		repositoryEstados.save(e3);
 		repositoryEstados.save(e4);
-		*/
+		
 		estadosMarta.add(e1);
 		estadosMarta.add(e2);
 		estadosMarta.add(e3);
@@ -115,7 +115,7 @@ public class Controlador {
 		marta.setEstados(estadosMarta);
 		repositoryUsuario.save(marta);
 		
-		/*
+		
 		//Juegos Susi:
 		List<Estado> estadosSusi = new ArrayList<Estado>();
 		estadosSusi.add(new Estado(susi,portal,"pendiente"));
@@ -133,7 +133,7 @@ public class Controlador {
 		estadosAdri.add(new Estado(adri,wow,"pendiente"));
 		adri.setEstados(estadosAdri);
 		repositoryUsuario.save(adri);
-		*/
+		
 		
 		//REVIEWS
 		Review rPortalMarta = new Review ("Review de Portal por Marta", 5.0f);
@@ -284,16 +284,18 @@ public class Controlador {
 		
 		String name = usuario.getNombre();
 		String bio = usuario.getBiografia();
+		String imagen = usuario.getImagen();
 		List<Usuarios> amigos = new ArrayList<Usuarios>(usuario.getAmigos());
 		
 		
-		List<Juego> jugados = new ArrayList<Juego>(repositoryJuego.findByEstadoYUser("jugado", usuario.getId()));
-		List<Juego> jugando = new ArrayList<Juego>(repositoryJuego.findByEstadoYUser("jugando", usuario.getId()));
-		List<Juego> pendientes = new ArrayList<Juego>(repositoryJuego.findByEstadoYUser("pendiente", usuario.getId()));
+		List<Juego> jugados = new ArrayList<Juego>(repositoryEstados.findByStateAndEstadouser("jugado", usuario));
+		List<Juego> jugando = new ArrayList<Juego>(repositoryEstados.findByStateAndEstadouser("jugando", usuario));
+		List<Juego> pendientes = new ArrayList<Juego>(repositoryEstados.findByStateAndEstadouser("pendiente", usuario));			
 		
 		List<Comentario> comentarios = new ArrayList<Comentario>(usuario.getComents());
 		List<Review> reviews = new ArrayList<Review>(usuario.getReview());
 		
+		model.addAttribute("imagen",imagen);
 		model.addAttribute("nombre",name);
 		model.addAttribute("biografia", bio);
 		model.addAttribute("listaAmigos",amigos);

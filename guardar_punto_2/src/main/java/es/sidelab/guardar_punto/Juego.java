@@ -50,7 +50,7 @@ public class Juego {
 	@ManyToMany 
 	private List<Usuarios> users=new ArrayList<Usuarios>();
 	
-	@OneToMany (mappedBy="juegos_estado")
+	@OneToMany (mappedBy="juegosestado")
 	private List<Estado> juego_estado=new ArrayList<Estado>();
 	
 	@OneToMany(mappedBy="juego")
@@ -64,7 +64,7 @@ public class Juego {
 	}
 	
 	@PersistenceConstructor
-	public Juego (String t, String c, String a, String p, float v, String g, String r) {
+	public Juego (String t, String c, String a, String p, float v, String g, String r, String im) {
 		super ();
 		
 		title = t;
@@ -74,7 +74,7 @@ public class Juego {
 		valoracion = v;
 		genero = g;
 		resumen = r;	
-		imagen = "";
+		imagen = im;
 	}
 		
 	/*Handlers*/
