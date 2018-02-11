@@ -22,4 +22,5 @@ public interface JuegoRepository extends JpaRepository<Juego,Integer> {
 	@Query(value="SELECT j.id,j.title,j.compannia,j.anyo,j.plataforma,j.valoracion,j.genero,j.resumen,j.imagen"
 			+ " FROM Usuarios u,Estado e,Juego j WHERE e.estado=:estat AND u.id=:u_id")
 	List<Juego> findByEstadoYUser(@Param("estat") String es,@Param("u_id") Integer us);
+	
  }
