@@ -85,8 +85,7 @@ public class Controlador {
 		Juego aa1 = new Juego ("Ace Atorney", "Capcom", "2005", "DS", 0.0f, "Novela Visual", "Resumen de Ace Attorney","https://tinyurl.com/y99gq3cc");
 		Juego wow = new Juego ("World of Warcraft", "Blizzard", "2004", "PC", 3.7f, "MMORPG", "Resumen de World of Warcraft","https://tinyurl.com/y8tobc8r");
 		Juego civilization6 = new Juego ("Civilization VI", "2k Games", "2016", "PC", 0.0f, "Estrategia", "Resumen de Portal","https://tinyurl.com/ybxz33b9");
-		//pls añadan alguno mas 
-	
+			
 		repositoryJuego.save(portal);
 		repositoryJuego.save(horizon);
 		repositoryJuego.save(pkmnLuna);
