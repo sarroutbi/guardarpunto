@@ -8,10 +8,10 @@ En cuanto a las partes de la aplicación, **la parte privada** será toda aquell
 ## **Entidades**
 
 Las entidades serían:
-1. Usuario
-2. Juego
-3. Review
-4. Comentarios
+1. Usuario: Datos del usuario como nombre, correo, contraseña, amigos, juegos...
+2. Juego: Datos de los juegos como título, compañía, año de lanzamiento, género, reviews...
+3. Review: Opinión y puntuación de un usuario sobre un juego.
+4. Comentarios: Publicaciones más cortas que las reviews (y sin puntuación), que realiza un usuario sobre un juego.
 
 ## **Descripción del servicio interno**
 
@@ -23,9 +23,9 @@ A continuación se muestra el diagrama Entidad/Relación de la base de datos de 
 
 ## **Integrantes**
 
-1. Marta Fernández de la Mela Salcedo
-2. Susana Pineda de Luelmo
-3. Adrián David Morillas Marco
+1. Marta Fernández de la Mela Salcedo (mfms5), mm.fernandezs@alumnos.urjc.es. 
+2. Susana Pineda de Luelmo (SusanaPineda), s.pinedad@alumnos.urjc.es. 
+3. Adrián David Morillas Marco (AdrianMorillas2), ad.morillas@alumnos.urjc.es. 
 
 ## **Pantallas** 
 Contamos con 9 pantallas diferentes, dos de ellas modales pero que se han incluido como pantallas diferentes.
@@ -151,3 +151,6 @@ Contamos con 9 pantallas diferentes, dos de ellas modales pero que se han inclui
     - Registro
     - noticias externas
 
+## **Diagrama de clases**
+Generado con la herramienta ObjectAid UML para Eclipse:
+![](https://github.com/mfms5/guardarpunto/blob/master/guardar_punto_2/diagrama_clases.png?raw=true)
