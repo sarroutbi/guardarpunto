@@ -32,12 +32,12 @@ Contamos con 9 pantallas diferentes, dos de ellas modales pero que se han inclui
   ## **Inicio** 
   ![](https://github.com/mfms5/guardarpunto/blob/master/Capturas%20pantalla/inicio.png?raw=true)
   
-  Desde la pantalla de inicio el usuario podrá registrarse o hacer login en la página. Así mismo podrá acceder a una lista de juegos       destacados y a noticias de otras páginas. Desde la barra de navegación podrá acceder a Juegos, Perfil, Reviews, Amigos y realizar       búsquedas (estas opciones serán comunes para todas las pantallas menos para las modales).
+  Desde la pantalla de inicio el usuario podrá registrarse o hacer login en la página. Así mismo podrá acceder a una lista de juegos       destacados y a noticias de otras páginas. Desde la barra de navegación podrá acceder a Juegos, Perfil, Reviews, Amigos y realizar       búsquedas (estas opciones serán comunes para todas las pantallas menos para las modales).  Al hacer login, se sustituiría este panel por uno que muestra los juegos jugados del usuario. En la fase 2 simplemente se finge que ha iniciado sesión el usuario 1 (también para las pantallas de Perfil, Amigos y Reviews).
   
   ## **Registro**
   ![](https://github.com/mfms5/guardarpunto/blob/master/Capturas%20pantalla/registro.png?raw=true)
   
-  Pantalla modal desde la que el usuario podrá registrarse.
+  Pantalla modal desde la que el usuario podrá registrarse. Se añadiría un nuevo usuario a la base de datos.
   
   ## **Juegos**
   ![](https://github.com/mfms5/guardarpunto/blob/master/Capturas%20pantalla/juegos.png?raw=true)
