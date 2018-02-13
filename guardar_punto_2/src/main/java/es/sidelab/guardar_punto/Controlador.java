@@ -39,8 +39,10 @@ public class Controlador {
 	public void init() {
 		
 		/*** AÑADIR DATOS A LA BD ***/
+		/* El metodo de creacion del esquema es con update, por lo que esta parte esta comentada 
+		 * para que no se dupliquen los datos. Descomentarla si es la primera vez que se ejecuta la aplicacion */
 		//USUARIOS
-		Usuarios marta = new Usuarios (1,"Marta", "marta@gmail.com", "martapass", "Bio de Marta","https://tinyurl.com/y82jvxxr");
+		/*Usuarios marta = new Usuarios (1,"Marta", "marta@gmail.com", "martapass", "Bio de Marta","https://tinyurl.com/y82jvxxr");
 		Usuarios susi = new Usuarios (2,"Susi", "susi@gmail.com", "susipass", "Bio de Susi","https://tinyurl.com/yctpthbs");
 		Usuarios adri = new Usuarios (3,"Adri", "adria@gmail.com", "adripass", "Bio de Adri","https://tinyurl.com/yblm3kes");
 		Usuarios sergio = new Usuarios (4,"Sergio", "sergio@gmail.com", "sergiopass", "Bio de Sergio","https://tinyurl.com/ybmkvy3v");
@@ -78,6 +80,7 @@ public class Controlador {
 		adri.setAmigos(amigosAdri);
 		repositoryUsuario.save(adri);
 		
+		
 		//JUEGOS
 		Juego portal = new Juego ("Portal", "Valve", "2007", "PC", 4.5f, "Puzles", "Resumen de Portal","https://tinyurl.com/y7e3hwjr");
 		Juego horizon = new Juego ("Horizon Zero Dawn", "Guerrilla Games", "2017", "PS4", 3.9f, "Aventura", "Resumen de Horizon Zero Dawn","https://tinyurl.com/ybgr7rp6");
@@ -85,13 +88,17 @@ public class Controlador {
 		Juego aa1 = new Juego ("Ace Atorney", "Capcom", "2005", "DS", 0.0f, "Novela Visual", "Resumen de Ace Attorney","https://tinyurl.com/y99gq3cc");
 		Juego wow = new Juego ("World of Warcraft", "Blizzard", "2004", "PC", 3.7f, "MMORPG", "Resumen de World of Warcraft","https://tinyurl.com/y8tobc8r");
 		Juego civilization6 = new Juego ("Civilization VI", "2k Games", "2016", "PC", 0.0f, "Estrategia", "Resumen de Portal","https://tinyurl.com/ybxz33b9");
+		Juego undertale = new Juego ("Undertale", "Toby Fox", "2015", "PC", 0.0f, "RPG", "Resumen de Undertale","https://tinyurl.com/y8kx6myu");
+		Juego ac = new Juego ("Animal Crossing: New Leaf", "Nintendo", "2012", "3DS", 0.0f, "Simulación", "Resumen de Animal Crossing", "https://tinyurl.com/yae8tsyt");
 			
-		repositoryJuego.save(portal);
+		/*repositoryJuego.save(portal);
 		repositoryJuego.save(horizon);
 		repositoryJuego.save(pkmnLuna);
 		repositoryJuego.save(aa1);
 		repositoryJuego.save(wow);
 		repositoryJuego.save(civilization6);
+		repositoryJuego.save(undertale);
+		repositoryJuego.save(ac);
 		
 		//ESTADO JUEGOS
 		//Juegos Marta:
@@ -199,14 +206,15 @@ public class Controlador {
 		
 		Comentario rLunaSergio = new Comentario ("Comentario de Pokémon Luna por Sergio");
 		rLunaSergio.setJuego(pkmnLuna); rLunaSergio.setUser(sergio);
-		repositoryComentario.save(rLunaSergio);
+		repositoryComentario.save(rLunaSergio);*/
 		
 		/*** FIN DATOS BD ***/
 		
 		/*** Listas auxiliares ***/
-		listaJuegosDestacados.add(portal);
-		listaJuegosDestacados.add(horizon);
-		listaJuegosDestacados.add(civilization6);		
+		listaJuegosDestacados.add(repositoryJuego.findOne(1));
+		listaJuegosDestacados.add(repositoryJuego.findOne(2));
+		listaJuegosDestacados.add(repositoryJuego.findOne(6));		
+		listaJuegosDestacados.add(repositoryJuego.findOne(7));	
 	}
 
 	//Pagina inicial. 
