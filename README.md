@@ -8,10 +8,10 @@ En cuanto a las partes de la aplicación, **la parte privada** será toda aquell
 ## **Entidades**
 
 Las entidades serían:
-1. Usuario
-2. Juego
-3. Review
-4. Comentarios
+1. Usuario: Datos del usuario como nombre, correo, contraseña, amigos, juegos...
+2. Juego: Datos de los juegos como título, compañía, año de lanzamiento, género, reviews...
+3. Review: Opinión y puntuación de un usuario sobre un juego.
+4. Comentarios: Publicaciones más cortas que las reviews (y sin puntuación), que realiza un usuario sobre un juego.
 
 ## **Descripción del servicio interno**
 
@@ -23,21 +23,22 @@ A continuación se muestra el diagrama Entidad/Relación de la base de datos de 
 
 ## **Integrantes**
 
-1. Marta Fernández de la Mela Salcedo
-2. Susana Pineda de Luelmo
-3. Adrián David Morillas Marco
+1. Marta Fernández de la Mela Salcedo (mfms5), mm.fernandezs@alumnos.urjc.es. 
+2. Susana Pineda de Luelmo (SusanaPineda), s.pinedad@alumnos.urjc.es. 
+3. Adrián David Morillas Marco (AdrianMorillas2), ad.morillas@alumnos.urjc.es. 
 
 ## **Pantallas** 
 Contamos con 9 pantallas diferentes, dos de ellas modales pero que se han incluido como pantallas diferentes.
   ## **Inicio** 
   ![](https://github.com/mfms5/guardarpunto/blob/master/Capturas%20pantalla/inicio.png?raw=true)
   
-  Desde la pantalla de inicio el usuario podrá registrarse o hacer login en la página. Así mismo podrá acceder a una lista de juegos       destacados y a noticias de otras páginas. Desde la barra de navegación podrá acceder a Juegos, Perfil, Reviews, Amigos y realizar       búsquedas (estas opciones serán comunes para todas las pantallas menos para las modales).
+  Desde la pantalla de inicio el usuario podrá registrarse o hacer login en la página. Así mismo podrá acceder a una lista de juegos       destacados y a noticias de otras páginas. Desde la barra de navegación podrá acceder a Juegos, Perfil, Reviews, Amigos y realizar       búsquedas (estas opciones serán comunes para todas las pantallas menos para las modales).  
+  Al hacer login, se sustituiría este panel por uno que muestra los juegos jugados del usuario. En la fase 2 simplemente se finge que ha iniciado sesión el usuario 1 (también para las pantallas de Perfil, Amigos y Reviews).
   
   ## **Registro**
   ![](https://github.com/mfms5/guardarpunto/blob/master/Capturas%20pantalla/registro.png?raw=true)
   
-  Pantalla modal desde la que el usuario podrá registrarse.
+  Pantalla modal desde la que el usuario podrá registrarse. Se añadiría un nuevo usuario a la base de datos.
   
   ## **Juegos**
   ![](https://github.com/mfms5/guardarpunto/blob/master/Capturas%20pantalla/juegos.png?raw=true)
@@ -150,3 +151,6 @@ Contamos con 9 pantallas diferentes, dos de ellas modales pero que se han inclui
     - Registro
     - noticias externas
 
+## **Diagrama de clases**
+Generado con la herramienta ObjectAid UML para Eclipse:
+![](https://github.com/mfms5/guardarpunto/blob/master/guardar_punto_2/diagrama_clases.png?raw=true)
