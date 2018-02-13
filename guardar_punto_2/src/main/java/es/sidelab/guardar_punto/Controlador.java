@@ -259,6 +259,12 @@ public class Controlador {
 		model.addAttribute("listaJuegosX", repositoryJuego.findByTitleIgnoreCaseStartingWith("X"));
 		model.addAttribute("listaJuegosY", repositoryJuego.findByTitleIgnoreCaseStartingWith("Y"));
 		model.addAttribute("listaJuegosZ", repositoryJuego.findByTitleIgnoreCaseStartingWith("Z"));
+		
+		//En el panel "tus juegos" aparecen los juegos jugados del usuario que ha iniciado sesion
+		//En la fase 2 fingimos que ha iniciado sesion el usuario 1
+		List<Juego> jugados = new ArrayList<Juego>(repositoryEstados.findByStateAndEstadouser(
+				"jugado", repositoryUsuario.findOne(1)));
+		model.addAttribute("listaJuegosUsuario", jugados);
 		return "Juegos";
 	}
 	
