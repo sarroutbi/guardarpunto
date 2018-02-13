@@ -1,5 +1,7 @@
 # **GuardarPunto**
 
+**Nota:** En la versión actual del controlador (Controlador.java) está comentada la sección en la que se añaden datos a la base de datos (juegos, usuarios, comentarios, reviews, amigos...) para que no se dupliquen, ya que el esquema se genera mediante la propiedad update. Si es la primera vez que se ejecuta la aplicación, se debería descomentar.
+
 En esta aplicación distribuida los usuarios dispondrán de un espacio online donde compartir sus opiniones de videojuegos, así como establecer puntuaciones, ver la de sus amigos, anotar que juegos quieren jugar en un futuro y cuáles son aquellos que estan aún no han terminado.
 
 En cuanto a las partes de la aplicación, **la parte privada** será toda aquella relacionada con el perfil del cliente, es decir, las listas de juegos, las listas de amigos, valoraciones,etc.
