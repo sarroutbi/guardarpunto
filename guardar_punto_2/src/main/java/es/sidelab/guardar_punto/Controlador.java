@@ -219,7 +219,7 @@ public class Controlador {
 
 	//Pagina inicial. 
 	//Muestra algunos juegos destacados, almacenados previamente en una lista	
-	@GetMapping("/")
+	/*@GetMapping("/")
 	public String Inicio(Model model) {
 		model.addAttribute("listaJuegosDestacados", listaJuegosDestacados);
 		//En el panel "tus juegos" aparecen los juegos jugados del usuario que ha iniciado sesion
@@ -228,10 +228,10 @@ public class Controlador {
 				"jugado", repositoryUsuario.findOne(1)));
 		model.addAttribute("listaJuegosUsuario", jugados);
 		return "Inicio";
-	}
+	}*/
 	
 	//Lista de TODOS los juegos que hay en la BD, divididos por la letra inicial
-	@GetMapping("/Juegos") 
+	/*@GetMapping("/Juegos") 
 	public String Juegos (Model model) {
 		model.addAttribute("listaJuegosA", repositoryJuego.findByTitleIgnoreCaseStartingWith("A"));
 		model.addAttribute("listaJuegosB", repositoryJuego.findByTitleIgnoreCaseStartingWith("B"));
@@ -266,10 +266,10 @@ public class Controlador {
 				"jugado", repositoryUsuario.findOne(1)));
 		model.addAttribute("listaJuegosUsuario", jugados);
 		return "Juegos";
-	}
+	}*/
 	
 	//Ficha del juego indicado en el enlace
-	@GetMapping("/juego/{id}")
+	/*@GetMapping("/juego/{id}")
 	public String fichaJuego (Model model, @PathVariable String id) {		
 		int numero = Integer.parseInt(id);
 		//Buscarlo en la bd por el id
@@ -280,16 +280,16 @@ public class Controlador {
 		model.addAttribute("listaComentarios", juego.getComents());
 		
 		return "FichaJuego";
-	}
+	}*/
 	
 	//Pagina que muestra los resultados de la busqueda (juegos o usuarios)
-	@PostMapping("/buscar")
+	/*@PostMapping("/buscar")
 	public String Busqueda (Model model, String txt) {
 		System.out.println("Busqueda");
 		model.addAttribute("listaJuegosEncontrados", repositoryJuego.findByTitleIgnoreCaseLike("%"+txt+"%"));
 		model.addAttribute("listaUsuariosEncontrados", repositoryUsuario.findByNombreIgnoreCaseLike("%"+txt+"%"));
 		return "Busqueda";
-	}
+	}*/
 	
 	@GetMapping("/Amigos/{id}")
 	public String amigos(Model model,@PathVariable String id) {
@@ -365,7 +365,7 @@ public class Controlador {
 	}
 	
 	//Añadir nuevo comentario a un juego. De momento, vienen todos del mismo usuario.
-	@PostMapping("/nuevoComentario")
+	/*@PostMapping("/nuevoComentario")
 	public String nuevoComentario (Model model, Comentario comentario) {
 		Integer idUsuario = Integer.parseInt(comentario.getId_usuario());
 		Integer idJuego = Integer.parseInt(comentario.getId_juego());
@@ -378,10 +378,10 @@ public class Controlador {
 		//Volver a cargar la pagina del juego		
 		fichaJuego (model, comentario.getJuego().getId().toString());
 		return "FichaJuego";
-	}
+	}*/
 	
 	//Añadir nueva review a un juego. De momento, vienen todos del mismo usuario.
-	@PostMapping("/nuevaReview")
+	/*@PostMapping("/nuevaReview")
 	public String nuevaReview (Model model, Review review) {
 		Integer idUsuario = Integer.parseInt(review.getId_usuario());
 		Integer idJuego = Integer.parseInt(review.getId_juego());
@@ -400,19 +400,20 @@ public class Controlador {
 		//Volver a cargar la pagina del juego		
 		fichaJuego (model, review.getJuego().getId().toString());
 		return "FichaJuego";
-	}
+	}*/
 	
 	//Registrar nuevo usuario
+	/*
 	@PostMapping("/nuevoUsuario")
 	public String nuevoUsuario (Model model, Usuarios usuario) {
 		//Guardar el nuevo usuario en la db
 		repositoryUsuario.save(usuario);
 		Inicio(model);
 		return "Inicio";
-	}
+	}*/
 	
 	//Añadir un juego a la lista (de momento se añade siempre al jugador 1)
-	@GetMapping("/anadirLista/{estado}/{id_juego}/{id_usuario}")
+	/*@GetMapping("/anadirLista/{estado}/{id_juego}/{id_usuario}")
 	public String anadirLista(Model model,@PathVariable String estado, @PathVariable String id_juego, @PathVariable String id_usuario) {
 		
 		//Este if es para evitar errores cuando carga el css y el js
@@ -442,6 +443,6 @@ public class Controlador {
 		}	
 		
 		return null;
-	}
+	}*/
 	
 }
