@@ -290,7 +290,7 @@ public class Controlador {
 		model.addAttribute("listaUsuariosEncontrados", repositoryUsuario.findByNombreIgnoreCaseLike("%"+txt+"%"));
 		return "Busqueda";
 	}*/
-	
+	/*
 	@GetMapping("/Amigos/{id}")
 	public String amigos(Model model,@PathVariable String id) {
 		//int idUsuario = Integer.parseInt(id);
@@ -301,8 +301,9 @@ public class Controlador {
 	    model.addAttribute("amigos",amigos);
 		
 		return "Amigos";
-	}
+	}*/
 	
+	/*
 	@GetMapping("/Usuario/{id}")
 	public String usuario(Model model,@PathVariable String id) {
 		int num = Integer.parseInt(id);
@@ -333,10 +334,10 @@ public class Controlador {
 		model.addAttribute("listaReviews",reviews);
 		
 		return "Usuario";
-	}
+	}*/
 	
 	//Cambios en el usuario
-	@PostMapping("/editarUsuario")
+	/*@PostMapping("/editarUsuario")
 	public String editarUsuario (Model model,Usuarios usuario) {
 			Integer idAux = usuario.getId();
 			String bioAux = usuario.getBiografia();
@@ -352,9 +353,9 @@ public class Controlador {
 			repositoryUsuario.save(user);
 			usuario(model,usuario.getId().toString());
 			return "Usuario";
-	}
+	}*/
 		
-	@GetMapping("/Review/{id}")
+	/*@GetMapping("/Review/{id}")
 	public String rev(Model model,@PathVariable String id) {
 		int num = Integer.parseInt(id);
 		Usuarios usuario = repositoryUsuario.findOne(num);
@@ -362,7 +363,7 @@ public class Controlador {
 		
 		model.addAttribute("listaReviews",reviews);
 		return "Reviews";
-	}
+	}*/
 	
 	//Añadir nuevo comentario a un juego. De momento, vienen todos del mismo usuario.
 	/*@PostMapping("/nuevoComentario")
