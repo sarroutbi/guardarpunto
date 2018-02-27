@@ -3,15 +3,19 @@ package es.sidelab.guardar_punto;
 import java.util.*;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
 
+import org.apache.tomcat.util.http.RequestUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 
 @Controller
 public class ControladorInicio {
@@ -33,7 +37,9 @@ public class ControladorInicio {
 	private List<Juego> listaJuegosDestacados = new ArrayList<Juego>();
 	
 	@PostConstruct
-	public void init() {
+	public void init() {		
+		//repositoryUsuario.save(new Usuarios("user", "pass", "ROLE_USER"));
+		
 		/*** Listas auxiliares ***/
 		listaJuegosDestacados.add(repositoryJuego.findOne(1));
 		listaJuegosDestacados.add(repositoryJuego.findOne(2));
@@ -44,7 +50,7 @@ public class ControladorInicio {
 	//Pagina inicial. 
 	//Muestra algunos juegos destacados, almacenados previamente en una lista	
 	@GetMapping("/")
-	public String Inicio(Model model) {
+	public String Inicio(Model model, HttpServletRequest request) {
 		model.addAttribute("listaJuegosDestacados", listaJuegosDestacados);
 		//En el panel "tus juegos" aparecen los juegos jugados del usuario que ha iniciado sesion
 		//En la fase 2 fingimos que ha iniciado sesion el usuario 1
@@ -52,15 +58,23 @@ public class ControladorInicio {
 				"jugado", repositoryUsuario.findOne(1)));
 		model.addAttribute("listaJuegosUsuario", jugados);
 		
+		CsrfToken token = (CsrfToken) request.getAttribute("_csrf"); 
+		model.addAttribute("token", token.getToken());   
+		
 		return "Inicio";
 	}
 	
+    @GetMapping("/loginerror")
+    public String loginerror() {
+    	return "loginerror";
+    }
+	
 	//Registrar nuevo usuario
 	@PostMapping("/nuevoUsuario")
-	public String nuevoUsuario (Model model, Usuarios usuario) {
+	public String nuevoUsuario (Model model, Usuarios usuario, HttpServletRequest request) {
 		//Guardar el nuevo usuario en la db
 		repositoryUsuario.save(usuario);
-		Inicio(model);
+		Inicio(model, request);
 		return "Inicio";
 	}
 }

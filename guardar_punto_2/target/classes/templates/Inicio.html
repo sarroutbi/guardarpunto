@@ -103,15 +103,14 @@ body {
 				<div class="login" id="login">
 					<h3 class="tituloSeccion">Login</h3>
 
-					<form action="" id="loginForm">
+					<form action="/" id="loginForm" method="post">
 						<label><b>Usuario</b></label> 
                         <input type="text" placeholder="Nombre de usuario" name="usuario" required /> 
                         
                         <label><b>Contraseña</b></label>
-						<input type="password" placeholder="Contraseña" name="password"	required />
-
-						<button type="button" id="loginBtn" onclick="ocultarLogin()">Login</button>
-						<!--Habria que cambiarlo para enviar datos, de momento solo oculta el panel para mostrar el de juegos-->
+						<input type="password" placeholder="Contraseña" name="password"	required />						
+						<button type="submit" id="loginBtn">Login</button>
+						<input type="hidden" name="_csrf" value="{{token}}"/>
 					</form>
 					<button type="button" id="registrarseBtn" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Registrarse</button>
 

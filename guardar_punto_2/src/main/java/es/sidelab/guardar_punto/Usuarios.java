@@ -67,6 +67,15 @@ public class Usuarios {
 	}
 	
 	@PersistenceConstructor
+	public Usuarios(String nombre, String pass, String... roles) {
+		
+		this.nombre = nombre;
+		this.contrasenna= new BCryptPasswordEncoder().encode(pass);;
+		this.roles = new ArrayList<String>(Arrays.asList(roles));
+	}
+	
+	
+	@PersistenceConstructor
 	public Usuarios(Integer id,String name, String e, String c, String b,String im, String... roles) {
 		super();
 		
