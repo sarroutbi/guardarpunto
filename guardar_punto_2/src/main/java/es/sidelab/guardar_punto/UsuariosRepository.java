@@ -9,5 +9,6 @@ public interface UsuariosRepository extends JpaRepository<Usuarios,Integer> {
 	
 	//Buscar usuarios cuyo nombre contenga la palabra introducida en la busqueda
 	List<Usuarios> findByNombreIgnoreCaseLike (String nombre);
+	Usuarios findByEmailIgnoreCaseLike (String email);
 }
 

@@ -1,11 +1,13 @@
 package es.sidelab.guardar_punto;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.*;
 
 import org.springframework.data.annotation.PersistenceConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity
 public class Usuarios {
@@ -22,6 +24,9 @@ public class Usuarios {
 	
 	@Column
 	private String contrasenna;
+	
+	@ElementCollection(fetch = FetchType.EAGER)
+	private List<String> roles;
 	
 	@Column
 	private String biografia; 
@@ -62,13 +67,14 @@ public class Usuarios {
 	}
 	
 	@PersistenceConstructor
-	public Usuarios(Integer id,String name, String e, String c, String b,String im) {
+	public Usuarios(Integer id,String name, String e, String c, String b,String im, String... roles) {
 		super();
 		
 		this.id = id;
 		nombre= name;
 		email = e;
-		contrasenna = c;
+		contrasenna = new BCryptPasswordEncoder().encode(c);
+		this.roles = new ArrayList<String>(Arrays.asList(roles));
 		biografia = b;
 		imagen = im;
 	}
@@ -162,6 +168,16 @@ public class Usuarios {
 	public List<Usuarios> getUsuarios(){
 		return usuarios;
 	}
+
+	public List<String> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<String> roles) {
+		this.roles = roles;
+	}
+	
+	
 	
 	
 	
