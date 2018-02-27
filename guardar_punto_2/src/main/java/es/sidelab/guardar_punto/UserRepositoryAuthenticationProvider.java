@@ -23,17 +23,14 @@ public class UserRepositoryAuthenticationProvider implements AuthenticationProvi
 	
 	//@Override
 	public Authentication authenticate (Authentication auth) throws AuthenticationException {
-		System.out.println("authenticate");
 		
-		Usuarios user = (Usuarios) (userRepository.findByNombre(auth.getName())).get(0); //name?
+		Usuarios user = userRepository.findByEmailIgnoreCaseLike(auth.getName()); //name?
 				
 		if (user == null) {
 			throw new BadCredentialsException("User not found");
 		}
 		
-		String password = (String) auth.getCredentials();
-		System.out.println(new BCryptPasswordEncoder().encode(password));
-		System.out.println(user.getContrasenna());
+		String password = (String) auth.getCredentials();		;
 		if (!new BCryptPasswordEncoder().matches(password, user.getContrasenna())) {
 			System.out.println("maaaaaal");
 			throw new BadCredentialsException("Wrong password");

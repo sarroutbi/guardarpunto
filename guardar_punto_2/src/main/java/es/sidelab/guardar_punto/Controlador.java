@@ -42,12 +42,12 @@ public class Controlador {
 		/* El metodo de creacion del esquema es con update, por lo que esta parte esta comentada 
 		 * para que no se dupliquen los datos. Descomentarla si es la primera vez que se ejecuta la aplicacion */
 		//USUARIOS
-		/*Usuarios marta = new Usuarios (1,"Marta", "marta@gmail.com", "martapass", "Bio de Marta","https://tinyurl.com/y82jvxxr");
-		Usuarios susi = new Usuarios (2,"Susi", "susi@gmail.com", "susipass", "Bio de Susi","https://tinyurl.com/yctpthbs");
-		Usuarios adri = new Usuarios (3,"Adri", "adria@gmail.com", "adripass", "Bio de Adri","https://tinyurl.com/yblm3kes");
-		Usuarios sergio = new Usuarios (4,"Sergio", "sergio@gmail.com", "sergiopass", "Bio de Sergio","https://tinyurl.com/ybmkvy3v");
-		Usuarios guille = new Usuarios (5,"Guille", "guille@gmail.com", "guillepass", "Bio de Guille","https://tinyurl.com/y9xjgzdc");
-		Usuarios agus = new Usuarios (6,"Agus", "agus@gmail.com", "aguspass", "Bio de Agus","https://tinyurl.com/ycu25tjm");
+		Usuarios marta = new Usuarios (1,"Marta", "marta@gmail.com", "martapass", "Bio de Marta","https://tinyurl.com/y82jvxxr", "ROLE_USER");
+		Usuarios susi = new Usuarios (2,"Susi", "susi@gmail.com", "susipass", "Bio de Susi","https://tinyurl.com/yctpthbs", "ROLE_USER");
+		Usuarios adri = new Usuarios (3,"Adri", "adria@gmail.com", "adripass", "Bio de Adri","https://tinyurl.com/yblm3kes", "ROLE_USER");
+		Usuarios sergio = new Usuarios (4,"Sergio", "sergio@gmail.com", "sergiopass", "Bio de Sergio","https://tinyurl.com/ybmkvy3v", "ROLE_USER");
+		Usuarios guille = new Usuarios (5,"Guille", "guille@gmail.com", "guillepass", "Bio de Guille","https://tinyurl.com/y9xjgzdc", "ROLE_USER");
+		Usuarios agus = new Usuarios (6,"Agus", "agus@gmail.com", "aguspass", "Bio de Agus","https://tinyurl.com/ycu25tjm", "ROLE_USER");
 		
 		repositoryUsuario.save(marta);
 		repositoryUsuario.save(susi);
@@ -91,7 +91,7 @@ public class Controlador {
 		Juego undertale = new Juego ("Undertale", "Toby Fox", "2015", "PC", 0.0f, "RPG", "Resumen de Undertale","https://tinyurl.com/y8kx6myu");
 		Juego ac = new Juego ("Animal Crossing: New Leaf", "Nintendo", "2012", "3DS", 0.0f, "Simulación", "Resumen de Animal Crossing", "https://tinyurl.com/yae8tsyt");
 			
-		/*repositoryJuego.save(portal);
+		repositoryJuego.save(portal);
 		repositoryJuego.save(horizon);
 		repositoryJuego.save(pkmnLuna);
 		repositoryJuego.save(aa1);
@@ -206,7 +206,7 @@ public class Controlador {
 		
 		Comentario rLunaSergio = new Comentario ("Comentario de Pokémon Luna por Sergio");
 		rLunaSergio.setJuego(pkmnLuna); rLunaSergio.setUser(sergio);
-		repositoryComentario.save(rLunaSergio);*/
+		repositoryComentario.save(rLunaSergio);
 		
 		/*** FIN DATOS BD ***/
 		
