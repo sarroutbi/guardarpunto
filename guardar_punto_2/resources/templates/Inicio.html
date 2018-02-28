@@ -134,7 +134,8 @@ body {
 										<input type="password" placeholder="Contraseña" name="contrasenna" required />
 										<label class="tit"><b>Biografía</b></label> 
 										<input type="text" placeholder="Biografía" name="biografia"/> 
-										<button type="submit" id="regBtn" class="btn btn-default">Registrarse</button>										
+										<button type="submit" id="regBtn" class="btn btn-default">Registrarse</button>
+										<input type="hidden" name="_csrfReg" value="{{tokenReg}}"/>										
 									</form>
 								</div>
 							</div>

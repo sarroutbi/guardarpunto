@@ -72,8 +72,11 @@ public class ControladorInicio {
 		model.addAttribute("listaJuegosUsuario", jugados);
 		model.addAttribute("displayLogin", displayLogin);
 		model.addAttribute("displayTusJuegos", displayTusJuegos);
+		
 		CsrfToken token = (CsrfToken) request.getAttribute("_csrf"); 
 		model.addAttribute("token", token.getToken());   
+		CsrfToken tokenReg = (CsrfToken) request.getAttribute("_csrfReg"); 
+		model.addAttribute("tokenReg", tokenReg.getToken());
 		
 		return "Inicio";
 	}
