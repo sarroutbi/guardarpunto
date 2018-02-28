@@ -91,6 +91,8 @@ public class ControladorInicio {
 	public String nuevoUsuario (Model model, Usuarios usuario, HttpServletRequest request) {
 		//Guardar el nuevo usuario en la db
 		repositoryUsuario.save(usuario);
+		EviarMail e= new EviarMail();
+		e.sendEmail(usuario.getNombre(), usuario.getEmail());
 		Inicio(model, request);
 		return "Inicio";
 	}
