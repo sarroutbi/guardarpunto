@@ -61,9 +61,9 @@ body {
 				<li><a id="log" href="#">Guardar Punto</a></li>
 				<li><a id="elemselect" href="#">Inicio</a></li>
 				<li><a id="elem" href="/Juegos">Juegos</a></li>
-				<li><a id="elem" href="/Usuario/1">Perfil</a></li>
-				<li><a id="elem" href="/Review/1">Reviews</a></li>
-				<li><a id="elem" href="/Amigos/1">Amigos</a></li>
+				<li><a id="elem" href="/Perfil">Perfil</a></li>
+				<li><a id="elem" href="/Review">Reviews</a></li>
+				<li><a id="elem" href="/Amigos">Amigos</a></li>
 			</ul>
 			<form id="buscador" class="form-inline" action="/buscar" method="post">
 				<input id="bus" class="form-control mr-sm-2" type="text" placeholder="Buscar" name="txt">
@@ -100,7 +100,7 @@ body {
 		<div id="der" class="col-md-3">
 			<!-- Columna derecha con login, noticias... -->
 			<div class="flex-container derecha">
-				<div class="login" id="login">
+				<div class="login" id="login" style="display: {{displayLogin}}">
 					<h3 class="tituloSeccion">Login</h3>
 
 					<form action="/" id="loginForm" method="post">
@@ -145,7 +145,7 @@ body {
 					<!--Final de la pantalla de registro-->
 				</div>
 
-				<div class="tusJuegos" style="display: none" id="tusJuegos">
+				<div class="tusJuegos" style="display: {{displayTusJuegos}}" id="tusJuegos">
 					<h3 class="tituloSeccion">Tus juegos</h3>
 					<div class="flex-container tusJuegosContainer">
                         {{#listaJuegosUsuario}}

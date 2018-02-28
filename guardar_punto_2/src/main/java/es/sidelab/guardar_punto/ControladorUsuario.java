@@ -16,12 +16,33 @@ public class ControladorUsuario {
 	private EstadoRepository repositoryEstados;
 	@Autowired
 	private UsuariosRepository repositoryUsuario;
+	//Obtener usuario logueado
+	@Autowired
+	private UserComponent userComponent;
 
+	//Ver el perfil de un usuario cualquiera
 	@GetMapping("/Usuario/{id}")
 	public String usuario(Model model,@PathVariable String id) {
 		int num = Integer.parseInt(id);
 		Usuarios usuario = repositoryUsuario.findOne(num);
 		
+		return datosUsuario(model, usuario);		
+	}
+	
+	//Ver el perfil del usuario logueado
+	@GetMapping("/Perfil")
+	public String usuario(Model model) {
+		if(userComponent.isLoggedUser()) {
+			Usuarios loggedUser = userComponent.getLoggedUser();	
+			return datosUsuario(model, loggedUser);
+		} else {
+			return "Not logged";
+		}
+		
+	}
+	
+	//Pone en el modelo los datos del usuario que recibe como argumento
+	private String datosUsuario (Model model, Usuarios usuario) {
 		String name = usuario.getNombre();
 		String bio = usuario.getBiografia();
 		String imagen = usuario.getImagen();
@@ -35,7 +56,7 @@ public class ControladorUsuario {
 		List<Comentario> comentarios = new ArrayList<Comentario>(usuario.getComents());
 		List<Review> reviews = new ArrayList<Review>(usuario.getReview());
 		
-		model.addAttribute("id",num);
+		model.addAttribute("id",usuario.getId());
 		model.addAttribute("imagen",imagen);
 		model.addAttribute("nombre",name);
 		model.addAttribute("biografia", bio);
@@ -48,22 +69,23 @@ public class ControladorUsuario {
 		
 		return "Usuario";
 	}
+	
 	//Cambios en el usuario
-		@PostMapping("/editarUsuario")
-		public String editarUsuario (Model model,Usuarios usuario) {
-				Integer idAux = usuario.getId();
-				String bioAux = usuario.getBiografia();
-				String imagenAux = usuario.getImagen();
+	@PostMapping("/editarUsuario")
+	public String editarUsuario (Model model,Usuarios usuario) {
+			Integer idAux = usuario.getId();
+			String bioAux = usuario.getBiografia();
+			String imagenAux = usuario.getImagen();
 
-				Usuarios user = repositoryUsuario.findOne(idAux);
-				if(!bioAux.isEmpty()) {
-					user.setBiografia(bioAux);
-				}
-				if(!imagenAux.isEmpty()) {
-					user.setImagen(imagenAux);
-				}
-				repositoryUsuario.save(user);
-				usuario(model,usuario.getId().toString());
-				return "Usuario";
-		}
+			Usuarios user = repositoryUsuario.findOne(idAux);
+			if(!bioAux.isEmpty()) {
+				user.setBiografia(bioAux);
+			}
+			if(!imagenAux.isEmpty()) {
+				user.setImagen(imagenAux);
+			}
+			repositoryUsuario.save(user);
+			usuario(model,usuario.getId().toString());
+			return "Usuario";
+	}
 }

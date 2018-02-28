@@ -32,6 +32,10 @@ public class ControladorInicio {
 	@Autowired
 	private EstadoRepository repositoryEstados;
 	
+	//Obtener usuario logueado
+	@Autowired
+	private UserComponent userComponent;
+	
 	//Listas auxiliares
 	//Lista de juegos destacados que se van a mostrar en la pagina de inicio
 	private List<Juego> listaJuegosDestacados = new ArrayList<Juego>();
@@ -52,12 +56,22 @@ public class ControladorInicio {
 	@GetMapping("/")
 	public String Inicio(Model model, HttpServletRequest request) {
 		model.addAttribute("listaJuegosDestacados", listaJuegosDestacados);
-		//En el panel "tus juegos" aparecen los juegos jugados del usuario que ha iniciado sesion
-		//En la fase 2 fingimos que ha iniciado sesion el usuario 1
-		List<Juego> jugados = new ArrayList<Juego>(repositoryEstados.findByStateAndEstadouser(
-				"jugado", repositoryUsuario.findOne(1)));
-		model.addAttribute("listaJuegosUsuario", jugados);
+		String displayLogin = "block";
+		String displayTusJuegos = "none";
 		
+		//Si hay un usuario logueado, se muestran sus juegos jugados en lugar del panel de login
+		List<Juego> jugados = new ArrayList<Juego>(); //vacia si no hay ningun usuario logueado
+		if(userComponent.isLoggedUser()) {
+			Usuarios loggedUser = userComponent.getLoggedUser();			
+			jugados = new ArrayList<Juego>(repositoryEstados.findByStateAndEstadouser("jugado", loggedUser));
+			displayLogin = "none";
+			displayTusJuegos = "block";
+		}
+		
+		
+		model.addAttribute("listaJuegosUsuario", jugados);
+		model.addAttribute("displayLogin", displayLogin);
+		model.addAttribute("displayTusJuegos", displayTusJuegos);
 		CsrfToken token = (CsrfToken) request.getAttribute("_csrf"); 
 		model.addAttribute("token", token.getToken());   
 		

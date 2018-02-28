@@ -14,11 +14,20 @@ public class ControladorReview {
 	@Autowired
 	private UsuariosRepository repositoryUsuario;
 	
-	@GetMapping("/Review/{id}")
-	public String rev(Model model,@PathVariable String id) {
-		int num = Integer.parseInt(id);
-		Usuarios usuario = repositoryUsuario.findOne(num);
-		List<Review> reviews = new ArrayList<Review>(usuario.getReview());
+	//Obtener usuario logueado
+	@Autowired
+	private UserComponent userComponent;
+	
+	//Obtener lista de reviews de usuario logueado
+	//Si no esta logueado, como la pagina es privada, redirige al inicio
+	@GetMapping("/Review")
+	public String rev(Model model) {		
+		List<Review> reviews = new ArrayList<Review>();
+		
+		if(userComponent.isLoggedUser()) {
+			Usuarios loggedUser = userComponent.getLoggedUser();	
+			reviews = new ArrayList<Review>(loggedUser.getReview());
+		}
 		
 		model.addAttribute("listaReviews",reviews);
 		return "Reviews";

@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -35,22 +37,27 @@ public class Usuarios {
 	private String imagen;
 	
 	/*Relaciones*/
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany(mappedBy="users")
 	private List<Juego> juegos= new ArrayList<Juego>();
 	
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany(mappedBy="amigos")
 	private List<Usuarios> usuarios= new ArrayList<Usuarios>(); //Adri,Susi,Marta,etc
 	
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany
 	private List<Usuarios> amigos= new ArrayList<Usuarios>();//Amigos de adri, etc
 	
-	
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy="user")
 	private List<Comentario> coments= new ArrayList<Comentario>();
 
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy="user")
 	private List<Review> review= new ArrayList<Review>();
 	
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy="estadouser")
 	private List<Estado> estados= new ArrayList<Estado>();
 	

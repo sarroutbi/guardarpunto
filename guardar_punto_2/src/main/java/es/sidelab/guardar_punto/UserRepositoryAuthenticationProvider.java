@@ -21,10 +21,14 @@ public class UserRepositoryAuthenticationProvider implements AuthenticationProvi
 	@Autowired
 	private UsuariosRepository userRepository;
 	
-	//@Override
+	@Autowired
+	private UserComponent userComponent;
+	
+	@Override
 	public Authentication authenticate (Authentication auth) throws AuthenticationException {
 		
-		Usuarios user = userRepository.findByEmailIgnoreCaseLike(auth.getName()); //name?
+		Usuarios user = userRepository.findByEmailIgnoreCaseLike(auth.getName()); //name = mail
+		
 				
 		if (user == null) {
 			throw new BadCredentialsException("User not found");
@@ -32,17 +36,17 @@ public class UserRepositoryAuthenticationProvider implements AuthenticationProvi
 		
 		String password = (String) auth.getCredentials();		;
 		if (!new BCryptPasswordEncoder().matches(password, user.getContrasenna())) {
-			System.out.println("maaaaaal");
 			throw new BadCredentialsException("Wrong password");
-		}
-
-		List<GrantedAuthority> roles = new ArrayList<GrantedAuthority>();
-		for (String role : user.getRoles()) {
-			roles.add(new SimpleGrantedAuthority(role));
-		}
-		
-		return new UsernamePasswordAuthenticationToken(user.getEmail(), password, roles);
-		
+		} else {
+			userComponent.setLoggedUser(user);
+			
+			List<GrantedAuthority> roles = new ArrayList<GrantedAuthority>();
+			for (String role : user.getRoles()) {
+				roles.add(new SimpleGrantedAuthority(role));
+			}
+			
+			return new UsernamePasswordAuthenticationToken(user.getEmail(), password, roles);
+		}		
 	}
 	
 	@Override
