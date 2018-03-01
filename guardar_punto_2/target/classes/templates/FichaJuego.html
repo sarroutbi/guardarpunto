@@ -37,8 +37,9 @@
     <!-- <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
       
       <!-- Script propio para botones y demas-->
-    <script src="/js/FichaJuego.js"></script>
-
+    <script src="/js/FichaJuego.js"></script> 
+    
+		
     <style>
     body { background-color: #a9d5cb; }
     </style>
@@ -47,6 +48,9 @@
   </head>
 
   <body>
+  
+  	<!--  Alert si se intenta añadir comentario o review sin haber hecho login -->
+    {{{alert}}}
 
     <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -115,7 +119,8 @@
 	            <div id="reviewPtosEnviar">
 	                <input type="number" name="puntuacion" min="1" max="5" step="0.5" required> 
 	                <input type="hidden" name="id_juego" value="{{juego.id}}"/>
-                    <input type="hidden" name="id_usuario" value="1"/>             
+                    <input type="hidden" name="id_usuario" value="1"/>       
+                    <input type="hidden" name="_csrf" value="{{token}}"/>      
 	                <p><button type="submit" style="margin-top: 5px;">Enviar</button></p>
 	            </div>
             </form>
@@ -153,9 +158,9 @@
                 <div class="anadirComentario" style="margin-bottom: 8px;">
                 	<form action="/nuevoComentario" method="post">
 	                    <textarea id="nuevoComentario" rows="2" style="width: 100%;" maxlength="100" name="texto">Nuevo comentario</textarea>
-	                    <input type="hidden" name="id_juego" value="{{juego.id}}"/>
-	                    <input type="hidden" name="id_usuario" value="1"/>
+	                    <input type="hidden" name="id_juego" value="{{juego.id}}"/>	                    
 	                    <button type="submit">Enviar</button>
+	                    <input type="hidden" name="_csrf" value="{{token}}"/>
                   	</form>
                 </div>
 
