@@ -89,11 +89,18 @@ public class ControladorInicio {
 	//Registrar nuevo usuario
 	@PostMapping("/nuevoUsuario")
 	public String nuevoUsuario (Model model, Usuarios usuario, HttpServletRequest request) {
-		//Guardar el nuevo usuario en la db
+		/*Comprobar que el usuario no está registrado ya*/
+		if(this.repositoryUsuario.findByEmailIgnoreCaseLike(usuario.getEmail())!=null
+			||
+		   this.repositoryUsuario.findByNombre(usuario.getNombre())!=null) {
+			/*TODO: Implementar error*/
+			return "Inicio";
+		}else {
+			//Guardar el nuevo usuario en la db
 		repositoryUsuario.save(usuario);
 		EviarMail e= new EviarMail();
 		e.sendEmail(usuario.getNombre(), usuario.getEmail());
 		Inicio(model, request);
-		return "Inicio";
+		return "Inicio";}
 	}
 }
