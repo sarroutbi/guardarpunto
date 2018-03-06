@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class ControladorReview {
 	@Autowired
 	private UsuariosRepository repositoryUsuario;
+	@Autowired
+	private ReviewRepository repositoryReviews;
 	
 	//Obtener usuario logueado
 	@Autowired
@@ -25,8 +27,8 @@ public class ControladorReview {
 		List<Review> reviews = new ArrayList<Review>();
 		
 		if(userComponent.isLoggedUser()) {
-			Usuarios loggedUser = userComponent.getLoggedUser();	
-			reviews = new ArrayList<Review>(loggedUser.getReview());
+			Usuarios loggedUser = userComponent.getLoggedUser();
+			reviews = new ArrayList<Review>(repositoryReviews.findByUser(loggedUser));
 		}
 		
 		model.addAttribute("listaReviews",reviews);

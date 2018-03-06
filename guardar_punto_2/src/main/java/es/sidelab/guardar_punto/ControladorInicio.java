@@ -90,15 +90,21 @@ public class ControladorInicio {
 		/*Comprobar que el usuario no está registrado ya*/
 		if(this.repositoryUsuario.findByEmailIgnoreCaseLike(usuario.getEmail())!=null
 			||
-		   this.repositoryUsuario.findByNombre(usuario.getNombre())!=null) {
+		   !this.repositoryUsuario.findByNombre(usuario.getNombre()).isEmpty()) {
 			/*TODO: Implementar error*/
+			System.out.println("Usuario ya registrado");
+			System.out.println(repositoryUsuario.findByNombre(usuario.getNombre()).toString());
+			Inicio(model, request);
 			return "Inicio";
 		}else {
+			//Hay que cifrar la contraseña del nuevo usuario
+			usuario.cifrarYGuardarContrasena(usuario.getContrasenna());
 			//Guardar el nuevo usuario en la db
-		repositoryUsuario.save(usuario);
-		EviarMail e= new EviarMail();
-		e.sendEmail(usuario.getNombre(), usuario.getEmail());
-		Inicio(model, request);
-		return "Inicio";}
+			repositoryUsuario.save(usuario);
+			EviarMail e= new EviarMail();
+			e.sendEmail(usuario.getNombre(), usuario.getEmail());
+			Inicio(model, request);
+			return "Inicio";
+		}
 	}
 }

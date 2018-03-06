@@ -8,4 +8,5 @@ public interface ComentariosRepository extends JpaRepository<Comentario,Integer>
 	List<Comentario> findByUser(Usuarios user);
 	List<Comentario> findByJuego(Juego juego);
 	
+	
  }

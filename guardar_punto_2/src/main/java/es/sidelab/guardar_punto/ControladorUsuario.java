@@ -16,6 +16,10 @@ public class ControladorUsuario {
 	private EstadoRepository repositoryEstados;
 	@Autowired
 	private UsuariosRepository repositoryUsuario;
+	@Autowired
+	private ComentariosRepository repositoryComentarios;
+	@Autowired
+	private ReviewRepository repositoryReviews;
 	//Obtener usuario logueado
 	@Autowired
 	private UserComponent userComponent;
@@ -53,8 +57,9 @@ public class ControladorUsuario {
 		List<Juego> jugando = new ArrayList<Juego>(repositoryEstados.findByStateAndEstadouser("jugando", usuario));
 		List<Juego> pendientes = new ArrayList<Juego>(repositoryEstados.findByStateAndEstadouser("pendiente", usuario));			
 		
-		List<Comentario> comentarios = new ArrayList<Comentario>(usuario.getComents());
-		List<Review> reviews = new ArrayList<Review>(usuario.getReview());
+		//List<Comentario> comentarios = new ArrayList<Comentario>(usuario.getComents());
+		List<Comentario> comentarios = new ArrayList<Comentario>(repositoryComentarios.findByUser(usuario));
+		List<Review> reviews = new ArrayList<Review>(repositoryReviews.findByUser(usuario));
 		
 		model.addAttribute("id",usuario.getId());
 		model.addAttribute("imagen",imagen);

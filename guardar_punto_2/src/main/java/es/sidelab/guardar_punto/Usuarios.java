@@ -193,6 +193,10 @@ public class Usuarios {
 		this.roles = roles;
 	}
 	
+	public void cifrarYGuardarContrasena (String pass) {
+		contrasenna = new BCryptPasswordEncoder().encode(pass);
+	}
+	
 	
 	
 	
