@@ -156,3 +156,10 @@ Contamos con 9 pantallas diferentes, dos de ellas modales pero que se han inclui
 ## **Diagrama de clases**
 Generado con la herramienta ObjectAid UML para Eclipse:
 ![](https://github.com/mfms5/guardarpunto/blob/master/guardar_punto_2/diagrama_clases.png?raw=true)
+
+
+# **Fase 3**
+
+## **Servicio interno**
+Se ha implentado un servidor que, al registrarse un usuario, enviará un correo de bienvenida. Esto se realiza en el proyecto ServicioMail, que crea un servidor, con sockets, que espera la conexión de un cliente. Desde el proyecto de Guardar Punto, se conecta creando un objeto EnviarMail, que envía al servidor el nombre de usuario y el e-mail del usuario que se ha registrado. 
+Tras esto, el servidor, mediante el protocolo SMTP, manda con el correo guardarpuntomail@gmail.com un correo al usuario, dándole la bienvenida. 
