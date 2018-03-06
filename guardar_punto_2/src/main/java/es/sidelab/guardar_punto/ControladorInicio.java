@@ -81,7 +81,7 @@ public class ControladorInicio {
 	
     @GetMapping("/loginerror")
     public String loginerror() {
-    	return "loginerror";
+    	return "loginerr";
     }
 	
 	//Registrar nuevo usuario
