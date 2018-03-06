@@ -4,10 +4,15 @@ import java.util.*;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.http.RequestUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ControladorInicio {
 
+	private static final Logger log = LoggerFactory.getLogger(ControladorInicio.class);
 	//Repositorios
 	@Autowired
 	private UsuariosRepository repositoryUsuario;	
@@ -112,6 +118,22 @@ public class ControladorInicio {
 			e.sendEmail(usuario.getNombre(), usuario.getEmail());
 			Inicio(model, request);
 			model.addAttribute("alert", alert);	
+			return "Inicio";
+		}
+	}
+	
+	@RequestMapping("/logOut")
+	public String logOut(Model model,HttpSession session,HttpServletRequest request) {
+
+		Inicio(model, request);
+		model.addAttribute("alert", alert);
+		
+		if (!userComponent.isLoggedUser()) {
+			log.info("No user logged");
+			return "Inicio";
+		} else {
+			session.invalidate();
+			log.info("Logged out");	
 			return "Inicio";
 		}
 	}
