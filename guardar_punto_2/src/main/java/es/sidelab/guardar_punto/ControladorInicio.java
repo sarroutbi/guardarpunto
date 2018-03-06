@@ -40,6 +40,8 @@ public class ControladorInicio {
 	//Lista de juegos destacados que se van a mostrar en la pagina de inicio
 	private List<Juego> listaJuegosDestacados = new ArrayList<Juego>();
 	
+	private String alert = "";
+	
 	@PostConstruct
 	public void init() {		
 		//repositoryUsuario.save(new Usuarios("user", "pass", "ROLE_USER"));
@@ -75,6 +77,8 @@ public class ControladorInicio {
 		
 		CsrfToken token = (CsrfToken) request.getAttribute("_csrf"); 
 		model.addAttribute("token", token.getToken());   
+		
+		model.addAttribute("alert", alert);	
 				
 		return "Inicio";
 	}
@@ -93,7 +97,8 @@ public class ControladorInicio {
 		   !this.repositoryUsuario.findByNombre(usuario.getNombre()).isEmpty()) {
 			/*TODO: Implementar error*/
 			System.out.println("Usuario ya registrado");
-			System.out.println(repositoryUsuario.findByNombre(usuario.getNombre()).toString());
+			//Enviar un alert para avisar de que no esta logueado
+			alert = "<script>alert(\"Este usuario ya existe \")</script>";
 			Inicio(model, request);
 			return "Inicio";
 		}else {
@@ -104,6 +109,7 @@ public class ControladorInicio {
 			EviarMail e= new EviarMail();
 			e.sendEmail(usuario.getNombre(), usuario.getEmail());
 			Inicio(model, request);
+			model.addAttribute("alert", alert);	
 			return "Inicio";
 		}
 	}

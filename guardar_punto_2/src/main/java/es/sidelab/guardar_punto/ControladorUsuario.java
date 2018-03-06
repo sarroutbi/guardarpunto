@@ -3,7 +3,10 @@ package es.sidelab.guardar_punto;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,19 +29,19 @@ public class ControladorUsuario {
 
 	//Ver el perfil de un usuario cualquiera
 	@GetMapping("/Usuario/{id}")
-	public String usuario(Model model,@PathVariable String id) {
+	public String usuario(Model model,@PathVariable String id, HttpServletRequest request) {
 		int num = Integer.parseInt(id);
 		Usuarios usuario = repositoryUsuario.findOne(num);
 		
-		return datosUsuario(model, usuario);		
+		return datosUsuario(model, usuario, request);		
 	}
 	
 	//Ver el perfil del usuario logueado
 	@GetMapping("/Perfil")
-	public String usuario(Model model) {
+	public String usuario(Model model, HttpServletRequest request) {
 		if(userComponent.isLoggedUser()) {
 			Usuarios loggedUser = userComponent.getLoggedUser();	
-			return datosUsuario(model, loggedUser);
+			return datosUsuario(model, loggedUser, request);
 		} else {
 			return "Not logged";
 		}
@@ -46,7 +49,7 @@ public class ControladorUsuario {
 	}
 	
 	//Pone en el modelo los datos del usuario que recibe como argumento
-	private String datosUsuario (Model model, Usuarios usuario) {
+	private String datosUsuario (Model model, Usuarios usuario, HttpServletRequest request) {
 		String name = usuario.getNombre();
 		String bio = usuario.getBiografia();
 		String imagen = usuario.getImagen();
@@ -72,12 +75,15 @@ public class ControladorUsuario {
 		model.addAttribute("listaComentarios",comentarios);
 		model.addAttribute("listaReviews",reviews);
 		
+		CsrfToken token = (CsrfToken) request.getAttribute("_csrf"); 
+		model.addAttribute("token", token.getToken());
+		
 		return "Usuario";
 	}
 	
 	//Cambios en el usuario
 	@PostMapping("/editarUsuario")
-	public String editarUsuario (Model model,Usuarios usuario) {
+	public String editarUsuario (Model model,Usuarios usuario, HttpServletRequest request) {
 			Integer idAux = usuario.getId();
 			String bioAux = usuario.getBiografia();
 			String imagenAux = usuario.getImagen();
@@ -90,7 +96,7 @@ public class ControladorUsuario {
 				user.setImagen(imagenAux);
 			}
 			repositoryUsuario.save(user);
-			usuario(model,usuario.getId().toString());
+			usuario(model,usuario.getId().toString(), request);
 			return "Usuario";
 	}
 }

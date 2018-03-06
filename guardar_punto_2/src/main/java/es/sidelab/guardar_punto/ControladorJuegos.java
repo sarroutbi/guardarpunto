@@ -3,9 +3,11 @@ package es.sidelab.guardar_punto;
 import java.util.*;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,7 +32,7 @@ public class ControladorJuegos {
 	
 		//Lista de TODOS los juegos que hay en la BD, divididos por la letra inicial
 		@GetMapping("/Juegos") 
-		public String Juegos (Model model) {
+		public String Juegos (Model model, HttpServletRequest request) {
 			model.addAttribute("listaJuegosA", repositoryJuego.findByTitleIgnoreCaseStartingWith("A"));
 			model.addAttribute("listaJuegosB", repositoryJuego.findByTitleIgnoreCaseStartingWith("B"));
 			model.addAttribute("listaJuegosC", repositoryJuego.findByTitleIgnoreCaseStartingWith("C"));
@@ -63,15 +65,23 @@ public class ControladorJuegos {
 			List<Juego> jugados = new ArrayList<Juego>(repositoryEstados.findByStateAndEstadouser(
 					"jugado", repositoryUsuario.findOne(1)));
 			model.addAttribute("listaJuegosUsuario", jugados);
+			
+		    CsrfToken token = (CsrfToken) request.getAttribute("_csrf"); 
+			model.addAttribute("token", token.getToken());
+			
 			return "Juegos";
 		}
 		
 		//Pagina que muestra los resultados de la busqueda (juegos o usuarios)
 		@PostMapping("/buscar")
-		public String Busqueda (Model model, String txt) {
+		public String Busqueda (Model model, String txt, HttpServletRequest request) {
 			System.out.println("Busqueda");
 			model.addAttribute("listaJuegosEncontrados", repositoryJuego.findByTitleIgnoreCaseLike("%"+txt+"%"));
 			model.addAttribute("listaUsuariosEncontrados", repositoryUsuario.findByNombreIgnoreCaseLike("%"+txt+"%"));
+			
+		    CsrfToken token = (CsrfToken) request.getAttribute("_csrf"); 
+			model.addAttribute("token", token.getToken());
+			
 			return "Busqueda";
 		}
 

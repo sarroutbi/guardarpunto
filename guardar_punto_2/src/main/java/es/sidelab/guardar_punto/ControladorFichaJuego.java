@@ -48,7 +48,7 @@ public class ControladorFichaJuego {
 		CsrfToken token = (CsrfToken) request.getAttribute("_csrf"); 
 		model.addAttribute("token", token.getToken());   
 		
-		model.addAttribute("alert", "");
+		model.addAttribute("alert", "");		
 		
 		return "FichaJuego";
 	}

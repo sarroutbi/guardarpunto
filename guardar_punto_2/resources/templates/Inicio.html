@@ -54,6 +54,9 @@ body {
 
 <body>
 
+	<!--  Alert si se intenta registrar con un usuario que ya existe -->
+    {{{alert}}}
+
 	<!-- Fixed navbar -->
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div id="navbar" class="navbar-collapse collapse">
@@ -67,6 +70,7 @@ body {
 			</ul>
 			<form id="buscador" class="form-inline" action="/buscar" method="post">
 				<input id="bus" class="form-control mr-sm-2" type="text" placeholder="Buscar" name="txt">
+				<input type="hidden" name="_csrf" value="{{token}}"/>
 				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
 			</form>
 
