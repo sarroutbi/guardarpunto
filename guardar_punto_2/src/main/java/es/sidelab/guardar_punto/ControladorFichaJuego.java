@@ -38,12 +38,19 @@ public class ControladorFichaJuego {
 	@GetMapping("/juego/{id}")
 	public String fichaJuego (Model model, @PathVariable String id, HttpServletRequest request) {		
 		int numero = Integer.parseInt(id);
+		String displayOff = "none";
+		
+		if(userComponent.isLoggedUser()) {
+			displayOff = "block";
+		}
 		//Buscarlo en la bd por el id
 		Juego juego = repositoryJuego.findOne(numero); 
+		
 		//Añadir al model el juego, su lista de reviews y su lista de comentarios		
 		model.addAttribute("juego", juego);
 		model.addAttribute("listaReviews", juego.getReviews());
 		model.addAttribute("listaComentarios", juego.getComents());
+		model.addAttribute("displayOff", displayOff);
 		
 		CsrfToken token = (CsrfToken) request.getAttribute("_csrf"); 
 		model.addAttribute("token", token.getToken());   

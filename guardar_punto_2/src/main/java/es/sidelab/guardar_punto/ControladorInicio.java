@@ -65,6 +65,7 @@ public class ControladorInicio {
 	public String Inicio(Model model, HttpServletRequest request) {
 		model.addAttribute("listaJuegosDestacados", listaJuegosDestacados);
 		String displayLogin = "block";
+		String displayOff = "none";
 		String displayTusJuegos = "none";
 		
 		//Si hay un usuario logueado, se muestran sus juegos jugados en lugar del panel de login
@@ -73,6 +74,7 @@ public class ControladorInicio {
 			Usuarios loggedUser = userComponent.getLoggedUser();			
 			jugados = new ArrayList<Juego>(repositoryEstados.findByStateAndEstadouser("jugado", loggedUser));
 			displayLogin = "none";
+			displayOff="block";
 			displayTusJuegos = "block";
 		}
 		
@@ -80,6 +82,7 @@ public class ControladorInicio {
 		model.addAttribute("listaJuegosUsuario", jugados);
 		model.addAttribute("displayLogin", displayLogin);
 		model.addAttribute("displayTusJuegos", displayTusJuegos);
+		model.addAttribute("displayOff",displayOff);
 		
 		CsrfToken token = (CsrfToken) request.getAttribute("_csrf"); 
 		model.addAttribute("token", token.getToken());   

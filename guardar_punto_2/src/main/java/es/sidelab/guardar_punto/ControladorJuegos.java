@@ -29,10 +29,21 @@ public class ControladorJuegos {
 		private ComentariosRepository repositoryComentario;
 		@Autowired
 		private EstadoRepository repositoryEstados;
+		
+		//Obtener usuario logueado
+		@Autowired
+		private UserComponent userComponent;
 	
 		//Lista de TODOS los juegos que hay en la BD, divididos por la letra inicial
 		@GetMapping("/Juegos") 
 		public String Juegos (Model model, HttpServletRequest request) {
+			
+			String displayOff = "none";
+			
+			if(userComponent.isLoggedUser()) {
+				displayOff = "block";
+			}
+			
 			model.addAttribute("listaJuegosA", repositoryJuego.findByTitleIgnoreCaseStartingWith("A"));
 			model.addAttribute("listaJuegosB", repositoryJuego.findByTitleIgnoreCaseStartingWith("B"));
 			model.addAttribute("listaJuegosC", repositoryJuego.findByTitleIgnoreCaseStartingWith("C"));
@@ -65,6 +76,7 @@ public class ControladorJuegos {
 			List<Juego> jugados = new ArrayList<Juego>(repositoryEstados.findByStateAndEstadouser(
 					"jugado", repositoryUsuario.findOne(1)));
 			model.addAttribute("listaJuegosUsuario", jugados);
+			model.addAttribute("displayOff", displayOff);
 			
 		    CsrfToken token = (CsrfToken) request.getAttribute("_csrf"); 
 			model.addAttribute("token", token.getToken());
@@ -76,8 +88,15 @@ public class ControladorJuegos {
 		@PostMapping("/buscar")
 		public String Busqueda (Model model, String txt, HttpServletRequest request) {
 			System.out.println("Busqueda");
+			String displayOff = "none";
+			
+			if(userComponent.isLoggedUser()) {
+				displayOff = "block";
+			}
 			model.addAttribute("listaJuegosEncontrados", repositoryJuego.findByTitleIgnoreCaseLike("%"+txt+"%"));
 			model.addAttribute("listaUsuariosEncontrados", repositoryUsuario.findByNombreIgnoreCaseLike("%"+txt+"%"));
+			
+			model.addAttribute("displayOff", displayOff);
 			
 		    CsrfToken token = (CsrfToken) request.getAttribute("_csrf"); 
 			model.addAttribute("token", token.getToken());
