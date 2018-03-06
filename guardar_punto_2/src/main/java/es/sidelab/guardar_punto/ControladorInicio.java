@@ -84,7 +84,9 @@ public class ControladorInicio {
 	}
 	
     @GetMapping("/loginerror")
-    public String loginerror() {
+    public String loginerror(Model model,  HttpServletRequest request) {
+		CsrfToken token = (CsrfToken) request.getAttribute("_csrf"); 
+		model.addAttribute("token", token.getToken());
     	return "loginerr";
     }
 	

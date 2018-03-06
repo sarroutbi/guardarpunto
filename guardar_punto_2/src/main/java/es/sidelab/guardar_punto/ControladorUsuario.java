@@ -30,10 +30,11 @@ public class ControladorUsuario {
 	//Ver el perfil de un usuario cualquiera
 	@GetMapping("/Usuario/{id}")
 	public String usuario(Model model,@PathVariable String id, HttpServletRequest request) {
+		String displayEditar = "none";
 		int num = Integer.parseInt(id);
 		Usuarios usuario = repositoryUsuario.findOne(num);
 		
-		return datosUsuario(model, usuario, request);		
+		return datosUsuario(model, usuario, request, displayEditar);		
 	}
 	
 	//Ver el perfil del usuario logueado
@@ -41,7 +42,8 @@ public class ControladorUsuario {
 	public String usuario(Model model, HttpServletRequest request) {
 		if(userComponent.isLoggedUser()) {
 			Usuarios loggedUser = userComponent.getLoggedUser();	
-			return datosUsuario(model, loggedUser, request);
+			String displayEditar = "block";
+			return datosUsuario(model, loggedUser, request, displayEditar);
 		} else {
 			return "Not logged";
 		}
@@ -49,7 +51,7 @@ public class ControladorUsuario {
 	}
 	
 	//Pone en el modelo los datos del usuario que recibe como argumento
-	private String datosUsuario (Model model, Usuarios usuario, HttpServletRequest request) {
+	private String datosUsuario (Model model, Usuarios usuario, HttpServletRequest request, String displayEditar) {
 		String name = usuario.getNombre();
 		String bio = usuario.getBiografia();
 		String imagen = usuario.getImagen();
@@ -74,6 +76,7 @@ public class ControladorUsuario {
 		model.addAttribute("listaPendientes",pendientes);
 		model.addAttribute("listaComentarios",comentarios);
 		model.addAttribute("listaReviews",reviews);
+		model.addAttribute("displayEditar", displayEditar);
 		
 		CsrfToken token = (CsrfToken) request.getAttribute("_csrf"); 
 		model.addAttribute("token", token.getToken());
