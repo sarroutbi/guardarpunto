@@ -71,9 +71,14 @@ body {
               <button id="bot" class="btn" type="submit">Buscar</button>
             </li>
             <li>
-              <button id="off" type="button" class="btn" style="display: {{displayOff}}">
-              <a href="/logOut"><span class="glyphicon glyphicon-off"></span></a> 
-              </button>
+              <div id="off" style="display: {{displayOff}}">
+            		<form action="/logout" id="OffForm" method="post">
+	              	<button type="submit" class="btn">
+	             	<span class="glyphicon glyphicon-off"></span> 
+              		</button>
+              		<input type="hidden" name="_csrf" value="{{token}}"/>	
+              		</form>
+            	</div>
             </li>
             </ul>
       </div>

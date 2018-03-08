@@ -96,6 +96,7 @@ public class ControladorInicio {
     public String loginerror(Model model,  HttpServletRequest request) {
 		CsrfToken token = (CsrfToken) request.getAttribute("_csrf"); 
 		model.addAttribute("token", token.getToken());
+		model.addAttribute("displayOff", "none");
     	return "loginerr";
     }  
    
@@ -126,7 +127,7 @@ public class ControladorInicio {
 		}
 	}
 	
-	@RequestMapping("/logOut")
+	/*@PostMapping("/logOut")
 	public String logOut(Model model,HttpSession session,HttpServletRequest request) {
 
 		Inicio(model, request);
@@ -134,11 +135,12 @@ public class ControladorInicio {
 		
 		if (!userComponent.isLoggedUser()) {
 			log.info("No user logged");
-			return "Inicio";
 		} else {
 			session.invalidate();
-			log.info("Logged out");	
-			return "Inicio";
+			userComponent.setLoggedUser(null);
+			log.info("Logged out");
 		}
-	}
+		
+		return Inicio(model, request);
+	}*/
 }

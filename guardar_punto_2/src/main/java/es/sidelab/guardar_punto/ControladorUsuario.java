@@ -54,8 +54,7 @@ public class ControladorUsuario {
 			return datosUsuario(model, loggedUser, request, displayEditar);
 		} else {
 			return "Not logged";
-		}
-		
+		}		
 	}
 	
 	//Pone en el modelo los datos del usuario que recibe como argumento
