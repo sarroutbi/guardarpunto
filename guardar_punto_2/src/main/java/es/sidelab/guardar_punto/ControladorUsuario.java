@@ -43,18 +43,14 @@ public class ControladorUsuario {
 		return datosUsuario(model, usuario, request, displayEditar);		
 	}
 	
-	//Ver el perfil del usuario logueado
+	//Ver el perfil del usuario logueado 
 	@GetMapping("/Perfil")
-	public String usuario(Model model, HttpServletRequest request) {
-		if(userComponent.isLoggedUser()) {
+	public String usuario(Model model, HttpServletRequest request) {	
 			Usuarios loggedUser = userComponent.getLoggedUser();	
 			String displayEditar = "block";
 			String displayOff = "block";
 			model.addAttribute("displayOff", displayOff);
 			return datosUsuario(model, loggedUser, request, displayEditar);
-		} else {
-			return "Not logged";
-		}		
 	}
 	
 	//Pone en el modelo los datos del usuario que recibe como argumento
