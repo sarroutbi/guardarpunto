@@ -40,19 +40,24 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div id="navbar" class="navbar-collapse collapse">
           <ul id="elementosNavBar" class="nav navbar-nav">
-            <li><a id="log" href="#">Guardar Punto</a></li>
+            <li><a id="log" href="/">Guardar Punto</a></li>
             <li><a id="elem" href="/">Inicio</a></li>
             <li><a id="elem" href="/Juegos">Juegos</a></li>
             <li><a id="elem" href="/Perfil">Perfil</a></li>
-            <li><a id="elemselect" href="/Review">Reviews</a></li>
+            <li><a id="elemselect" href="/Reviews">Reviews</a></li>
             <li><a id="elem" href="/Amigos">Amigos</a></li>  
-          </ul>
-          <form id="buscador" class="form-inline" action="/buscar" method="post">
-				<input id="bus" class="form-control mr-sm-2" type="text" placeholder="Buscar" name="txt">
-				<input type="hidden" name="_csrf" value="{{token}}"/>
-				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-		  </form>
-        
+            <li>
+              <input id="bus" class="form-control" type="text" placeholder="Buscar">
+            </li>
+            <li>
+              <button id="bot" class="btn" type="submit">Buscar</button>
+            </li>
+            <li>
+              <button id="off" type="button" class="btn" style="display: {{displayOff}}">
+              <a href="/logOut"><span class="glyphicon glyphicon-off"></span></a> 
+              </button>
+            </li>
+            </ul>
       </div>
     </nav>
 

@@ -27,14 +27,17 @@ public class ControladorAmigos {
 	@GetMapping("/Amigos")
 	public String amigos(Model model, HttpServletRequest request) {		
 		List<Usuarios> amigos = new ArrayList<Usuarios>();
+		String displayOff = "none";
 		
 		if(userComponent.isLoggedUser()) {
 			Usuarios loggedUser = userComponent.getLoggedUser();
 			System.out.println(loggedUser.getNombre());
 			amigos = new ArrayList<Usuarios>(loggedUser.getAmigos());
+			displayOff = "block";
 		}	
 				
 	    model.addAttribute("amigos",amigos);
+	    model.addAttribute("displayOff", displayOff);
 	    
 	    CsrfToken token = (CsrfToken) request.getAttribute("_csrf"); 
 		model.addAttribute("token", token.getToken());

@@ -33,6 +33,12 @@ public class ControladorUsuario {
 		String displayEditar = "none";
 		int num = Integer.parseInt(id);
 		Usuarios usuario = repositoryUsuario.findOne(num);
+		String displayOff = "none";
+		
+		if(userComponent.isLoggedUser()) {
+			displayOff = "block";
+		}
+		model.addAttribute("displayOff", displayOff);
 		
 		return datosUsuario(model, usuario, request, displayEditar);		
 	}
@@ -43,6 +49,8 @@ public class ControladorUsuario {
 		if(userComponent.isLoggedUser()) {
 			Usuarios loggedUser = userComponent.getLoggedUser();	
 			String displayEditar = "block";
+			String displayOff = "block";
+			model.addAttribute("displayOff", displayOff);
 			return datosUsuario(model, loggedUser, request, displayEditar);
 		} else {
 			return "Not logged";

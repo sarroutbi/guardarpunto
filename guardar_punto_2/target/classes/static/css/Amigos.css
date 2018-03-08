@@ -20,14 +20,19 @@ body {
 	font-size:120%;
 	color:#73c2ac;
 }
-#buscador{
+#bus{
 	margin-top: 6px;
-	margin-right: 15%;
 	margin-left: 20%;
+	margin-right: 5%;
 	margin-bottom: 6px;
 	font-family: myFont;
-	font-size:200%;
+	font-size:90%;
 
+}
+#bot{
+	margin-top: 6px;
+	margin-left: 5%;
+	font-family: myFont;
 }
 
 #navbar{
@@ -35,8 +40,7 @@ body {
 }
 #elementosNavBar{
 	position: relative;
-	margin-left: 20%;
-	margin-right: 5%;
+	margin-left: 5%;
 	font-family: myFont;
 	font-size:150%;
 	
@@ -58,7 +62,7 @@ body {
 	margin-left: 5%; 
 	margin-right: 10%;
 	margin-bottom: 3%;
-	margin-top: 1%;
+	margin-top: 5%;
 	font-family: myFont2; 
 	font-size: 220%;
 	color: #286858;
@@ -88,4 +92,11 @@ body {
 #name{
 	margin-top: 5%;
 	text-shadow:3px 2px 2px #014a33;
+}
+#off{
+	margin-top: 6px;
+	margin-left: 60%;
+	margin-bottom: 6px;
+	font-family: myFont;
+	color: black;
 }

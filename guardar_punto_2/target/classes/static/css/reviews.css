@@ -20,16 +20,20 @@ body {
 	font-size:120%;
 	color:#73c2ac;
 }
-#buscador{
+#bus{
 	margin-top: 6px;
-	margin-right: 15%;
 	margin-left: 20%;
+	margin-right: 5%;
 	margin-bottom: 6px;
 	font-family: myFont;
-	font-size:200%;
+	font-size:90%;
 
 }
-
+#bot{
+	margin-top: 6px;
+	margin-left: 5%;
+	font-family: myFont;
+}
 #navbar{
 	background-color: #0e2020;
 }
@@ -91,4 +95,11 @@ body {
 	font-size:70%;
 	word-wrap: break-word;
 	text-shadow: none;
+}
+#off{
+	margin-top: 6px;
+	margin-left: 60%;
+	margin-bottom: 6px;
+	font-family: myFont;
+	color: black;
 }
