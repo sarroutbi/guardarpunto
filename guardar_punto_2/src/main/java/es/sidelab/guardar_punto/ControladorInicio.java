@@ -88,7 +88,8 @@ public class ControladorInicio {
 		CsrfToken token = (CsrfToken) request.getAttribute("_csrf"); 
 		model.addAttribute("token", token.getToken());
     	return "loginerr";
-    }
+    }  
+   
 	
 	//Registrar nuevo usuario
 	@PostMapping("/nuevoUsuario")
