@@ -16,8 +16,8 @@ Tras esto, el servidor, mediante el protocolo SMTP, manda con el correo guardarp
 2. Generar los jar de la aplicación y del servicio interno, y copiarlos en la carpeta compartida con la MV.
 3. Desde el directorio en el que se encuentra el archivo *Vagranfile*, iniciar la MV con los comandos *vagrant up* y *vagrant ssh*.
 4. Una vez dentro de la MV, **si es la primera vez que se inicia la aplicación**, crear una nueva base de datos :
-   1. *mysql -u root -p* (introducir la contraseña que se haya escogido al instalar el servidor de MySQL).
-   2. *CREATE DATABASE guardarpuntodb*   
+   1. *mysql -u root -p;* (introducir la contraseña que se haya escogido al instalar el servidor de MySQL).
+   2. *CREATE DATABASE guardarpuntodb;*   
 5. Desde el directorio raíz, acceder a la carpeta compartida con *cd vagrant*.
 6. Iniciar primero el servicio interno en segundo plano: *java -jar ServicioMail-0.0.1-SNAPSHOT &*.
 7. Después iniciar la aplicación: *java -jar guardar_punto-0.0.1-SNAPSHOT*.
