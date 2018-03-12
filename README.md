@@ -32,7 +32,6 @@ Las entidades serían:
 4. Comentarios: Publicaciones más cortas que las reviews (y sin puntuación), que realiza un usuario sobre un juego.
 
 ## **Diagrama de clases**
-Generado con la herramienta ObjectAid UML para Eclipse:
 ![](https://raw.githubusercontent.com/mfms5/guardarpunto/master/Diagrama/diagrama_clases_f3.jpg)
 
 ## **Diagrama Entidad/Relación**
