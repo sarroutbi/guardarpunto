@@ -4,7 +4,7 @@ import java.net.*;
 import java.io.*;
 public class Servidor {
 	/*Numero del puerto del servidor y máximo de conexiones que acepta*/
-	private static final int PORT= 566;
+	private static final int PORT= 1025;
 	private static final int MAX_CONEXIONES=16;
 	
 	public static void main(String[] args){

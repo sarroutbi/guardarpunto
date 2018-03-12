@@ -15,7 +15,7 @@ public class EviarMail {
 
 		try {
 
-			socket = new Socket("127.0.0.1", 566);
+			socket = new Socket("127.0.0.1", 1025);
 			salidaDatos = new ObjectOutputStream(socket.getOutputStream());
 			entradaDatos = new DataInputStream(socket.getInputStream());
 
@@ -26,7 +26,7 @@ public class EviarMail {
 
 			salidaDatos.writeObject(ls);
 
-			System.out.println(entradaDatos.readUTF()+"patatah");
+			System.out.println(entradaDatos.readUTF());
 
 			salidaDatos.close();
 

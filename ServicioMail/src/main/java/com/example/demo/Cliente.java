@@ -35,18 +35,18 @@ public class Cliente extends Thread implements Observer {
 			salidaDatos = new DataOutputStream(socket.getOutputStream());
 
 		} catch (IOException ex) {
-			System.out.println("Fallo creada stream");
+			System.out.println("Fallo crear stream");
 			ex.printStackTrace();
 		}
 	}
 	
 	@Override
 	public void run()  {
-		System.out.println("Cliente Dansando Capoeira do morte");
+		System.out.println("Cliente ejecutando");
 		List<String> mensajeRecibido = new ArrayList<>();
 		boolean conectado = true;
 
-		System.out.println("Comprobaçao");
+		System.out.println("Comprobacion");
 		
 		while(conectado) {
 			try {
