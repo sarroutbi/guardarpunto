@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
-public class Controlador {
+public class InitData {
 	
 	//Repositorios
 	@Autowired
@@ -212,10 +212,10 @@ public class Controlador {
 		/*** FIN DATOS BD ***/
 		
 		/*** Listas auxiliares ***/
-		listaJuegosDestacados.add(repositoryJuego.findOne(1));
+		/*listaJuegosDestacados.add(repositoryJuego.findOne(1));
 		listaJuegosDestacados.add(repositoryJuego.findOne(2));
 		listaJuegosDestacados.add(repositoryJuego.findOne(6));		
-		listaJuegosDestacados.add(repositoryJuego.findOne(7));	
+		listaJuegosDestacados.add(repositoryJuego.findOne(7));	*/
 	}
 
 	//Pagina inicial. 

@@ -14,8 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class ControladorReview {
-	@Autowired
-	private UsuariosRepository repositoryUsuario;
+	
 	@Autowired
 	private ReviewRepository repositoryReviews;
 	
@@ -27,7 +26,6 @@ public class ControladorReview {
 	//Si no esta logueado, como la pagina es privada, redirige al inicio
 	@GetMapping("/Reviews")
 	public String rev(Model model, HttpServletRequest request) {	
-		System.out.println("qaaaaaaaa");
 		List<Review> reviews = new ArrayList<Review>();
 		String displayOff = "none";
 		

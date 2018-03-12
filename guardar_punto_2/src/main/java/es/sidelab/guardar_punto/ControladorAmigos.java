@@ -13,11 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
-public class ControladorAmigos {
-	
-	@Autowired
-	private UsuariosRepository repositoryUsuario;
-	
+public class ControladorAmigos {	
+
 	//Obtener usuario logueado
 	@Autowired
 	private UserComponent userComponent;

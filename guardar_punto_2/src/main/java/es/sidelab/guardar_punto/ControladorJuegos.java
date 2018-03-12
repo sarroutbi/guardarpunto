@@ -24,10 +24,6 @@ public class ControladorJuegos {
 		@Autowired
 		private JuegoRepository repositoryJuego;
 		@Autowired
-		private ReviewRepository repositoryReview;
-		@Autowired
-		private ComentariosRepository repositoryComentario;
-		@Autowired
 		private EstadoRepository repositoryEstados;
 		
 		//Obtener usuario logueado
