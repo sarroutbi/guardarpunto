@@ -5,14 +5,19 @@ En esta aplicación distribuida los usuarios dispondrán de un espacio online do
 En cuanto a las partes de la aplicación, **la parte privada** será toda aquella relacionada con el perfil del cliente, es decir, las listas de juegos, las listas de amigos, valoraciones,etc.
 **La parte pública** serían la posibilidad de ver perfiles de otros usuarios, valoraciones globales de los juegos...
 
+## **Descripción del servicio interno**
+
+Se ha implentado un servidor que, al registrarse un usuario, enviará un correo de bienvenida. Esto se realiza en el proyecto ServicioMail, que crea un servidor, con sockets, que espera la conexión de un cliente. Desde el proyecto de Guardar Punto, se conecta creando un objeto EnviarMail, que envía al servidor el nombre de usuario y el e-mail del usuario que se ha registrado. 
+Tras esto, el servidor, mediante el protocolo SMTP, manda con el correo guardarpuntomail@gmail.com un correo al usuario, dándole la bienvenida. 
+
 ## **Instrucciones**
 
 1. Instalar una máquina virtual con Vagrant, Ubuntu y MySql, como se detalla en el tema 4 de la asignatura.
 2. Generar los jar de la aplicación y del servicio interno, y copiarlos en la carpeta compartida con la MV.
 3. Desde el directorio en el que se encuentra el archivo *Vagranfile*, iniciar la MV con los comandos *vagrant up* y *vagrant ssh*.
 4. Una vez dentro de la MV, **si es la primera vez que se inicia la aplicación**, crear una nueva base de datos :
-  1. *mysql -u root -p* (introducir la contraseña que se haya escogido al instalar el servidor de MySQL).
-  2. *CREATE DATABASE guardarpuntodb*
+   1. *mysql -u root -p* (introducir la contraseña que se haya escogido al instalar el servidor de MySQL).
+   2. *CREATE DATABASE guardarpuntodb*   
 5. Desde el directorio raíz, acceder a la carpeta compartida con *cd vagrant*.
 6. Iniciar primero el servicio interno en segundo plano: *java -jar ServicioMail-0.0.1-SNAPSHOT &*.
 7. Después iniciar la aplicación: *java -jar guardar_punto-0.0.1-SNAPSHOT*.
@@ -25,11 +30,6 @@ Las entidades serían:
 2. Juego: Datos de los juegos como título, compañía, año de lanzamiento, género, reviews...
 3. Review: Opinión y puntuación de un usuario sobre un juego.
 4. Comentarios: Publicaciones más cortas que las reviews (y sin puntuación), que realiza un usuario sobre un juego.
-
-## **Descripción del servicio interno**
-
-Se ha implentado un servidor que, al registrarse un usuario, enviará un correo de bienvenida. Esto se realiza en el proyecto ServicioMail, que crea un servidor, con sockets, que espera la conexión de un cliente. Desde el proyecto de Guardar Punto, se conecta creando un objeto EnviarMail, que envía al servidor el nombre de usuario y el e-mail del usuario que se ha registrado. 
-Tras esto, el servidor, mediante el protocolo SMTP, manda con el correo guardarpuntomail@gmail.com un correo al usuario, dándole la bienvenida. 
 
 ## **Diagrama de clases**
 Generado con la herramienta ObjectAid UML para Eclipse:
