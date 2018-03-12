@@ -193,6 +193,11 @@ public class Usuarios {
 		this.roles = roles;
 	}
 	
+	//Set roles con string
+	public void setRoles(String... roles) {
+		this.roles = new ArrayList<String>(Arrays.asList(roles));
+	}
+	
 	public void cifrarYGuardarContrasena (String pass) {
 		contrasenna = new BCryptPasswordEncoder().encode(pass);
 	}

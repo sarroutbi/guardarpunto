@@ -117,6 +117,10 @@ public class ControladorInicio {
 		}else {
 			//Hay que cifrar la contraseña del nuevo usuario
 			usuario.cifrarYGuardarContrasena(usuario.getContrasenna());
+			//Y poner su rol 
+			usuario.setRoles("ROLE_USER");
+			//Imagen por defecto
+			usuario.setImagen("https://tinyurl.com/y99gq3cc");
 			//Guardar el nuevo usuario en la db
 			repositoryUsuario.save(usuario);
 			EviarMail e= new EviarMail();
