@@ -3,11 +3,11 @@ es\sidelab\guardar_punto\ControladorInicio.class
 es\sidelab\guardar_punto\EstadoRepository.class
 es\sidelab\guardar_punto\App.class
 es\sidelab\guardar_punto\UsuariosRepository.class
+es\sidelab\guardar_punto\InitData.class
 es\sidelab\guardar_punto\Estado.class
 es\sidelab\guardar_punto\Review.class
 es\sidelab\guardar_punto\ComentariosRepository.class
 es\sidelab\guardar_punto\Comentario.class
-es\sidelab\guardar_punto\Controlador.class
 es\sidelab\guardar_punto\ControladorJuegos.class
 es\sidelab\guardar_punto\UserRepositoryAuthenticationProvider.class
 es\sidelab\guardar_punto\EviarMail.class

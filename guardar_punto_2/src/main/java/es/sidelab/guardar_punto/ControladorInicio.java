@@ -34,10 +34,6 @@ public class ControladorInicio {
 	@Autowired
 	private JuegoRepository repositoryJuego;
 	@Autowired
-	private ReviewRepository repositoryReview;
-	@Autowired
-	private ComentariosRepository repositoryComentario;
-	@Autowired
 	private EstadoRepository repositoryEstados;
 	
 	//Obtener usuario logueado
@@ -144,29 +140,12 @@ public class ControladorInicio {
 
 		int punto = ext.indexOf(".");
 		String server = ext.substring(0, punto);
-		ext = ext.substring(punto + 1, ext.length());
+		ext = ext.substring(punto + 1, ext.length());		
 		
-		//aaaaaaaaaaaaaaaaa
 		String urlFinal = urlServicio + "/user/" + userReg + "/mail/" + email + "/"+ server +"/" + ext;
 
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.getForObject(urlFinal, String.class);
 	}
 	
-	/*@PostMapping("/logOut")
-	public String logOut(Model model,HttpSession session,HttpServletRequest request) {
-
-		Inicio(model, request);
-		model.addAttribute("alert", alert);
-		
-		if (!userComponent.isLoggedUser()) {
-			log.info("No user logged");
-		} else {
-			session.invalidate();
-			userComponent.setLoggedUser(null);
-			log.info("Logged out");
-		}
-		
-		return Inicio(model, request);
-	}*/
 }
