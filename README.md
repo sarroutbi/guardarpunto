@@ -32,7 +32,7 @@ Las entidades serían:
 4. Comentarios: Publicaciones más cortas que las reviews (y sin puntuación), que realiza un usuario sobre un juego.
 
 ## **Diagrama de clases**
-![](https://raw.githubusercontent.com/mfms5/guardarpunto/master/Diagrama/diagrama_clases_f3.jpg)
+![](https://raw.githubusercontent.com/mfms5/guardarpunto/master/Diagrama/clases_f3.jpg)
 
 ## **Diagrama Entidad/Relación**
 A continuación se muestra el diagrama Entidad/Relación de la base de datos de la web:
