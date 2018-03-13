@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.client.RestTemplate;
 
 
 @Controller
@@ -31,6 +33,10 @@ public class ControladorInicio {
 	private UsuariosRepository repositoryUsuario;	
 	@Autowired
 	private JuegoRepository repositoryJuego;
+	@Autowired
+	private ReviewRepository repositoryReview;
+	@Autowired
+	private ComentariosRepository repositoryComentario;
 	@Autowired
 	private EstadoRepository repositoryEstados;
 	
@@ -119,12 +125,32 @@ public class ControladorInicio {
 			usuario.setImagen("https://tinyurl.com/y99gq3cc");
 			//Guardar el nuevo usuario en la db
 			repositoryUsuario.save(usuario);
-			EviarMail e= new EviarMail();
-			e.sendEmail(usuario.getNombre(), usuario.getEmail());
+			//EviarMail e= new EviarMail();
+			//e.sendEmail(usuario.getNombre(), usuario.getEmail());
+			email(usuario.getNombre(),usuario.getEmail(),usuario.getContrasenna());
 			Inicio(model, request);
 			model.addAttribute("alert", alert);	
 			return "Inicio";
 		}
+	}
+	
+	private void email(@RequestParam String userReg, @RequestParam String mailReg, @RequestParam String passReg) {
+	
+		String urlServicio="http://localhost:8080";
+		/*Crea substrings para conseguir el mail del usuario para poder pasarlo por parametro al servidor REST*/
+		int arroba = mailReg.indexOf("@");
+		String email = mailReg.substring(0, arroba);
+		String ext = mailReg.substring(arroba+1, mailReg.length());
+
+		int punto = ext.indexOf(".");
+		String server = ext.substring(0, punto);
+		ext = ext.substring(punto + 1, ext.length());
+		
+		//aaaaaaaaaaaaaaaaa
+		String urlFinal = urlServicio + "/user/" + userReg + "/mail/" + email + "/"+ server +"/" + ext;
+
+		RestTemplate restTemplate = new RestTemplate();
+		restTemplate.getForObject(urlFinal, String.class);
 	}
 	
 	/*@PostMapping("/logOut")
