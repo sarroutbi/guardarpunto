@@ -7,8 +7,7 @@ En cuanto a las partes de la aplicación, **la parte privada** será toda aquell
 
 ## **Descripción del servicio interno**
 
-Se ha implentado un servidor que, al registrarse un usuario, enviará un correo de bienvenida. Esto se realiza en el proyecto ServicioMail, que crea un servidor, con sockets, que espera la conexión de un cliente. Desde el proyecto de Guardar Punto, se conecta creando un objeto EnviarMail, que envía al servidor el nombre de usuario y el e-mail del usuario que se ha registrado. 
-Tras esto, el servidor, mediante el protocolo SMTP, manda con el correo guardarpuntomail@gmail.com un correo al usuario, dándole la bienvenida. 
+Se ha implementado un servicio interno de correo con una API REST. Este servicio consiste en enviar un correo de bienvenida cuando el usuario se registra. Para ello, recibe por parámetros el nombre del usuario, su email, el servidor donde se aloja su email y la extensión(.com, .es, etc). Mediante un protocolo SMTP, se envía un mensaje al usuario.
 
 ## **Instrucciones**
 
