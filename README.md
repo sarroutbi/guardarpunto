@@ -48,8 +48,9 @@ Contamos con 9 pantallas diferentes, dos de ellas modales pero que se han inclui
   ## **Inicio** 
   ![](https://github.com/mfms5/guardarpunto/blob/master/Capturas%20pantalla/inicio.png?raw=true)
   
-  Desde la pantalla de inicio el usuario podrá registrarse o hacer login en la página. Así mismo podrá acceder a una lista de juegos       destacados y a noticias de otras páginas. Desde la barra de navegación podrá acceder a Juegos, Perfil, Reviews, Amigos y realizar       búsquedas (estas opciones serán comunes para todas las pantallas menos para las modales).  
-  Al hacer login, se sustituiría este panel por uno que muestra los juegos jugados del usuario. En la fase 2 simplemente se finge que ha iniciado sesión el usuario 1 (también para las pantallas de Perfil, Amigos y Reviews).
+  Desde la pantalla de inicio el usuario podrá registrarse o hacer login en la página. Así mismo podrá acceder a una lista de juegos       destacados y a noticias de otras páginas. Desde la barra de navegación podrá acceder a Juegos y realizar búsquedas sin iniciar sesión   y a Perfil, Reviews y Amigos habiendo iniciado sesión (estas opciones serán comunes para todas las pantallas menos para las modales). 
+  Si no se ha iniciadio sesión al hacer clic sobre las pestañas privadas (Perfil, Reviews o Amigos) se nos redirige al inicio.
+  Al hacer login, se sustituiría el panel de login por uno que muestra los juegos jugados del usuario.
   
   ## **Registro**
   ![](https://github.com/mfms5/guardarpunto/blob/master/Capturas%20pantalla/registro.png?raw=true)
@@ -59,17 +60,23 @@ Contamos con 9 pantallas diferentes, dos de ellas modales pero que se han inclui
   ## **Juegos**
   ![](https://github.com/mfms5/guardarpunto/blob/master/Capturas%20pantalla/juegos.png?raw=true)
   
-  Pantalla desde la cual el usuario podrá ver todos los juegos y desde donde podrá acceder a las diferentes fichas de los juegos. Desde   esta pantalla también podrá iniciar sesión o registrarse y acceder a noticias de otras páginas. También podrá hacer uso de la barra de   navegación para ir a las pantallas de Juegos, Perfil, Reviews, Amigos y realizar búsquedas.
+  Pantalla desde la cual el usuario podrá ver todos los juegos y desde donde podrá acceder a las diferentes fichas de los juegos. Desde   esta pantalla también podrá acceder a noticias de otras páginas. También podrá hacer uso de la barra de navegación para ir a las         pantallas para las que tenga permiso según haya iniciado sesión o no.
+  En el caso de haber iniciado sesión aparecerá un icono en la barra superior desde el cual podrá cerrar sesión.
   
   ## **Ficha de Juego**
   ![](https://github.com/mfms5/guardarpunto/blob/master/Capturas%20pantalla/fichaJuego.png?raw=true)
   
-  Desde esta pantalla el usuario podrá ver todas las especificaciones del juego (compañía, año, género, plataforma, resumen y             puntuación), también podrá añadirlo a una de sus listas (pendiente, jugado o jugando) y ver y hacer comentarios y reviews sobre el       juego. Desde esta pantalla se podrá registrar o iniciar sesión y navegar por las paginas por la barra de navegación de la misma forma   que en las pantallas anteriores. 
+  Desde esta pantalla el usuario podrá ver todas las especificaciones del juego (compañía, año, género, plataforma, resumen y             puntuación), también podrá añadirlo a una de sus listas (pendiente, jugado o jugando) y ver y hacer comentarios y reviews sobre el       juego. Desde esta pantalla podrá navegar por las paginas con la barra de navegación de la misma forma que en las pantallas anteriores.
+  En el caso de haber iniciado sesión aparecerá un icono en la barra superior desde el cual podrá cerrar sesión.
   
   ## **Perfil**
   ![](https://github.com/mfms5/guardarpunto/blob/master/Capturas%20pantalla/perfil.png?raw=true)
+  captura de pantalla del perfil personal.
+  ![](https://github.com/mfms5/guardarpunto/blob/master/Capturas%20pantalla/perfilAmigo.png?raw=true)
+  captura de pantalla del perfil de otro usuario.
   
-  Desde esta pantalla el usuario podrá ver su información de perfil o de otro usuario (nombre, biografía, juegos jugando, jugados y       pendientes, amigos, comentarios y reviews). En caso de ser tu perfil el que estas visitando podrás acceder a los ajustes de perfil       (por implementar). Se podrá acceder a las fichas de los juegos que están en las listas y a los perfiles de los amigos y a la             navegación con la barra de navegación.
+  Desde esta pantalla el usuario podrá ver su información de perfil o de otro usuario (nombre, biografía, juegos jugando, jugados y       pendientes, amigos, comentarios y reviews). En caso de ser tu perfil el que estas visitando podrás acceder a los ajustes de perfil. 
+  Se podrá acceder a las fichas de los juegos que están en las listas y a los perfiles de los amigos y se podrá utilizar la barra de       navegación al igual que en el resto de pantallas.
   
   ## **Editar Perfil**
   ![](https://github.com/mfms5/guardarpunto/blob/master/Capturas%20pantalla/editarPerfil.png?raw=true)
@@ -79,56 +86,60 @@ Contamos con 9 pantallas diferentes, dos de ellas modales pero que se han inclui
   ## **Reviews**
   ![](https://github.com/mfms5/guardarpunto/blob/master/Capturas%20pantalla/reviews.png?raw=true)
   
-  Pantalla desde la cual el usuario podrá ver todas las reviews que ha hecho y acceder a los juegos de dichas reviews. Igualmente podrá   navegar mediante la barra de navegación.
+  Pantalla desde la cual el usuario podrá ver todas las reviews que ha hecho y acceder a los juegos de dichas reviews. Igualmente podrá   navegar mediante la barra de navegación. Solo se puede acceder si se ha iniciado sesión.
  
   ## **Amigos**
   ![](https://github.com/mfms5/guardarpunto/blob/master/Capturas%20pantalla/amigos.png?raw=true)
 
-  Pantalla desde la cual el usuario podrá ver todos los amigos que tiene (foto de perfil, nombre y biografía) y acceder a su perfil.       Podrá navegar desde la barra de navegación a las pantallas de Inicio, Juegos, Perfil, Reviews, Amigos y realizar búsquedas.
+  Pantalla desde la cual el usuario podrá ver todos los amigos que tiene (foto de perfil, nombre y biografía) y acceder a su perfil.       Podrá navegar desde la barra de navegación a las pantallas de Inicio, Juegos, Perfil, Reviews, Amigos y realizar búsquedas. Solo se     puede acceder si se ha iniciado sesión.
   
   ## **Búsquedas**
   ![](https://github.com/mfms5/guardarpunto/blob/master/Capturas%20pantalla/busqueda.png?raw=true)
   
-  Al realizar una búsqueda se nos muestra una pantalla en la cual aparecerán las coincidencias con la búsqueda tanto entre los usuarios   como entre los juegos. Desde esta pantalla podremos acceder al perfil del usuario o del juego buscado, podremos registrarnos o iniciar   sesión y podremos redirigirnos a noticias de otras páginas. Cuenta igual que el resto de pantallas con la navegación a partir de la     barra de navegación.
+  Al realizar una búsqueda se nos muestra una pantalla en la cual aparecerán las coincidencias con la búsqueda tanto entre los usuarios   como entre los juegos. Desde esta pantalla podremos acceder al perfil del usuario o del juego buscado y podremos redirigirnos a         noticias de otras páginas. Cuenta igual que el resto de pantallas con la navegación a partir de la barra de navegación. 
+  
+  ## **Error Login**
+   ![](https://github.com/mfms5/guardarpunto/blob/master/Capturas%20pantalla/error.png?raw=true)
+   
+   Pantalla a la que seremos redirigidos en caso de que se produzca un error al iniciar sesión (usuario o contraseña incorrectos)
   
 ## **Navegación entre páginas**
 ![](https://github.com/mfms5/guardarpunto/blob/master/Diagrama/diagrama%20Navegacion.png?raw=true)
+(Páginas en negrita solo si has iniciado sesión)
 
-  ## **Inicio**
+  ## **Inicio** 
   Desde inicio se puede acceder a:
     - Juegos
-    - Perfil (propio)
-    - Reviews
-    - Amigos
+    - **Perfil (propio)**
+    - **Reviews**
+    - **Amigos**
     - Ficha de juego
     - Busqueda
     - Registro
     - Noticias Externas
   
-  ## **Juegos**
+  ## **Juegos** 
   Desde juegos se puede acceder a:
     - Inicio
-    - Perfil (propio)
-    - Reviews
-    - Amigos
+    - **Perfil (propio)**
+    - **Reviews**
+    - **Amigos**
     - Ficha de juego
     - Busqueda
-    - Registro
     - Noticias Externas
     
-  ## **Perfil**
+  ## **Perfil** (solo se puede acceder si has iniciado sesión)
   Desde perfil se puede acceder a:
     - Inicio
     - Juegos
     - Perfil (otro jugador)
     - Reviews
     - Amigos
-    - EditarPerfil
+    - EditarPerfil (solo si es tu perfil)
     - Ficha de juego
     - Busqueda
-    - Registro
   
-  ## **Reviews**
+  ## **Reviews** (solo se puede acceder si has iniciado sesión)
   Desde reviews se puede acceder a:
     - Inicio
     - Juegos
@@ -136,7 +147,7 @@ Contamos con 9 pantallas diferentes, dos de ellas modales pero que se han inclui
     - Amigos
     - Busqueda
     
-  ## **Amigos**
+  ## **Amigos** (solo se puede acceder si has iniciado sesión)
   Desde amigos se puede acceder a:
     - Inicio
     - Perfil (propio y ajeno)
@@ -148,24 +159,23 @@ Contamos con 9 pantallas diferentes, dos de ellas modales pero que se han inclui
   ## **Ficha de Juego**
   Desde ficha de juego se puede acceder a:
     - Inicio
-    - Registro
     - Juegos
-    - Perfil
-    - Reviews
-    - Amigos
+    - **Perfil**
+    - **Reviews**
+    - **Amigos**
     - Busqueda
  
   ## **Busqueda**
   Desde busqueda se puede acceder a:
     - Inicio
     - Juegos
-    - Perfil(propio y ajeno)
-    - Reviews
-    - Amigos
+    - **Perfil(propio** y ajeno)
+    - **Reviews**
+    - **Amigos**
     - otra busqueda
     - ficha Juego
-    - Registro
     - noticias externas
+    
 
 
 
