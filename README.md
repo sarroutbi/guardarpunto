@@ -104,7 +104,7 @@ Contamos con 9 pantallas diferentes, dos de ellas modales pero que se han inclui
    Pantalla a la que seremos redirigidos en caso de que se produzca un error al iniciar sesión (usuario o contraseña incorrectos)
   
 ## **Navegación entre páginas**
-![](https://github.com/mfms5/guardarpunto/blob/master/Diagrama/diagrama%20Navegacion.png?raw=true)
+![](https://github.com/mfms5/guardarpunto/blob/master/Capturas%20pantalla/DiagramaPantallas.png?raw=true)
 (Páginas en negrita solo si has iniciado sesión)
 
   ## **Inicio** 
