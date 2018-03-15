@@ -15,7 +15,7 @@ Se ha implementado un servicio interno de correo con una API REST. Este servicio
 2. Generar los jar de la aplicación y del servicio interno, y copiarlos en la carpeta compartida con la MV.
 3. Desde el directorio en el que se encuentra el archivo *Vagrantfile*, iniciar la MV con los comandos *vagrant up* y *vagrant ssh*.
 4. Una vez dentro de la MV, instalar Java 8 y MySQL con los siguientes comandos:
-   1. *sudo apt-get update
+   1. *sudo apt-get update*
    2. *sudo apt-get install -y openjdk-8-jre*   
    3. *sudo apt-get install mysql-server*
 4. **Si es la primera vez que se inicia la aplicación**, crear una nueva base de datos :
