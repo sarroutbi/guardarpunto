@@ -18,13 +18,13 @@ Se ha implementado un servicio interno de correo con una API REST. Este servicio
    1. *sudo apt-get update
    2. *sudo apt-get install -y openjdk-8-jre*   
    3. *sudo apt-get install mysql-server*
-4.  **si es la primera vez que se inicia la aplicación**, crear una nueva base de datos :
+5.  **si es la primera vez que se inicia la aplicación**, crear una nueva base de datos :
    1. *mysql -u root -p;* (introducir la contraseña que se haya escogido al instalar el servidor de MySQL).
    2. *CREATE DATABASE guardarpuntodb;*   
-5. Desde el directorio raíz, acceder a la carpeta compartida con *cd vagrant*.
-6. Iniciar primero el servicio interno en segundo plano: *java -jar MailRESTl-0.0.1-SNAPSHOT &*.
-7. Después iniciar la aplicación: *java -jar guardar_punto-0.0.1-SNAPSHOT*.
-8. Finalmente, desde el navegador acceder a la dirección https://192.168.33.10:8443
+6. Desde el directorio raíz, acceder a la carpeta compartida con *cd vagrant*.
+7. Iniciar primero el servicio interno en segundo plano: *java -jar MailRESTl-0.0.1-SNAPSHOT &*.
+8. Después iniciar la aplicación: *java -jar guardar_punto-0.0.1-SNAPSHOT*.
+9. Finalmente, desde el navegador acceder a la dirección https://192.168.33.10:8443
 
 ## **Entidades**
 
