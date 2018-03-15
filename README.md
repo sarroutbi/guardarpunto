@@ -18,7 +18,7 @@ Se ha implementado un servicio interno de correo con una API REST. Este servicio
    1. *sudo apt-get update
    2. *sudo apt-get install -y openjdk-8-jre*   
    3. *sudo apt-get install mysql-server*
-5.  **si es la primera vez que se inicia la aplicación**, crear una nueva base de datos :
+4. **Si es la primera vez que se inicia la aplicación**, crear una nueva base de datos :
    1. *mysql -u root -p;* (introducir la contraseña que se haya escogido al instalar el servidor de MySQL).
    2. *CREATE DATABASE guardarpuntodb;*   
 6. Desde el directorio raíz, acceder a la carpeta compartida con *cd vagrant*.
