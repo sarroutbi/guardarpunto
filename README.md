@@ -11,10 +11,14 @@ Se ha implementado un servicio interno de correo con una API REST. Este servicio
 
 ## **Instrucciones**
 
-1. Instalar una máquina virtual con Vagrant, Ubuntu y MySql, como se detalla en el tema 4 de la asignatura.
+1. Instalar una máquina virtual con Vagrant y Ubuntu 14.04 como se detalla en el tema 4 de la asignatura.
 2. Generar los jar de la aplicación y del servicio interno, y copiarlos en la carpeta compartida con la MV.
 3. Desde el directorio en el que se encuentra el archivo *Vagrantfile*, iniciar la MV con los comandos *vagrant up* y *vagrant ssh*.
-4. Una vez dentro de la MV, **si es la primera vez que se inicia la aplicación**, crear una nueva base de datos :
+4. Una vez dentro de la MV, instalar Java 8 y MySQL con los siguientes comandos:
+   1. *sudo apt-get update
+   2. *sudo apt-get install -y openjdk-8-jre*   
+   3. *sudo apt-get install mysql-server*
+4.  **si es la primera vez que se inicia la aplicación**, crear una nueva base de datos :
    1. *mysql -u root -p;* (introducir la contraseña que se haya escogido al instalar el servidor de MySQL).
    2. *CREATE DATABASE guardarpuntodb;*   
 5. Desde el directorio raíz, acceder a la carpeta compartida con *cd vagrant*.
