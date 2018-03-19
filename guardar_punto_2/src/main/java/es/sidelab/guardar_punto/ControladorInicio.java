@@ -121,31 +121,18 @@ public class ControladorInicio {
 			usuario.setImagen("https://tinyurl.com/y99gq3cc");
 			//Guardar el nuevo usuario en la db
 			repositoryUsuario.save(usuario);
-			//EviarMail e= new EviarMail();
-			//e.sendEmail(usuario.getNombre(), usuario.getEmail());
-			email(usuario.getNombre(),usuario.getEmail(),usuario.getContrasenna());
+			email(usuario);
 			Inicio(model, request);
 			model.addAttribute("alert", alert);	
 			return "Inicio";
 		}
 	}
 	
-	private void email(@RequestParam String userReg, @RequestParam String mailReg, @RequestParam String passReg) {
-	
-		String urlServicio="http://localhost:8080";
-		/*Crea substrings para conseguir el mail del usuario para poder pasarlo por parametro al servidor REST*/
-		int arroba = mailReg.indexOf("@");
-		String email = mailReg.substring(0, arroba);
-		String ext = mailReg.substring(arroba+1, mailReg.length());
-
-		int punto = ext.indexOf(".");
-		String server = ext.substring(0, punto);
-		ext = ext.substring(punto + 1, ext.length());		
-		
-		String urlFinal = urlServicio + "/user/" + userReg + "/mail/" + email + "/"+ server +"/" + ext;
-
+	private void email(Usuarios user) {
+		String url="http://localhost:8080/mail";
 		RestTemplate restTemplate = new RestTemplate();
-		restTemplate.getForObject(urlFinal, String.class);
+		Mail mail=new Mail(user.getNombre(),user.getEmail());
+		restTemplate.postForEntity(url, mail, String.class);
 	}
 	
 }
