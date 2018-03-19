@@ -7,7 +7,7 @@ En cuanto a las partes de la aplicación, **la parte privada** será toda aquell
 
 ## **Descripción del servicio interno**
 
-Se ha implementado un servicio interno de correo con una API REST. Este servicio consiste en enviar un correo de bienvenida cuando el usuario se registra. Para ello, recibe por parámetros el nombre del usuario, su email, el servidor donde se aloja su email y la extensión(.com, .es, etc). Mediante un protocolo SMTP, se envía un mensaje al usuario.
+Se ha implementado un servicio interno de correo con una API REST. Este servicio consiste en enviar un correo de bienvenida cuando el usuario se registra. Para ello, el cliente debe enviar al servicio REST el nombre y el e-mail del usuario. Mediante un protocolo SMTP, se envía un mensaje al usuario.
 
 ## **Instrucciones**
 
@@ -22,7 +22,7 @@ Se ha implementado un servicio interno de correo con una API REST. Este servicio
    1. *mysql -u root -p;* (introducir la contraseña que se haya escogido al instalar el servidor de MySQL).
    2. *CREATE DATABASE guardarpuntodb;*   
 6. Desde el directorio raíz, acceder a la carpeta compartida con *cd vagrant*.
-7. Iniciar primero el servicio interno en segundo plano: *java -jar MailRESTl-0.0.1-SNAPSHOT &*.
+7. Iniciar primero el servicio interno en segundo plano: *java -jar MailRestPost-0.0.1-SNAPSHOT &*.
 8. Después iniciar la aplicación: *java -jar guardar_punto-0.0.1-SNAPSHOT*.
 9. Finalmente, desde el navegador acceder a la dirección https://192.168.33.10:8443
 
