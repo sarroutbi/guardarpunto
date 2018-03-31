@@ -4,11 +4,12 @@ import javax.persistence.*;
 
 import org.springframework.data.annotation.PersistenceConstructor;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Juego {
+public class Juego implements Serializable {
 	
 	/*Atributos de la clase*/
 	
@@ -189,6 +190,106 @@ public class Juego {
 		//Truncar
 		double scale = Math.pow(10, 1);
 	    valoracion = (float) (Math.round((double)valoracion * scale) / scale);
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((anyo == null) ? 0 : anyo.hashCode());
+		result = prime * result + ((coments == null) ? 0 : coments.hashCode());
+		result = prime * result + ((compannia == null) ? 0 : compannia.hashCode());
+		result = prime * result + ((genero == null) ? 0 : genero.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((imagen == null) ? 0 : imagen.hashCode());
+		result = prime * result + ((juego_estado == null) ? 0 : juego_estado.hashCode());
+		result = prime * result + nVotos;
+		result = prime * result + ((plataforma == null) ? 0 : plataforma.hashCode());
+		result = prime * result + ((resumen == null) ? 0 : resumen.hashCode());
+		result = prime * result + ((reviews == null) ? 0 : reviews.hashCode());
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		result = prime * result + ((users == null) ? 0 : users.hashCode());
+		result = prime * result + Float.floatToIntBits(valoracion);
+		result = prime * result + Float.floatToIntBits(votosTotal);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Juego other = (Juego) obj;
+		if (anyo == null) {
+			if (other.anyo != null)
+				return false;
+		} else if (!anyo.equals(other.anyo))
+			return false;
+		if (coments == null) {
+			if (other.coments != null)
+				return false;
+		} else if (!coments.equals(other.coments))
+			return false;
+		if (compannia == null) {
+			if (other.compannia != null)
+				return false;
+		} else if (!compannia.equals(other.compannia))
+			return false;
+		if (genero == null) {
+			if (other.genero != null)
+				return false;
+		} else if (!genero.equals(other.genero))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (imagen == null) {
+			if (other.imagen != null)
+				return false;
+		} else if (!imagen.equals(other.imagen))
+			return false;
+		if (juego_estado == null) {
+			if (other.juego_estado != null)
+				return false;
+		} else if (!juego_estado.equals(other.juego_estado))
+			return false;
+		if (nVotos != other.nVotos)
+			return false;
+		if (plataforma == null) {
+			if (other.plataforma != null)
+				return false;
+		} else if (!plataforma.equals(other.plataforma))
+			return false;
+		if (resumen == null) {
+			if (other.resumen != null)
+				return false;
+		} else if (!resumen.equals(other.resumen))
+			return false;
+		if (reviews == null) {
+			if (other.reviews != null)
+				return false;
+		} else if (!reviews.equals(other.reviews))
+			return false;
+		if (title == null) {
+			if (other.title != null)
+				return false;
+		} else if (!title.equals(other.title))
+			return false;
+		if (users == null) {
+			if (other.users != null)
+				return false;
+		} else if (!users.equals(other.users))
+			return false;
+		if (Float.floatToIntBits(valoracion) != Float.floatToIntBits(other.valoracion))
+			return false;
+		if (Float.floatToIntBits(votosTotal) != Float.floatToIntBits(other.votosTotal))
+			return false;
+		return true;
 	}
 	
 	

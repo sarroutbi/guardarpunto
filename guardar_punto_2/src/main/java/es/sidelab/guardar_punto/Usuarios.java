@@ -1,5 +1,6 @@
 package es.sidelab.guardar_punto;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -12,7 +13,7 @@ import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity
-public class Usuarios {
+public class Usuarios implements Serializable{
 	/*Atributos*/
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -200,6 +201,103 @@ public class Usuarios {
 	
 	public void cifrarYGuardarContrasena (String pass) {
 		contrasenna = new BCryptPasswordEncoder().encode(pass);
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((amigos == null) ? 0 : amigos.hashCode());
+		result = prime * result + ((biografia == null) ? 0 : biografia.hashCode());
+		result = prime * result + ((coments == null) ? 0 : coments.hashCode());
+		result = prime * result + ((contrasenna == null) ? 0 : contrasenna.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((estados == null) ? 0 : estados.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((imagen == null) ? 0 : imagen.hashCode());
+		result = prime * result + ((juegos == null) ? 0 : juegos.hashCode());
+		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+		result = prime * result + ((review == null) ? 0 : review.hashCode());
+		result = prime * result + ((roles == null) ? 0 : roles.hashCode());
+		result = prime * result + ((usuarios == null) ? 0 : usuarios.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Usuarios other = (Usuarios) obj;
+		if (amigos == null) {
+			if (other.amigos != null)
+				return false;
+		} else if (!amigos.equals(other.amigos))
+			return false;
+		if (biografia == null) {
+			if (other.biografia != null)
+				return false;
+		} else if (!biografia.equals(other.biografia))
+			return false;
+		if (coments == null) {
+			if (other.coments != null)
+				return false;
+		} else if (!coments.equals(other.coments))
+			return false;
+		if (contrasenna == null) {
+			if (other.contrasenna != null)
+				return false;
+		} else if (!contrasenna.equals(other.contrasenna))
+			return false;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
+		if (estados == null) {
+			if (other.estados != null)
+				return false;
+		} else if (!estados.equals(other.estados))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (imagen == null) {
+			if (other.imagen != null)
+				return false;
+		} else if (!imagen.equals(other.imagen))
+			return false;
+		if (juegos == null) {
+			if (other.juegos != null)
+				return false;
+		} else if (!juegos.equals(other.juegos))
+			return false;
+		if (nombre == null) {
+			if (other.nombre != null)
+				return false;
+		} else if (!nombre.equals(other.nombre))
+			return false;
+		if (review == null) {
+			if (other.review != null)
+				return false;
+		} else if (!review.equals(other.review))
+			return false;
+		if (roles == null) {
+			if (other.roles != null)
+				return false;
+		} else if (!roles.equals(other.roles))
+			return false;
+		if (usuarios == null) {
+			if (other.usuarios != null)
+				return false;
+		} else if (!usuarios.equals(other.usuarios))
+			return false;
+		return true;
 	}
 	
 	

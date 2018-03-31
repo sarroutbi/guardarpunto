@@ -129,7 +129,7 @@ public class ControladorInicio {
 	}
 	
 	private void email(Usuarios user) {
-		String url="http://localhost:8080/mail";
+		String url="http://192.168.33.14:8080/mail";
 		RestTemplate restTemplate = new RestTemplate();
 		Mail mail=new Mail(user.getNombre(),user.getEmail());
 		restTemplate.postForEntity(url, mail, String.class);
