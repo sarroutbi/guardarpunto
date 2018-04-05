@@ -8,6 +8,8 @@ import javax.persistence.*;
 
 import org.springframework.data.annotation.PersistenceConstructor;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Review implements Serializable{
 	/*Atributos de la entidad*/	
@@ -24,10 +26,12 @@ public class Review implements Serializable{
 	
 	/*Relaciones de la clase*/
 	
-	@ManyToOne
+	@ManyToOne (fetch = FetchType.EAGER)
+	@JsonIgnore
 	private Juego juego;
 	
-	@ManyToOne
+	@ManyToOne (fetch = FetchType.EAGER)
+	@JsonIgnore
 	private Usuarios user;
 	
 	//Variables para añadir nuevas reviews desde la ficha del juego 

@@ -41,6 +41,6 @@ public class App
     @Bean
     public CacheManager cacheManager() {	
     	LOG.info("Activating Cache...");	
-    	return new ConcurrentMapCacheManager("guardarpunto"); 
+    	return new ConcurrentMapCacheManager("usuarios"); 
     }
 }
