@@ -4,9 +4,13 @@ import javax.persistence.*;
 
 import org.springframework.data.annotation.PersistenceConstructor;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Juego implements Serializable {
@@ -48,16 +52,20 @@ public class Juego implements Serializable {
 	private float votosTotal = 0.0f;
 	
 	/*Relaciones de la tabla*/
-	@ManyToMany 
+	@ManyToMany  
+	@JsonIgnore
 	private List<Usuarios> users=new ArrayList<Usuarios>();
 	
 	@OneToMany (mappedBy="juegosestado")
+	@JsonIgnore
 	private List<Estado> juego_estado=new ArrayList<Estado>();
 	
 	@OneToMany(mappedBy="juego")
+	@JsonIgnore
 	private List<Review> reviews=new ArrayList<Review>();
 	
 	@OneToMany(mappedBy="juego")
+	@JsonIgnore
 	private List<Comentario> coments=new ArrayList<Comentario>();
 	
 	public Juego () {
@@ -291,6 +299,8 @@ public class Juego implements Serializable {
 			return false;
 		return true;
 	}
+
+
 	
 	
 }

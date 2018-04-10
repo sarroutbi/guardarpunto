@@ -26,11 +26,13 @@ public class Review implements Serializable{
 	
 	/*Relaciones de la clase*/
 	
-	@ManyToOne (fetch = FetchType.EAGER)
+	//@ManyToOne (fetch = FetchType.EAGER)
+	@ManyToOne
 	@JsonIgnore
 	private Juego juego;
 	
-	@ManyToOne (fetch = FetchType.EAGER)
+	//@ManyToOne (fetch = FetchType.EAGER)
+	@ManyToOne
 	@JsonIgnore
 	private Usuarios user;
 	
@@ -181,10 +183,6 @@ public class Review implements Serializable{
 		} else if (!user.equals(other.user))
 			return false;
 		return true;
-	}
-	
-	
-	
-	
+	}	
 	
 }

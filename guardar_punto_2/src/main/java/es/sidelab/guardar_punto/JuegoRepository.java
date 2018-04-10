@@ -8,26 +8,29 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-
+@CacheConfig(cacheNames="usuarios")
 public interface JuegoRepository extends JpaRepository<Juego,Integer> {
 	
 	
 	
-
+	@Cacheable
 	List<Juego> findByTitle(String Titulo);
-	
+	@Cacheable
 	List<Juego> findByCompannia(String Compannia);
+	@Cacheable
 	List<Juego> findByAnyo(String anyo);
+	@Cacheable
 	List<Juego> findByPlataforma(String Plataforma);
+	@Cacheable
 	List<Juego> findByGenero(String Genero);
 	
 
 	
 	//Buscar todos los juegos cuyo titulo empiece por cierta letra
-	
+	@Cacheable
 	List<Juego> findByTitleIgnoreCaseStartingWith (String letra);
 	//Buscar juegos cuyo titulo contenga la palabra introducida en la busqueda
-	
+	@Cacheable
 	List<Juego> findByTitleIgnoreCaseLike (String title);
 
 	/*Busca el juego en funcion del estado del juego y el id del usuario*/
