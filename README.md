@@ -29,11 +29,18 @@ En nuestro caso, las IPs de las máquinas virtuales que contienen la aplicación
 `sudo apt-get install -y mysql-server`   
 La contraseña del usuario root debe ser la misma que tenemos en el application.properties (en nuestro caso "enjutomojamuto").   
 
-2. Crear la base de datos *guardarpuntodb*.   
+2. Crear la base de datos *guardarpuntodb*. 
+
 3. Crear dos usuarios con las IPs de las VMs de la aplicación web y concederles todos los permisos:   
 `create user root@192.168.33.11 identified by 'enjutomojamuto';`   
 `grant all privileges on guardarpuntodb.* to root@192.168.33.11;`   
-`flush privileges;`
+`flush privileges;`   
+
+4. Editar el archivo de configuración de MySQL para que atienda las peticiones realizadas a su IP privada:   
+`sudo pico /etc/mysql/my.cnf`   
+`bind-address = 192.168.33.10` (esta es la IP de la máquina virtual en la que vamos a tener la base de datos).   
+
+
 
 
 ## **Instrucciones Fase 3**
