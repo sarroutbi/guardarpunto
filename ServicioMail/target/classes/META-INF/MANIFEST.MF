@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: ServicioMail
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: susi
+Built-By: Marta
 Implementation-Vendor-Id: com.example
-Build-Jdk: 1.8.0_161
+Build-Jdk: 1.8.0_101
 Implementation-URL: http://projects.spring.io/spring-boot/ServicioMail
  /
 Created-By: Maven Integration for Eclipse

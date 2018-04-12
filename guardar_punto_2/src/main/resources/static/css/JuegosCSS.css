@@ -13,6 +13,11 @@ body {
   background-color: #a9d5cb;
 }
 
+#elemselect {
+	background-color: #286858 !important;
+	color: #73c2ac !important;
+	text-shadow: 3px 2px 2px #014a33;
+}
 
 
 #log{
