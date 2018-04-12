@@ -7,9 +7,36 @@ En cuanto a las partes de la aplicación, **la parte privada** será toda aquell
 
 ## **Descripción del servicio interno**
 
-Se ha implementado un servicio interno de correo con una API REST. Este servicio consiste en enviar un correo de bienvenida cuando el usuario se registra. Para ello, el cliente debe enviar al servicio REST el nombre y el e-mail del usuario. Mediante un protocolo SMTP, se envía un mensaje al usuario.
+Se ha implementado un servicio interno de correo con una API REST. Este servicio consiste en enviar un correo de bienvenida cuando el usuario se registra. Para ello, el cliente debe enviar al servicio REST el nombre y el e-mail del usuario. Mediante un protocolo SMTP, se envía un mensaje al usuario.   
 
-## **Instrucciones**
+## **Instrucciones Fase 4**
+Para la fase 4 se han creado 5 máquinas virtuales: balanceador de carga, dos aplicaciones web, servicio interno y base de datos.
+
+### 1) Aplicaciones web
+1. Instalar Java 8 y el cliente de MySQL:  
+`sudo apt-get update`   
+`sudo add-apt-repository ppa:openjdk-r/ppa`   
+`sudo apt-get install -y oracle-java8-installer`   
+`sudo apt-get install -y openjdke-8-jre`  
+
+2. En el *vagrantfile*, descomentar la siguiente línea y cambiar la IP si es necesario:  
+`config.vm.network "private_network", ip: "192.168.33.12"`   
+En nuestro caso, las IPs de las máquinas virtuales que contienen la aplicación son 192.168.33.11 y 192.168.33.12.
+
+### 2) Base de datos
+1. Instalar MySQL:   
+`sudo apt-get update`  
+`sudo apt-get install -y mysql-server`   
+La contraseña del usuario root debe ser la misma que tenemos en el application.properties (en nuestro caso "enjutomojamuto").   
+
+2. Crear la base de datos *guardarpuntodb*.   
+3. Crear dos usuarios con las IPs de las VMs de la aplicación web y concederles todos los permisos:   
+`create user root@192.168.33.11 identified by 'enjutomojamuto';`   
+`grant all privileges on guardarpuntodb.* to root@192.168.33.11;`   
+`flush privileges;`
+
+
+## **Instrucciones Fase 3**
 
 1. Instalar una máquina virtual con Vagrant y Ubuntu 14.04 como se detalla en el tema 4 de la asignatura.
 2. Generar los jar de la aplicación y del servicio interno, y copiarlos en la carpeta compartida con la MV.
