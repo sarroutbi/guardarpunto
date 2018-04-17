@@ -12,8 +12,8 @@ Se ha implementado un servicio interno de correo con una API REST. Este servicio
 ## **Instrucciones Fase 4**
 Para la fase 4 se han creado 5 máquinas virtuales: balanceador de carga, dos aplicaciones web, servicio interno y base de datos.
 
-### 1) Aplicaciones web
-1. Instalar Java 8 y el cliente de MySQL:  
+### 1) Aplicaciones web y servicio interno
+1. Instalar Java 8 y el cliente de MySQL (MySQL sólo es necesario en las MV de la aplicación web):  
 `sudo apt-get update`   
 `sudo add-apt-repository ppa:openjdk-r/ppa`   
 `sudo apt-get install -y oracle-java8-installer`   
@@ -21,7 +21,7 @@ Para la fase 4 se han creado 5 máquinas virtuales: balanceador de carga, dos ap
 
 2. En el *vagrantfile*, descomentar la siguiente línea y cambiar la IP si es necesario:  
 `config.vm.network "private_network", ip: "192.168.33.12"`   
-En nuestro caso, las IPs de las máquinas virtuales que contienen la aplicación son 192.168.33.11 y 192.168.33.12.
+En nuestro caso, las IPs de las máquinas virtuales que contienen la aplicación son 192.168.33.11 y 192.168.33.12. La del servicio interno es 192.168.33.14.
 
 ### 2) Base de datos
 1. Instalar MySQL:   
@@ -40,8 +40,21 @@ La contraseña del usuario root debe ser la misma que tenemos en el application.
 `sudo pico /etc/mysql/my.cnf`   
 `bind-address = 192.168.33.10` (esta es la IP de la máquina virtual en la que vamos a tener la base de datos).   
 
+5. Reiniciar el servicio: `sudo service mysql restart`.
 
+### 3) Balanceador de carga
+1. Instalar HAProxy 1.8:   
+`sudo add-apt-repository ppa:vbernat/haproxy-1.8`
+`sudo apt-get update`
+`sudo apt-get install haproxy`   
 
+2. Generar un certificado SSL para soportar las conexiones HTTPS: https://serversforhackers.com/c/using-ssl-certificates-with-haproxy   
+![](https://github.com/mfms5/guardarpunto/blob/master/ssl.PNG)
+
+3. Añadir la línea "ENABLED=1" en el fichero HAProxy: `sudo pico /etc/default/haproxy`   
+
+4. Modificar el fichero de configuración para añadir las IPs de las máquinas que tienen la aplicación web:   
+`sudo pico /etc/haproxy/haproxy.cfg`
 
 ## **Instrucciones Fase 3**
 
