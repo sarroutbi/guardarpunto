@@ -55,6 +55,26 @@ La contraseña del usuario root debe ser la misma que tenemos en el application.
 
 4. Modificar el fichero de configuración para añadir las IPs de las máquinas que tienen la aplicación web:   
 `sudo pico /etc/haproxy/haproxy.cfg`
+![](https://raw.githubusercontent.com/mfms5/guardarpunto/master/haproxy.png)   
+
+5. Reiniciar el servicio: `sudo service haproxy restart`   
+
+6. Comprobar que funciona correctamete accediendo a https://192.168.33.13/haproxy?stats   
+
+### 4) Application properties y jars   
+1. En el Application.properties de la aplicación web, cambiar el método de actualización de la base de datos a *none*:   
+`spring.jpa.hibernate.ddl-auto=none`   
+2. Generar el jar y copiarlo a la carpeta vagrant de las dos máquinas virtuales de la web.   
+
+### 5) Ejecución
+1. Arrancar la MV y el servicio de haproxy.
+2. Arrancar la MV de la base de datos.
+3. Arrancar las MVs de la web y la aplicación con el comando:   
+`java -jar guardar_punto-0.0.1-SNAPSHOT.jar  --spring.datasource.url="jdbc:mysql://192.168.33.10:3306/guardarpuntodb?verifyServerCertificate=false&useSSL=true" --spring.datasource.username="root" --spring.datasource.password="enjutomojamuto"`   
+**Nota**: Si es la primera vez que se arranca la aplicación y **la base de datos no ha sido creada**, al final de este comando hay que añadir: `--spring.jpa.hibernate.ddl-auto="create"`
+4. Arancar la MV del servicio interno y el ejecutable con el comando:    
+`java -jar MailRestPost-0.0.1-SNAPSHOT`   
+5. Cuando se hayan iniciado todos los ejecutables, acceder a la web **desde la IP del balanceador de carga**: https://192.168.33.13/
 
 ## **Instrucciones Fase 3**
 
