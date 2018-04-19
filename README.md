@@ -31,9 +31,9 @@ La contraseña del usuario root debe ser la misma que tenemos en el application.
 
 2. Crear la base de datos *guardarpuntodb*. 
 
-3. Crear dos usuarios con las IPs de las VMs de la aplicación web y concederles todos los permisos:   
+3. Crear dos usuarios (*user1* y *user2*) con las IPs de las VMs de la aplicación web y concederles todos los permisos:   
 `create user root@192.168.33.11 identified by 'enjutomojamuto';`   
-`grant all privileges on guardarpuntodb.* to root@192.168.33.11;`   
+`grant all privileges on guardarpuntodb.* to user1@192.168.33.11;`   
 `flush privileges;`   
 
 4. Editar el archivo de configuración de MySQL para que atienda las peticiones realizadas a su IP privada:   
@@ -70,7 +70,8 @@ La contraseña del usuario root debe ser la misma que tenemos en el application.
 1. Arrancar la MV y el servicio de haproxy.
 2. Arrancar la MV de la base de datos.
 3. Arrancar las MVs de la web y la aplicación con el comando:   
-`java -jar guardar_punto-0.0.1-SNAPSHOT.jar  --spring.datasource.url="jdbc:mysql://192.168.33.10:3306/guardarpuntodb?verifyServerCertificate=false&useSSL=true" --spring.datasource.username="root" --spring.datasource.password="enjutomojamuto"`   
+`java -jar guardar_punto-0.0.1-SNAPSHOT.jar  --spring.datasource.url="jdbc:mysql://192.168.33.10:3306/guardarpuntodb?verifyServerCertificate=false&useSSL=true" --spring.datasource.username="user1" --spring.datasource.password="enjutomojamuto"`   
+**Nota**: El nombre del usuario debe ser *user1* para la primera MV y *user2* para la otra.
 **Nota**: Si es la primera vez que se arranca la aplicación y **la base de datos no ha sido creada**, al final de este comando hay que añadir: `--spring.jpa.hibernate.ddl-auto="create"`
 4. Arancar la MV del servicio interno y el ejecutable con el comando:    
 `java -jar MailRestPost-0.0.1-SNAPSHOT`   
