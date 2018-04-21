@@ -4,6 +4,7 @@ En esta aplicación distribuida los usuarios dispondrán de un espacio online do
 
 En cuanto a las partes de la aplicación, **la parte privada** será toda aquella relacionada con el perfil del cliente, es decir, las listas de juegos, las listas de amigos, valoraciones,etc.
 **La parte pública** serían la posibilidad de ver perfiles de otros usuarios, valoraciones globales de los juegos...
+[![](https://raw.githubusercontent.com/mfms5/guardarpunto/master/video.PNG)](https://www.youtube.com/watch?v=i3UpBll6Elo&feature=youtu.be)
 
 ## **Descripción del servicio interno**
 
