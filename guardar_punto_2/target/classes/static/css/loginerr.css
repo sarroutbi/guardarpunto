@@ -1,0 +1,113 @@
+@font-face {
+    font-family: myFont;
+    src: url(AGENCYB.TTF);
+}
+@font-face {
+    font-family: myFont2;
+    src: url(Space.otf);
+}
+
+body {
+	min-height: 2000px;
+	padding-top: 70px;
+	background-color: #a9d5cb;
+}
+
+#log {
+	font-family: myFont2;
+	font-size: 120%;
+	color: #73c2ac;
+}
+
+#bus{
+	margin-top: 6px;
+	margin-left: 20%;
+	margin-right: 5%;
+	margin-bottom: 6px;
+	font-family: myFont;
+	font-size:90%;
+
+}
+#bot{
+	margin-top: 6px;
+	margin-left: 5%;
+	font-family: myFont;
+}
+
+#navbar {
+	background-color: #0e2020;
+}
+
+#elementosNavBar {
+	position: relative;
+	margin-left: 5%;
+	margin-right: 5%;
+	font-family: myFont;
+	font-size: 150%;
+}
+
+#elem {
+	color: #73c2ac;
+}
+
+#elemselect {
+	background-color: #286858 !important;
+	color: #73c2ac !important;
+	text-shadow: 3px 2px 2px #014a33;
+}
+
+.nav > li > a:active, .nav > li > a:focus {
+	background-color: #286858 !important;
+	color:#73c2ac !important;
+}
+
+
+#err{
+	margin-top: 5%;
+}
+#mensaje{
+	background-color: white;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	border-radius: 3px;
+}
+#titulo{
+	margin-top: 1%;
+	text-align: center;
+	font-family: myFont;
+	color: #0e2020;
+	font-size: 210%;
+}
+#subtitulo{
+	text-align: center;
+	font-family: myFont;
+	color: #0e2020;
+	font-size: 110%;
+}
+#loginBtn {
+	background-color: #4CAF50;
+	color: white;
+	padding: 7px 7px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	font-size: 23px;
+	border-radius: 6px;
+}
+#login{
+	margin:2%;	
+}
+#email{
+	font-family: myFont;
+	color: #0e2020;
+	font-size: 130%;
+	margin: 3%;
+	margin-left: 30%;
+}
+#cont{
+	font-family: myFont;
+	color: #0e2020;
+	font-size: 130%;
+	margin:3%;
+	margin-left: 30%;
+}
