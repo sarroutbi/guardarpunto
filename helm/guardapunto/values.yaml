@@ -23,11 +23,14 @@ service:
     name: webfront1
     type: ClusterIP
     port: 8443
+    hazelcast:
+      port: 5701
   webfront2:
     name: webfront2
     type: ClusterIP
     port: 8443
-
+    hazelcast:
+      port: 5701
 env:
   logLevel: 6
   # TBD

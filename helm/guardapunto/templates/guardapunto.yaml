@@ -38,8 +38,11 @@ metadata:
 spec:
   type: {{ .Values.service.webfront1.type }}
   ports:
-  - name: http2-rest
+  - name: http-spring
     port: {{ .Values.service.webfront1.port }}
+  - name: hazelcast
+    port: {{ .Values.service.webfront1.hazelcast.port }}
+    targetPort: {{ .Values.service.webfront1.hazelcast.port }}
   selector:
     app: {{ .Values.service.webfront1.name }}
 ---
@@ -83,7 +86,10 @@ metadata:
 spec:
   type: {{ .Values.service.webfront2.type }}
   ports:
-  - name: http2-rest
+  - name: http-spring
     port: {{ .Values.service.webfront2.port }}
+  - name: hazelcast
+    port: {{ .Values.service.webfront2.hazelcast.port }}
+    targetPort: {{ .Values.service.webfront2.hazelcast.port }}
   selector:
     app: {{ .Values.service.webfront2.name }}
