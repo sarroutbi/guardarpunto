@@ -22,11 +22,11 @@ service:
   webfront1:
     name: webfront1
     type: ClusterIP
-    port: 9082
+    port: 8443
   webfront2:
     name: webfront2
     type: ClusterIP
-    port: 9082
+    port: 8443
 
 env:
   logLevel: 6
