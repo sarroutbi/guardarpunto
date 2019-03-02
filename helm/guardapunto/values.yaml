@@ -3,6 +3,8 @@ replicas:
     replicaCount: 1
   webfront2:
     replicaCount: 1
+  mysqlsrv:
+    replicaCount: 1
 
 resources: {}
 
@@ -15,6 +17,11 @@ image:
   webfront2:
     repository: docker.io/sarroutbi
     name: webfront2
+    tag: latest
+    pullPolicy: Always
+  mysqlsrv:
+    repository: docker.io/sarroutbi
+    name: mysqlsrv
     tag: latest
     pullPolicy: Always
 
@@ -31,6 +38,11 @@ service:
     port: 8443
     hazelcast:
       port: 5701
+  mysqlsrv:
+    name: mysqlsrv
+    type: ClusterIP
+    port: 3306
+
 env:
   logLevel: 6
   # TBD

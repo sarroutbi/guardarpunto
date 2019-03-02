@@ -93,3 +93,49 @@ spec:
     targetPort: {{ .Values.service.webfront2.hazelcast.port }}
   selector:
     app: {{ .Values.service.webfront2.name }}
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: {{ .Values.service.mysqlsrv.name }}
+  labels:
+    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+spec:
+  replicas: {{ .Values.replicas.mysqlsrv.replicaCount }}
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.service.mysqlsrv.name }}
+      annotations:
+        sidecar.istio.io/inject: "false"
+    spec:
+      containers:
+      - name: {{ .Chart.Name }}
+        image: {{ .Values.image.mysqlsrv.repository }}/{{ .Values.image.mysqlsrv.name }}:{{ .Values.image.mysqlsrv.tag }}
+        imagePullPolicy: {{ .Values.image.mysqlsrv.pullPolicy }}
+        ports:
+        - containerPort: {{ .Values.service.mysqlsrv.port }}
+        env:
+        - name: LOGLEVEL
+          value: {{ .Values.env.logLevel | quote}}
+
+        resources:
+{{ toYaml .Values.resources | indent 10 }}
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.service.mysqlsrv.name }}
+  labels:
+    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+spec:
+  type: {{ .Values.service.mysqlsrv.type }}
+  ports:
+  - name: mysql-port
+    port: {{ .Values.service.mysqlsrv.port }}
+  selector:
+    app: {{ .Values.service.mysqlsrv.name }}
+---
