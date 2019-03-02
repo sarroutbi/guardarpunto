@@ -5,6 +5,8 @@ replicas:
     replicaCount: 1
   mysqlsrv:
     replicaCount: 1
+  internalsvc:
+    replicaCount: 1
 
 resources: {}
 
@@ -22,6 +24,11 @@ image:
   mysqlsrv:
     repository: docker.io/sarroutbi
     name: mysqlsrv
+    tag: latest
+    pullPolicy: Always
+  internalsvc:
+    repository: docker.io/sarroutbi
+    name: internalsvc
     tag: latest
     pullPolicy: Always
 
@@ -42,6 +49,10 @@ service:
     name: mysqlsrv
     type: ClusterIP
     port: 3306
+  internalsvc:
+    name: internalsvc
+    type: ClusterIP
+    port: 8443
 
 env:
   logLevel: 6

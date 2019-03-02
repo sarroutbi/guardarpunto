@@ -24,7 +24,6 @@ spec:
         env:
         - name: LOGLEVEL
           value: {{ .Values.env.logLevel | quote}}
-
         resources:
 {{ toYaml .Values.resources | indent 10 }}
       restartPolicy: Always
@@ -72,7 +71,6 @@ spec:
         env:
         - name: LOGLEVEL
           value: {{ .Values.env.logLevel | quote}}
-
         resources:
 {{ toYaml .Values.resources | indent 10 }}
       restartPolicy: Always
@@ -120,7 +118,6 @@ spec:
         env:
         - name: LOGLEVEL
           value: {{ .Values.env.logLevel | quote}}
-
         resources:
 {{ toYaml .Values.resources | indent 10 }}
       restartPolicy: Always
@@ -140,3 +137,46 @@ spec:
   selector:
     app: {{ .Values.service.mysqlsrv.name }}
 ---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: {{ .Values.service.internalsvc.name }}
+  labels:
+    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+spec:
+  replicas: {{ .Values.replicas.internalsvc.replicaCount }}
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.service.internalsvc.name }}
+      annotations:
+        sidecar.istio.io/inject: "false"
+    spec:
+      containers:
+      - name: {{ .Chart.Name }}
+        image: {{ .Values.image.internalsvc.repository }}/{{ .Values.image.internalsvc.name }}:{{ .Values.image.internalsvc.tag }}
+        imagePullPolicy: {{ .Values.image.internalsvc.pullPolicy }}
+        ports:
+        - containerPort: {{ .Values.service.internalsvc.port }}
+        env:
+        - name: LOGLEVEL
+          value: {{ .Values.env.logLevel | quote}}
+        resources:
+{{ toYaml .Values.resources | indent 10 }}
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.service.internalsvc.name }}
+  labels:
+    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+spec:
+  type: {{ .Values.service.internalsvc.type }}
+  ports:
+  - name: http-spring
+    port: {{ .Values.service.internalsvc.port }}
+  selector:
+    app: {{ .Values.service.internalsvc.name }}
