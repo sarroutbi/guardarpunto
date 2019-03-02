@@ -1,0 +1,18 @@
+replicaCount: 1
+
+resources: {}
+
+image:
+  repository: docker.io/sarroutbi
+  name: webfront1
+  tag: latest
+  pullPolicy: Always
+
+service:
+  name: webfront1
+  type: ClusterIP
+  port: 9082
+
+env:
+  logLevel: 6
+  # TBD
