@@ -33,7 +33,7 @@ public class App
 		JoinConfig joinConfig = config.getNetworkConfig().getJoin();
 		joinConfig.getMulticastConfig().setEnabled(false);
 		//Añadir servidores web
-		joinConfig.getTcpIpConfig().addMember( "192.168.33.11" ).addMember( "192.168.33.12" ).setEnabled( true );
+		joinConfig.getTcpIpConfig().addMember( "webfront1" ).addMember( "webfront2" ).setEnabled( true );
 		return config;
     }
     
