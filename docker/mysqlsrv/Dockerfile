@@ -22,4 +22,4 @@ RUN sudo apt-get update && \
 
 # Start with just a shell, mysql will be running appropriately
 EXPOSE 3306 33060
-CMD ["mysqld"]
+CMD ["mysqld", "--skip-name-resolve"]

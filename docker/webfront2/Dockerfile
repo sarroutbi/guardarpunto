@@ -25,4 +25,4 @@ RUN git clone -v ${REPOSITORY} && \
 
 # Run web application
 # TODO: Parametrize IPs, usernames, passwords, etc
-CMD ["java", "-jar", "guardarpunto/guardar_punto_2/target/guardar_punto-0.0.1-SNAPSHOT.jar", "--spring.datasource.url=jdbc:mysql://192.168.33.10:3306/guardarpuntodb?verifyServerCertificate=false&useSSL=true", "--spring.datasource.username=\"user2\"", "--spring.datasource.password=\"enjutomojamuto\""]
+CMD ["java", "-jar", "guardarpunto/guardar_punto_2/target/guardar_punto-0.0.1-SNAPSHOT.jar", "--spring.datasource.url=jdbc:mysql://mysqlsrv:3306/guardarpuntodb?verifyServerCertificate=false&useSSL=true", "--spring.datasource.username=user2", "--spring.datasource.password=enjutomojamuto"]
