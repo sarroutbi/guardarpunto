@@ -1,26 +1,26 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: {{ .Values.service.name }}
+  name: {{ .Values.service.webfront1.name }}
   labels:
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ .Values.replicas.webfront1.replicaCount }}
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: {{ .Values.service.name }}
+        app: {{ .Values.service.webfront1.name }}
       annotations:
         sidecar.istio.io/inject: "false"
     spec:
       containers:
       - name: {{ .Chart.Name }}
-        image: {{ .Values.image.repository }}/{{ .Values.image.name }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        image: {{ .Values.image.webfront1.repository }}/{{ .Values.image.webfront1.name }}:{{ .Values.image.webfront1.tag }}
+        imagePullPolicy: {{ .Values.image.webfront1.pullPolicy }}
         ports:
-        - containerPort: {{ .Values.service.port }}
+        - containerPort: {{ .Values.service.webfront1.port }}
         env:
         - name: LOGLEVEL
           value: {{ .Values.env.logLevel | quote}}
@@ -32,13 +32,58 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Values.service.name }}
+  name: {{ .Values.service.webfront1.name }}
   labels:
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
 spec:
-  type: {{ .Values.service.type }}
+  type: {{ .Values.service.webfront1.type }}
   ports:
   - name: http2-rest
-    port: {{ .Values.service.port }}
+    port: {{ .Values.service.webfront1.port }}
   selector:
-    app: {{ .Values.service.name }}
+    app: {{ .Values.service.webfront1.name }}
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: {{ .Values.service.webfront2.name }}
+  labels:
+    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+spec:
+  replicas: {{ .Values.replicas.webfront2.replicaCount }}
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.service.webfront2.name }}
+      annotations:
+        sidecar.istio.io/inject: "false"
+    spec:
+      containers:
+      - name: {{ .Chart.Name }}
+        image: {{ .Values.image.webfront2.repository }}/{{ .Values.image.webfront2.name }}:{{ .Values.image.webfront2.tag }}
+        imagePullPolicy: {{ .Values.image.webfront2.pullPolicy }}
+        ports:
+        - containerPort: {{ .Values.service.webfront2.port }}
+        env:
+        - name: LOGLEVEL
+          value: {{ .Values.env.logLevel | quote}}
+
+        resources:
+{{ toYaml .Values.resources | indent 10 }}
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.service.webfront2.name }}
+  labels:
+    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+spec:
+  type: {{ .Values.service.webfront2.type }}
+  ports:
+  - name: http2-rest
+    port: {{ .Values.service.webfront2.port }}
+  selector:
+    app: {{ .Values.service.webfront2.name }}

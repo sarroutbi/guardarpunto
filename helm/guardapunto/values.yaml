@@ -1,17 +1,32 @@
-replicaCount: 1
+replicas:
+  webfront1:
+    replicaCount: 1
+  webfront2:
+    replicaCount: 1
 
 resources: {}
 
 image:
-  repository: docker.io/sarroutbi
-  name: webfront1
-  tag: latest
-  pullPolicy: Always
+  webfront1:
+    repository: docker.io/sarroutbi
+    name: webfront1
+    tag: latest
+    pullPolicy: Always
+  webfront2:
+    repository: docker.io/sarroutbi
+    name: webfront2
+    tag: latest
+    pullPolicy: Always
 
 service:
-  name: webfront1
-  type: ClusterIP
-  port: 9082
+  webfront1:
+    name: webfront1
+    type: ClusterIP
+    port: 9082
+  webfront2:
+    name: webfront2
+    type: ClusterIP
+    port: 9082
 
 env:
   logLevel: 6
