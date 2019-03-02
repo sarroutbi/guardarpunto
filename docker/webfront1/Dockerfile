@@ -24,5 +24,5 @@ RUN git clone -v ${REPOSITORY} && \
     cp -v ${WEB_APP_PATH} .
 
 # Run web application
-# TODO: Parametrize IPs, usernames, passwords, etc
+# TODO: Parametrize IPs, usernames, passwords, etc, set database name instead of port
 CMD ["java", "-jar", "guardarpunto/guardar_punto_2/target/guardar_punto-0.0.1-SNAPSHOT.jar", "--spring.datasource.url=jdbc:mysql://192.168.33.10:3306/guardarpuntodb?verifyServerCertificate=false&useSSL=true", "--spring.datasource.username=\"user1\"", "--spring.datasource.password=\"enjutomojamuto\"", "--spring.jpa.hibernate.ddl-auto=\"create\""]

@@ -12,9 +12,12 @@ RUN sudo apt-get update && \
     sudo sed -i 's/^bind-address/#bind-address/' /etc/mysql/my.cnf && \
     sudo service mysql start && \
     mysql -u root -e "CREATE DATABASE guardarpuntodb;\
-                      create user root@webfront1 identified by 'enjutomojamuto';\
-                      grant all privileges on guardarpuntodb.* to user1@webfront1;\
-                      grant all privileges on guardarpuntodb.* to user2@webfront2;\
+                      create user 'user1'@'localhost' identified by 'enjutomojamuto';\
+                      create user 'user2'@'localhost' identified by 'enjutomojamuto';\
+                      grant all on guardarpuntodb.* to 'user1'@'localhost' identified by 'enjutomojamuto';\
+                      grant all on guardarpuntodb.* to 'user2'@'localhost' identified by 'enjutomojamuto';\
+                      grant all on guardarpuntodb.* to 'user1'@'%' identified by 'enjutomojamuto';\
+                      grant all on guardarpuntodb.* to 'user2'@'%' identified by 'enjutomojamuto';\
                       flush privileges;"
 
 # Start with just a shell, mysql will be running appropriately
