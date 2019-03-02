@@ -1,0 +1,1 @@
+1) Investigate how to open ports 5701, 5702, 5703 (Hazelcast?)
