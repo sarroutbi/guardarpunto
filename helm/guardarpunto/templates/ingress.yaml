@@ -19,3 +19,7 @@ spec:
         backend:
           serviceName: webfront1
           servicePort: 8443
+      - path: /*
+        backend:
+          serviceName: webfront2
+          servicePort: 8443
