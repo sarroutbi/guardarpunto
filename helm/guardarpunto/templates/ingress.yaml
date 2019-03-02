@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1  
+kind: Ingress  
+metadata:  
+  name: guardarpunto
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/rewrite-target: "/"
+spec:  
+  rules:
+  - http:
+      paths:
+      - path: /guardarpunto
+        backend:
+          serviceName: webfront1
+          servicePort: 8443
