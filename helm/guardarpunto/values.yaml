@@ -14,22 +14,22 @@ image:
   webfront1:
     repository: docker.io/sarroutbi
     name: webfront1
-    tag: latest
+    tag: sergioarroutbibraojos
     pullPolicy: Always
   webfront2:
     repository: docker.io/sarroutbi
     name: webfront2
-    tag: latest
+    tag: sergioarroutbibraojos
     pullPolicy: Always
   mysqlsrv:
     repository: docker.io/sarroutbi
     name: mysqlsrv
-    tag: latest
+    tag: sergioarroutbibraojos
     pullPolicy: Always
   internalsvc:
     repository: docker.io/sarroutbi
     name: internalsvc
-    tag: latest
+    tag: sergioarroutbibraojos
     pullPolicy: Always
 
 service:
