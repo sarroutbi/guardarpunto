@@ -9,11 +9,12 @@ RUN sudo apt-get update && \
     sudo apt-add-repository ppa:openjdk-r/ppa && \
     sudo apt-get update && \
     sudo apt-get install -y openjdk-8-jre && \
+    sudo sed -i 's/^bind-address/#bind-address/' /etc/mysql/my.cnf && \
     sudo service mysql start && \
     mysql -u root -e "CREATE DATABASE guardarpuntodb;\
-                      create user root@192.168.33.11 identified by 'enjutomojamuto';\
-                      grant all privileges on guardarpuntodb.* to user1@192.168.33.11;\
-                      grant all privileges on guardarpuntodb.* to user2@192.168.33.12;\
+                      create user root@webfront1 identified by 'enjutomojamuto';\
+                      grant all privileges on guardarpuntodb.* to user1@webfront1;\
+                      grant all privileges on guardarpuntodb.* to user2@webfront2;\
                       flush privileges;"
 
 # Start with just a shell, mysql will be running appropriately

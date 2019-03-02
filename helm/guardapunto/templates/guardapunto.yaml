@@ -136,6 +136,7 @@ spec:
   ports:
   - name: mysql-port
     port: {{ .Values.service.mysqlsrv.port }}
+    targetPort: {{ .Values.service.mysqlsrv.port }}
   selector:
     app: {{ .Values.service.mysqlsrv.name }}
 ---
