@@ -11,7 +11,7 @@ spec:
   template:
     metadata:
       labels:
-        app: {{ .Values.service.webfront1.name }}
+        app: {{ .Values.service.webfront.name }}
       annotations:
         sidecar.istio.io/inject: "false"
     spec:
@@ -28,23 +28,6 @@ spec:
 {{ toYaml .Values.resources | indent 10 }}
       restartPolicy: Always
 ---
-apiVersion: v1
-kind: Service
-metadata:
-  name: {{ .Values.service.webfront1.name }}
-  labels:
-    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
-spec:
-  type: {{ .Values.service.webfront1.type }}
-  ports:
-  - name: http-spring
-    port: {{ .Values.service.webfront1.port }}
-  - name: hazelcast
-    port: {{ .Values.service.webfront1.hazelcast.port }}
-    targetPort: {{ .Values.service.webfront1.hazelcast.port }}
-  selector:
-    app: {{ .Values.service.webfront1.name }}
----
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
@@ -58,7 +41,7 @@ spec:
   template:
     metadata:
       labels:
-        app: {{ .Values.service.webfront2.name }}
+        app: {{ .Values.service.webfront.name }}
       annotations:
         sidecar.istio.io/inject: "false"
     spec:
@@ -78,19 +61,19 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Values.service.webfront2.name }}
+  name: {{ .Values.service.webfront.name }}
   labels:
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
 spec:
-  type: {{ .Values.service.webfront2.type }}
+  type: {{ .Values.service.webfront1.type }}
   ports:
   - name: http-spring
-    port: {{ .Values.service.webfront2.port }}
+    port: {{ .Values.service.webfront.port }}
   - name: hazelcast
-    port: {{ .Values.service.webfront2.hazelcast.port }}
-    targetPort: {{ .Values.service.webfront2.hazelcast.port }}
+    port: {{ .Values.service.webfront1.hazelcast.port }}
+    targetPort: {{ .Values.service.webfront1.hazelcast.port }}
   selector:
-    app: {{ .Values.service.webfront2.name }}
+    app: {{ .Values.service.webfront.name }}
 ---
 apiVersion: apps/v1beta1
 kind: Deployment

@@ -6,6 +6,7 @@ metadata:
     kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/rewrite-target: "/"
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    nginx.ingress.kubernetes.io/lb-method: "round-robin"
 spec:
   tls:
     - hosts:
@@ -17,9 +18,5 @@ spec:
       paths:
       - path: /*
         backend:
-          serviceName: webfront1
-          servicePort: 8443
-      - path: /*
-        backend:
-          serviceName: webfront2
+          serviceName: webfront
           servicePort: 8443

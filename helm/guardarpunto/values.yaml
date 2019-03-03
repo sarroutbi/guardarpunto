@@ -33,6 +33,12 @@ image:
     pullPolicy: Always
 
 service:
+  webfront:
+    name: webfront
+    type: ClusterIP
+    port: 8443
+    hazelcast:
+      port: 5701
   webfront1:
     name: webfront1
     type: ClusterIP
