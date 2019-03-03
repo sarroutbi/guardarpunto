@@ -60,6 +60,16 @@ service:
     type: ClusterIP
     port: 8443
 
+ingress:
+  class: nginx
+  name: guardarpunto-ingress
+  backend:
+    protocol: HTTPS
+  host:
+    name: guardarpunto.example.com
+  secret:
+    name: guardarpunto-tls-cert
+  path: "/*"
 env:
   logLevel: 6
   # TBD
