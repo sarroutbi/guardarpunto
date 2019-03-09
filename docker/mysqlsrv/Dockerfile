@@ -4,6 +4,9 @@ FROM ubuntu:14.04
 # Update latest software and install java modules
 # software-properties-common needed for add-apt-repository command
 RUN sudo apt-get update && \
+    sudo rm -fr /var/lib/mysql && \
+    sudo mkdir -p /mnt/mysql/data && \
+    sudo ln -s /mnt/mysql/data /var/lib/mysql && \
     sudo apt-get -q -y install mysql-server && \
     sudo apt-get install -y software-properties-common && \
     sudo apt-add-repository ppa:openjdk-r/ppa && \

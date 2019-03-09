@@ -6,7 +6,7 @@ replicas:
   mysqlsrv:
     replicaCount: 1
   internalsvc:
-    replicaCount: 1
+    replicaCount: 2
 
 resources: {}
 
@@ -70,6 +70,25 @@ ingress:
   secret:
     name: guardarpunto-tls-cert
   path: "/*"
+
 env:
   logLevel: 6
   # TBD
+
+pv:
+  pvolume:
+    name: guardarpunto-pv-volume
+    type: local
+    storageClassName: manual
+    accessMode: ReadWriteOnce
+    capacity: 3Gi
+    hostPath: /mnt/data
+  pvolumeclaim:
+    name: guardarpunto-pv-claim
+    storageClassName: manual
+    request:
+      storage: 1Gi
+  vol:
+    name: guardarpunto-pv-storage
+    volumeMounts:
+      mountPath: /mnt/mysql/data
