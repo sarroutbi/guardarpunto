@@ -23,6 +23,8 @@ RUN sudo apt-get update && \
                       grant all on guardarpuntodb.* to 'user2'@'%' identified by 'enjutomojamuto';\
                       flush privileges;"
 
+COPY start_mysql.sh /usr/bin
+
 # Start with just a shell, mysql will be running appropriately
 EXPOSE 3306 33060
-CMD ["mysqld", "--skip-name-resolve"]
+CMD ["/usr/bin/start_mysql.sh"]

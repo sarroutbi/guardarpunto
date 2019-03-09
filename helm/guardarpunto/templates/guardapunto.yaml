@@ -5,6 +5,7 @@ metadata:
   labels:
     type: {{ .Values.pv.pvolume.type }}
 spec:
+  storageClassName: {{ .Values.pv.pvolume.storageClassName }}
   capacity:
     storage: {{ .Values.pv.pvolume.capacity }}
   accessModes:
@@ -17,8 +18,9 @@ kind: PersistentVolumeClaim
 metadata:
   name: {{ .Values.pv.pvolumeclaim.name }}
 spec:
+  storageClassName: {{ .Values.pv.pvolumeclaim.storageClassName }}
   accessModes:
-    - {{ .Values.pv.pvolume.accessMode }}
+    - {{ .Values.pv.pvolumeclaim.accessMode }}
   resources:
     requests:
       storage: {{ .Values.pv.pvolumeclaim.request.storage }}

@@ -79,16 +79,17 @@ pv:
   pvolume:
     name: guardarpunto-pv-volume
     type: local
-    storageClassName: manual
+    storageClassName: standard
     accessMode: ReadWriteOnce
     capacity: 3Gi
     hostPath: /mnt/data
   pvolumeclaim:
     name: guardarpunto-pv-claim
-    storageClassName: manual
+    storageClassName: standard
+    accessMode: ReadWriteOnce
     request:
       storage: 1Gi
   vol:
     name: guardarpunto-pv-storage
     volumeMounts:
-      mountPath: /mnt/mysql/data
+      mountPath: /mnt/data/
