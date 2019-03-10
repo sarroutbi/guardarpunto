@@ -1,0 +1,72 @@
+\documentclass[12pt,spanish]{article}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[hyphens]{url}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{graphicx}
+\usepackage[nottoc, notlot, notlof, notindex]{tocbibind}
+\usepackage{tocloft}
+\usepackage[colorlinks,bookmarksopen]{hyperref}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\newcommand{\quotes}[1]{``#1''}
+\selectlanguage{spanish}
+\title{\textbf{Migración de una aplicación a Kubernetes}}
+\author{Sergio Arroutbi Braojos}
+\date{\today}
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\listoffigures
+
+\section{Introducción}
+
+Para esta práctica se ha utilizado, como aplicación distribuida de base para la práctica, el proyecto conocido como ``Guardarpunto''. Esta aplicación esta disponible en el siguiente enlace de Github:\\
+
+\url{https://github.com/mfms5/guardarpunto/}\\
+
+En cuanto a realizar la implementación de los diversos ficheros que permitan el despliegue de dicha aplicación en un entorno basado en el sistema de orquestación de contenedores Kubernetes, se ha optado por realizar un ``fork'' del proyecto anterior en el siguiente repositorio de ``github'':\\
+
+\url{https://github.com/sarroutbi/guardarpunto}\\
+
+El repositorio anterior, básicamente, contiene una serie de carpetas adicionales respecto al proyecto original que se enumeran a continuación:
+
+\begin{enumerate}
+\item{\textbf{docker} :} Esta carpeta contiene los ficheros Dockerfile que permiten la construcción de los distintos contenedores que sustituyen a las máquinas virtuales del proyeto original.
+\item{\textbf{helm} :} Bajo este directorio aparecen los ficheros necesarios para realizar el despliegue basado en \textbf{helm}, el gestor de paquetes de Kubernetes que permite
+\item{\textbf{doc} :} Contiene los ficheros necesarios para la elaboración de la presente documentación.
+\end{enumerate}
+
+En cuanto a las tecnologías utilizadas, el despliegue se ha basado, como ya se comentó anteriormente, en \textbf{helm} como gestor de paquetes de Kubernetes. Por otra parte, como sistema base Kubernetes se ha optado por \textbf{minikube}.
+
+En la sección~\ref{sec:deployment} se realizará una descripción detallada del despliegue realizado, así como de los pasos seguidos para generar los contenedores apropiados que sustituyan a las máquinas virtuales originales de la aplicación (``dockerización'') así como los ficheros helm que permiten el despliegue y orquestación de dichos contenedores de aplicación en la infraestructura Kubernetes.
+
+\section{Descripción del despliegue en Kubernetes}
+\label{sec:deployment}
+
+%\begin{center}
+% \begin{figure}[H]
+% \begin{center}
+%   \includegraphics[width=17cm]{img/deployment00.png}
+%   \caption{Despliegue de aplicación}
+%   \label{fig:deployment00}
+% \end{center}
+% \end{figure}
+%\end{center}
+
+\begin{verbatim}
+  Ejemplo de código AS IS
+\end{verbatim}
+
+\subsection{Docker}
+
+\subsection{Helm}
+
+\section{Instrucciones para el despliegue de la aplicación}
+\label{sec:instructions}
+
+\end{document}
