@@ -92,7 +92,7 @@ metadata:
   labels:
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
 spec:
-  type: {{ .Values.service.webfront1.type }}
+  type: {{ .Values.service.webfront.type }}
   ports:
   - name: http-spring
     port: {{ .Values.service.webfront.port }}

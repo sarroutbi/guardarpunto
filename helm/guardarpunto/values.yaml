@@ -35,7 +35,7 @@ image:
 service:
   webfront:
     name: webfront
-    type: ClusterIP
+    type: LoadBalancer
     port: 8443
     hazelcast:
       port: 5701
