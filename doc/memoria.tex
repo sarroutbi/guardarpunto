@@ -13,7 +13,9 @@
 \newcommand{\quotes}[1]{``#1''}
 \selectlanguage{spanish}
 \title{\textbf{Migración de una aplicación a Kubernetes}}
-\author{Sergio Arroutbi Braojos}
+\author{Israel Pavón Maculet\\
+  \and
+  Sergio Arroutbi Braojos}
 \date{\today}
 \begin{document}
 
@@ -58,15 +60,136 @@ En la sección~\ref{sec:deployment} se realizará una descripción detallada del
 % \end{figure}
 %\end{center}
 
-\begin{verbatim}
-  Ejemplo de código AS IS
-\end{verbatim}
-
 \subsection{Docker}
 
 \subsection{Helm}
 
 \section{Instrucciones para el despliegue de la aplicación}
 \label{sec:instructions}
+
+\subsection{Instrucciones paso a paso}
+\begin{itemize}
+\item{\textbf{Configuración del /etc/hosts}}. Con motivo de acceder a la aplicación distribuida de forma externa a través de nginx, se ha de configurar una dirección de host, en concreto ``guadarpunto.example.com'' en el ``/etc/hosts'' de la máquina, configurando la IP de minikube como IP de destino. para ello:
+  \begin{itemize}
+  \item{Consultar la IP de minikube}:
+  \begin{verbatim}
+  $ minikube ip
+  192.168.99.100
+  \end{verbatim}
+  \item{Editar el fichero ``/etc/hosts'' para que contenga el nombre de dominio apropiado}:
+  \begin{verbatim}
+  $ head /etc/hosts
+  192.168.99.100  guardarpunto.example.com
+  ...
+  \end{verbatim}
+  \end{itemize}
+\item{\textbf{Creación del directorio asociado a PVC}}. Para que los datos de la base de datos sean permanetes, se deberá crear un directorio determinado, /mnt/data, en el host, en este caso, en minikube. Por lo tanto:
+  \begin{itemize}
+  \item{Acceder a minikube por ssh y crear el directorio /mnt/data}:
+  \begin{verbatim}
+    $ minikube ssh
+                             _             _
+                _         _ ( )           ( )
+      ___ ___  (_)  ___  (_)| |/')  _   _ | |_      __
+    /' _ ` _ `\| |/' _ `\| || , <  ( ) ( )| '_`\  /'__`\
+    | ( ) ( ) || || ( ) || || |\`\ | (_) || |_) )(  ___/
+    (_) (_) (_)(_)(_) (_)(_)(_) (_)`\___/'(_,__/'`\____)
+
+    $ mkdir /mnt/data/
+    $ exit
+    logout
+  \end{verbatim}
+  En el caso que el directorio /mnt/data estuviese ya creado, se ruega borrar por completo y recrearlo para evitar problemas en el arranque de la base de datos.
+  \end{itemize}
+\item{\textbf{Clonar el código de la aplicación}}:
+\begin{verbatim}  
+$ git clone https://github.com/sarroutbi/guardarpunto.git
+\end{verbatim}
+\item{\textbf{Acceder a la raíz del proyecto, y desplegar la aplicación con ``helm''}}:
+\begin{verbatim}
+$ cd guardarpunto
+$ helm install --name guardarpunto helm/guardarpunto/
+\end{verbatim}
+Posteriormente, comprobar que los diversos PODs se encuentran arrancados:
+\begin{verbatim}
+$ kubectl get pods
+NAME                           READY     STATUS    RESTARTS   AGE
+internalsvc-5479b96564-jzhz6   1/1       Running   0          19m
+internalsvc-5479b96564-s4xmp   1/1       Running   0          19m
+mysqlsrv-845b6cd78b-s9bqn      1/1       Running   0          19m
+webfront1-95d579447-vj2xt      1/1       Running   0          19m
+webfront2-5787f49c88-d5m4v     1/1       Running   0          19m
+\end{verbatim}
+\textbf{NOTA: La primera vez que se despliegue la aplicación, los contenedores se bajarán de forma completa desde dockerhub, luego se tardará varios minutos hasta que los pods estén desplegados.}
+\item{\textbf{Acceder con el navegador a la página principal del proyecto: \url{http://guardarpunto.example.com}}}:
+Deberá observarse una imagen similar a la que se muestra a continuación:
+\begin{center}
+ \begin{figure}[H]
+ \begin{center}
+   \includegraphics[width=17cm]{img/web01.png}
+   \caption{Página de inicio}
+   \label{fig:initpage00}
+ \end{center}
+ \end{figure}
+\end{center}
+  
+\end{itemize}
+
+\subsection{Descripción de software}
+Con motivo de depurar posibles problemas en el despliegue, se enumeran las diferentes herramientas software utilizadas para posibilitar el despliegue en kubernetes:
+
+\begin{enumerate}
+\item{\textbf{minikube}:} Como herramienta de despliegue de un cluster mínimo de kubernetes. La versión utilizada ha sido la siguiente: \textbf{v0.35.0}.
+  En cuanto a los ``addons'' de aplicación habilitados, se encuentran los siguientes:
+\begin{verbatim}
+  $ minikube addons list
+  - addon-manager: enabled
+  - dashboard: disabled
+  - default-storageclass: disabled
+  - efk: disabled
+  - freshpod: disabled
+  - gvisor: disabled
+  - heapster: disabled
+  - ingress: enabled
+  - logviewer: disabled
+  - metrics-server: disabled
+  - nvidia-driver-installer: disabled
+  - nvidia-gpu-device-plugin: disabled
+  - registry: disabled
+  - registry-creds: disabled
+  - storage-provisioner: enabled
+  - storage-provisioner-gluster: disabled
+\end{verbatim}
+  
+\item{\textbf{helm}:} Como herramienta de gestión de paquetes en kubernetes. La versión utilizada ha sido la siguiente, tanto para cliente como para servidor: \textbf{v2.11.0}.
+\begin{verbatim}
+  $ helm version
+  Client: &version.Version{SemVer:''v2.11.0'', GitCommit:''2e55dbe''}
+  Server: &version.Version{SemVer:''v2.11.0'', GitCommit:''2e55dbe''}
+\end{verbatim}
+
+\item{\textbf{docker}:} Como herramienta de gestión de contenedores. La versión utilizada ha sido la siguiente, tanto para cliente como para servidor: \textbf{18.06.1-ce}.
+\begin{verbatim}
+Client:
+ Version:           18.06.1-ce
+ API version:       1.38
+ Go version:        go1.10.3
+ Git commit:        e68fc7a
+ Built:             Tue Aug 21 17:24:56 2018
+ OS/Arch:           linux/amd64
+ Experimental:      false
+
+Server:
+ Engine:
+ Version:          18.06.1-ce
+ API version:      1.38 (minimum version 1.12)
+ Go version:       go1.10.3
+ Git commit:       e68fc7a
+ Built:            Tue Aug 21 17:23:21 2018
+ OS/Arch:          linux/amd64
+ Experimental:     false         
+\end{verbatim}
+  
+\end{enumerate}
 
 \end{document}
