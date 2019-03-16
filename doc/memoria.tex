@@ -30,7 +30,7 @@
 
 Para esta práctica se ha utilizado, como aplicación distribuida de base para la práctica, el proyecto conocido como ``Guardarpunto''. Esta aplicación esta disponible en el siguiente enlace de Github:\\
 
-\url{https://github.com/mfms5/guardarpunto/}\\
+\url{https://github.com/mfms5/guardarpunto}\\
 
 En cuanto a realizar la implementación de los diversos ficheros que permitan el despliegue de dicha aplicación en un entorno basado en el sistema de orquestación de contenedores Kubernetes, se ha optado por realizar un ``fork'' del proyecto anterior en el siguiente repositorio de ``github'':\\
 
@@ -397,8 +397,9 @@ webfront1-95d579447-vj2xt      1/1       Running   0          19m
 webfront2-5787f49c88-d5m4v     1/1       Running   0          19m
 \end{verbatim}
 \textbf{NOTA: La primera vez que se despliegue la aplicación, los contenedores se bajarán de forma completa desde dockerhub, luego se tardará varios minutos hasta que los pods estén desplegados.}
-\item{\textbf{Acceder con el navegador a la página principal del proyecto: \url{http://guardarpunto.example.com}}}:
-Es probable que, en el primer acceso, el navegador bloquee el acceso a la página por la gestión de los certificados en el acceso por HTTP. Si es este el caso se deberá, en primer lugar:
+\item{\textbf{Acceder con el navegador a la página principal del proyecto:\\
+\url{http://guardarpunto.example.com}}}\\
+Es probable que, en el primer acceso, el navegador bloquee el acceso a la página por la gestión de los certificados en el acceso por HTTPS. Si es este el caso se deberá, en primer lugar:
 \begin{enumerate}
 \item{Presionar sobre ``Advanced''}
 \item{Una vez abierto el submenú avanzado, seleccionar ``Add Exception''}
