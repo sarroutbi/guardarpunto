@@ -44,10 +44,13 @@ El repositorio anterior, básicamente, contiene una serie de carpetas adicionale
 \item{\textbf{doc} :} Contiene los ficheros necesarios para la elaboración de la presente documentación.
 \end{enumerate}
 
-En cuanto a las tecnologías utilizadas, el despliegue se ha basado, como ya se comentó anteriormente, en \textbf{helm} como gestor de paquetes de Kubernetes. Por otra parte, como sistema base Kubernetes se ha optado por \textbf{minikube}.
+En cuanto a las tecnologías utilizadas, el despliegue se ha basado, como ya se comentó anteriormente, en \textbf{helm} como gestor de paquetes de Kubernetes. Por otra parte, como sistema base Kubernetes se ha optado por \textbf{minikube}.\\
 
-En la sección~\ref{sec:deployment} se realizará una descripción detallada del despliegue realizado, así como de los pasos seguidos para generar los contenedores apropiados que sustituyan a las máquinas virtuales originales de la aplicación (``dockerización'') así como los ficheros helm que permiten el despliegue y orquestación de dichos contenedores de aplicación en la infraestructura Kubernetes.
+En la sección~\ref{sec:deployment} se realizará una descripción detallada del despliegue realizado, así como de los pasos seguidos para generar los contenedores apropiados que sustituyan a las máquinas virtuales originales de la aplicación (``dockerización'') así como los ficheros helm que permiten el despliegue y orquestación de dichos contenedores de aplicación en la infraestructura Kubernetes.\\
 
+Mientras, la sección~\ref{sec:instructions}, enumerará los diversos pasos que se han de seguir para el despliegue de la aplicación. De igual forma, se enumerarán las principales herramientas software utilizadas, así como sus versiones y las diversas opciones y plugins o addons que se han habilitado.
+
+\pagebreak
 \section{Descripción del despliegue en Kubernetes}
 \label{sec:deployment}
 
@@ -336,6 +339,7 @@ CMD ["java", "-jar",
 
 \end{itemize}
 
+\pagebreak
 \section{Instrucciones para el despliegue de la aplicación}
 \label{sec:instructions}
 
