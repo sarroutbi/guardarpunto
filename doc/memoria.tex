@@ -25,6 +25,7 @@
 
 \listoffigures
 
+\pagebreak
 \section{Introducción}
 
 Para esta práctica se ha utilizado, como aplicación distribuida de base para la práctica, el proyecto conocido como ``Guardarpunto''. Esta aplicación esta disponible en el siguiente enlace de Github:\\
@@ -87,7 +88,7 @@ Con esta vista de despliegue se pretende describir la composición de servicios,
 Como puede observarse, existen tres servicios:
 \begin{itemize}
 \item{\textbf{mysqlsrv}}: Es un servicio que ofrece acceso a BBDD. Tiene asociado un deployment, que configura una réplica de una imagen Docker con una base de datos MySql dockerizada. Es un servicio del tipo ClusterIP, con lo que sólo es accesible dentro del cluster Kubernetes.
-\item{\textbf{internalsvc}}: Es un servicio interno con una API REST, que implementa el envío de un mensaje de bienvenida ante el registro de un nuevo usuario. Tiene asociado un deployment que configura 2 replicas de una imagen Docker con la aplicación Java “MailRestPost” dockerizada. Es un servicio del tipo ClusterIP, con lo que sólo es accesible dentro del cluster kubernetes.
+\item{\textbf{internalsvc}}: Es un servicio interno con una API REST, que implementa el envío de un mensaje de bienvenida ante el registro de un nuevo usuario. Tiene asociado un deployment que configura 2 replicas de una imagen Docker con la aplicación Java “MailRestPost” dockerizada. Es un servicio del tipo ClusterIP, con lo que sólo es accesible dentro del cluster Kubernetes.
 \item{\textbf{webfront}}: Es el servicio que ofrece la NBI de la aplicación Helm/Kubernetes. Para que pueda tener acceso fuera del cluster, se define como un servicio del tipo LoadBalancer, al que se le ha asociado un ingress, para que a través de el, las peticiones puedan llegar al servicio, que a su vez balanceará entre los dos deployments que tiene asociado. Cada deployment configura 1 réplica de una imagen Docker con la aplicación Java ``guardar\_punto'' dockerizada. La imagen de cada deployment varía únicamente en el usuario que accederá a la BBDD y en que una tiene el flag de creación de creación del schema de base de datos para hibernate.
 \end{itemize}
 
@@ -393,24 +394,49 @@ webfront2-5787f49c88-d5m4v     1/1       Running   0          19m
 \end{verbatim}
 \textbf{NOTA: La primera vez que se despliegue la aplicación, los contenedores se bajarán de forma completa desde dockerhub, luego se tardará varios minutos hasta que los pods estén desplegados.}
 \item{\textbf{Acceder con el navegador a la página principal del proyecto: \url{http://guardarpunto.example.com}}}:
-Deberá observarse una imagen similar a la que se muestra a continuación:
+Es probable que, en el primer acceso, el navegador bloquee el acceso a la página por la gestión de los certificados en el acceso por HTTP. Si es este el caso se deberá, en primer lugar:
+\begin{enumerate}
+\item{Presionar sobre ``Advanced''}
+\item{Una vez abierto el submenú avanzado, seleccionar ``Add Exception''}
 \begin{center}
  \begin{figure}[H]
  \begin{center}
-   \includegraphics[width=17cm]{img/web01.png}
+   \includegraphics[width=18cm]{img/connectionNotSecure00.png}
+   \caption{Alerta sobre conexión no segura}
+   \label{fig:connectionNotSecure00}
+ \end{center}
+ \end{figure}
+\end{center}
+\item{Finalmente, se deberá presionar la opción ``Confirm Security Exception''}
+\begin{center}
+ \begin{figure}[H]
+ \begin{center}
+   \includegraphics[width=14cm]{img/confirmSecurityException03.png}
+   \caption{Confirmar Excepción de Seguridad}
+   \label{fig:confirmSecurityException00}
+ \end{center}
+ \end{figure}
+\end{center}
+\end{enumerate}
+
+Una vez confirmada la excepción de seguridad, deberá observarse la página principal de la aplicación Web distribuída "Guardarpunto", servida por el frontal web, una imagen similar a la Figura \ref{fig:initPage00}, que se muestra a continuación:
+\begin{center}
+ \begin{figure}[H]
+ \begin{center}
+   \includegraphics[width=18cm]{img/web01.png}
    \caption{Página de inicio}
-   \label{fig:initpage00}
+   \label{fig:initPage00}
  \end{center}
  \end{figure}
 \end{center}
 
 \end{itemize}
 
-\subsection{Descripción de software}
-Con motivo de depurar posibles problemas en el despliegue, se enumeran las diferentes herramientas software utilizadas para posibilitar el despliegue en kubernetes:
+\subsection{Descripción de herramientas software utilizadas}
+Con motivo de depurar posibles problemas en el despliegue, se enumeran las diferentes herramientas software utilizadas para posibilitar el despliegue en Kubernetes, así como las versiones de cada una de ellas:
 
 \begin{enumerate}
-\item{\textbf{minikube}:} Como herramienta de despliegue de un cluster mínimo de kubernetes. La versión utilizada ha sido la siguiente: \textbf{v0.35.0}.
+\item{\textbf{minikube}:} Como herramienta de despliegue de un cluster mínimo de Kubernetes. La versión utilizada ha sido la siguiente: \textbf{v0.35.0}.
   En cuanto a los ``addons'' de aplicación habilitados, se encuentran los siguientes:
 \begin{verbatim}
   $ minikube addons list
@@ -432,7 +458,7 @@ Con motivo de depurar posibles problemas en el despliegue, se enumeran las difer
   - storage-provisioner-gluster: disabled
 \end{verbatim}
 
-\item{\textbf{helm}:} Como herramienta de gestión de paquetes en kubernetes. La versión utilizada ha sido la siguiente, tanto para cliente como para servidor: \textbf{v2.11.0}.
+\item{\textbf{helm}:} Como herramienta de gestión de paquetes en Kubernetes. La versión utilizada ha sido la siguiente, tanto para cliente como para servidor: \textbf{v2.11.0}.
 \begin{verbatim}
   $ helm version
   Client: &version.Version{SemVer:''v2.11.0'', GitCommit:''2e55dbe''}
