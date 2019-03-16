@@ -52,16 +52,70 @@ En la sección~\ref{sec:deployment} se realizará una descripción detallada del
 
 \subsection{Despliegue}
 
+Esta sección describe las características del despliegue de Kubernetes llevado a cabo en el desarrollo de la práctica. A través de diversas vistas en modo de diagramas, se detallarán los servicios, despliegues pods y reglas de Ingress que se han decidido implementar para el correcto despliegue de la aplicación.
+
+\subsubsection{Vista física}
+
+Esta vista ``física'' pretende representar los containers que estarán corriendo realmente en el cluster una vez la aplicación distribuída haya sido desplegada. Será la herramienta de orquestación Kubernetes la encargada de que siempre estén corriendo estos 5 pods, cada uno de ellos formado por un container, por simplicidad.\\
+En un despliegue con minikube, todos los containers estarán corriendo en el mismo host, pero en un cluster real de Kubernetes, formado por  más hosts, cada pod podrí estar corriendo en cualquier host de forma que incluso podrían ser movidos de un host a otro dependiendo de las circunstancias. Por ejemplo, las dos instancias del servicio “internalsvc” podrían estar corriendo en distintos hosts cada una.\\
+Kubernetes es el encargado de garantizar la conectividad entre todos los pods, basada en nombres de servicio que serán accesibles a través del servicio de DNS que Kubernetes ofrece, por lo que el código de las aplicaciones ha debido ser modificado para que no haga referencia a IPs, sino a nombres de dominios, dado que las IPs efectivas que tienen asociados los distintos containers, pueden considerarse efímeras, ya que pueden cambiar cada vez que Kubernetes redespliega los containers, o bien cuando se realice una migración de pods, etc.
+
+\begin{center}
+ \begin{figure}[H]
+ \begin{center}
+   \includegraphics[width=18cm]{img/physicalView00.png}
+   \caption{Vista física}
+   \label{fig:physicalView00}
+ \end{center}
+ \end{figure}
+\end{center}
+
+\subsubsection{Vista de despliegue}
+
+Con esta vista de despliegue se pretende describir la composición de servicios, deployments y pods que se ha seguido a la hora de desplegar la aplicación distribuída en Kubernetes. De esta forma, se puede observar, de forma anidada, los distintos elementos existentes en el cluster a nivel de servicio, despliegue y pod, con las réplicas existentes para cada uno de estos últimos:
+
+\begin{center}
+ \begin{figure}[H]
+ \begin{center}
+   \includegraphics[width=18cm]{img/deploymentView00.png}
+   \caption{Vista de Despliegue}
+   \label{fig:deploymentView00}
+ \end{center}
+ \end{figure}
+\end{center}
+
+Como puede observarse, existen tres servicios:
+\begin{itemize}
+\item{\textbf{mysqlsrv}}: Es un servicio que ofrece acceso a BBDD. Tiene asociado un deployment, que configura una réplica de una imagen Docker con una base de datos MySql dockerizada. Es un servicio del tipo ClusterIP, con lo que sólo es accesible dentro del cluster Kubernetes.
+\item{\textbf{internalsvc}}: Es un servicio interno con una API REST, que implementa el envío de un mensaje de bienvenida ante el registro de un nuevo usuario. Tiene asociado un deployment que configura 2 replicas de una imagen Docker con la aplicación Java “MailRestPost” dockerizada. Es un servicio del tipo ClusterIP, con lo que sólo es accesible dentro del cluster kubernetes.
+\item{\textbf{webfront}}: Es el servicio que ofrece la NBI de la aplicación Helm/Kubernetes. Para que pueda tener acceso fuera del cluster, se define como un servicio del tipo LoadBalancer, al que se le ha asociado un ingress, para que a través de el, las peticiones puedan llegar al servicio, que a su vez balanceará entre los dos deployments que tiene asociado. Cada deployment configura 1 réplica de una imagen Docker con la aplicación Java ``guardar\_punto'' dockerizada. La imagen de cada deployment varía únicamente en el usuario que accederá a la BBDD y en que una tiene el flag de creación de creación del schema de base de datos para hibernate.
+\end{itemize}
+
+\subsubsection{Vista a nivel de servicio}
+
+Esta vista describe la configuración realizada a nivel de servicio para permitir las comunicaciones internas de los diversos servicios implementados como, también, las reglas necesarias para acceder de forma externa al cluster, a través del mecanismo conocido como Ingress. La solución elegida para esto último ha sido nginx:
+
+\begin{center}
+ \begin{figure}[H]
+ \begin{center}
+   \includegraphics[width=18cm]{img/serviceView00.png}
+   \caption{Vista a nivel de servicio}
+   \label{fig:serviceView00}
+ \end{center}
+ \end{figure}
+\end{center}
+
+Como puede observarse, los puertos expuestos por cada servicio son los siguientes:
+
+\begin{itemize}
+\item{\textbf{mysqlsrv}}: Puerto \textbf{3306}, puerto standard de la base de datos Mysql.
+\item{\textbf{internalsvc}}: Puerto \textbf{8443}, puerto standard de arranque de Spring Boot con uso de HTTPS.
+\item{\textbf{webfront}}: Puerto \textbf{8443}, puerto standard de arranque de Spring Boot con uso de HTTPS.
+\end{itemize}
+
 TODO: Descripción del despliegue: Servicios, Deployments, Pods, Ingress.
-%\begin{center}
-% \begin{figure}[H]
-% \begin{center}
-%   \includegraphics[width=17cm]{img/deployment00.png}
-%   \caption{Despliegue de aplicación}
-%   \label{fig:deployment00}
-% \end{center}
-% \end{figure}
-%\end{center}
+
+\subsection{Helm}
 
 \subsection{Docker}
 
@@ -240,8 +294,6 @@ CMD ["java", "-jar",
 \end{verbatim}
 
 \end{itemize}
-
-\subsection{Helm}
 
 \section{Instrucciones para el despliegue de la aplicación}
 \label{sec:instructions}
