@@ -113,11 +113,50 @@ Como puede observarse, los puertos expuestos por cada servicio son los siguiente
 \item{\textbf{webfront}}: Puerto \textbf{8443}, puerto standard de arranque de Spring Boot con uso de HTTPS.
 \end{itemize}
 
-TODO: Descripción del despliegue: Servicios, Deployments, Pods, Ingress.
+\subsubsection{Vista de datos}
+Este apartado describe la aproximación llevada a cabo para el despliegue de la base de datos y el acceso, por parte de las aplicaciones que actúan como frontales Web, a los mismos.
+Se presenta, a continuación, la declaración del volumen persistente de datos que se ha llevado a cabo:
+\begin{center}
+ \begin{figure}[H]
+ \begin{center}
+   \includegraphics[width=16cm]{img/persistentData00.png}
+   \caption{Vista de datos: datos persistentes}
+   \label{fig:persistentData00}
+ \end{center}
+ \end{figure}
+\end{center}
+Como puede observarse en la Figura \ref{fig:persistentData00}, se declara un ``persistent volume'' de 3 Gigas, que permite tener datos persistentes en el cluster. El servicio de base de datos (mysqlsrv) será quien haga uso de este sistema de persistencia. Para ello, en su deployment, se debe declarar un PVC, ``persistent volume claim'', que será utilizado por el deployment ``mysqlsrv'' para los datos. De este modo, el contenido de la base de datos es persistente, y puede ser recuperado en el caso de que Kubernetes requiera el redespliegue del pod correspondiente, que en este caso es el container con la aplicación mysql asociado al servicio ``mysqlsrv''.
+
+Mientras, a nivel de acceso a la base de datos, en este proyecto, existe un servicio web que balanceará a entre dos aplicaciones idénticas que tan sólo difieren en el usuario que accede a la BBDD, única y exclusivamente por adaptación a la práctica original. En esta adaptación a Kubernetes, se ha optado por un esquema de un servicio de tipo ``Load Balancer'' con dos deployments.\\
+Cada deployment tiene configurado un pod con un único contenedor Docker que difiere de la imagen del otro frontal web en el usuario de acceso a Mysql. Aparte de la diferencia del usuario de acceso a la BBDD, en una de las imágenes se configura un flag de Spring Boot para que Hibernate haga un ``create'' del schema en la base de datos final (``--spring.jpa.hibernate.ddl-auto=create''). Por tanto, a nivel de acceso a la base datos, la configuración queda como se muestra en la Figura \ref{fig:dbAccess00}:
+\begin{center}
+ \begin{figure}[H]
+ \begin{center}
+   \includegraphics[width=18cm]{img/dbAccess00.png}
+   \caption{Vista de datos: acceso a base de datos}
+   \label{fig:dbAccess00}
+ \end{center}
+ \end{figure}
+\end{center}
+
+Para que ambos deployments puedan procesar peticiones balanceadas de cualquier sesión, la aplicación hace uso de un Grid de memoria Hazelcast. Para ello, hay que configurar el puerto hazelcast para que el Grid tenga conectividad entre las distintas instancias, según se muestra en la Figura \ref{fig:sharedData00}:
+\begin{center}
+ \begin{figure}[H]
+ \begin{center}
+   \includegraphics[width=18cm]{img/sharedData00.png}
+   \caption{Vista de datos: gestión de datos en memoria compartida}
+   \label{fig:sharedData00}
+ \end{center}
+ \end{figure}
+\end{center}
+
+En las siguientes subsecciones se describirán las implementaciones necesarias para llevar a cabo la materialización del diseño del despliegue anterior. Por un lado, la sección~\ref{subsec:helm} presentará la especificación helm (tanto a nivel de templates como de valores) llevada a cabo para el despliegue, mientras que la sección~\ref{subsec:docker} recoge los mecanismos que se han seguido para conseguir la ``contenerización'' de las distintas imágenes de la aplicación necesarias para sustituir las máquinas virtuales diseñadas en la práctica original.
 
 \subsection{Helm}
+\label{subsec:helm}
 
 \subsection{Docker}
+\label{subsec:docker}
 
 En cuanto a la generación de los contenedores, se ha creado una carpeta ``docker'' en la raíz del proyecto descrito anteriormente. Dicha carpeta contiene diversos subdirectorios con los distintos contenedores que se han utilizado como sustitución de las máquinas virtuales del proyecto inicial, y que se enumeran a continuación:
 
@@ -170,7 +209,8 @@ FROM ubuntu:14.04
 
 # Variables
 ENV REPOSITORY https://github.com/sarroutbi/guardarpunto.git
-ENV WEB_APP_PATH guardarpunto/guardar_punto_2/target/guardar_punto-0.0.1-SNAPSHOT.jar
+ENV WEB_APP_PATH \
+  guardarpunto/guardar_punto_2/target/guardar_punto-0.0.1-SNAPSHOT.jar
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 ENV PATH $PATH:$JAVA_HOME/bin
 
