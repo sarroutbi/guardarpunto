@@ -697,8 +697,9 @@ RUN git clone -v ${REPOSITORY} && pwd && \
 CMD ["java", "-jar",
      "./guardarpunto/MailRestPost/target/MailRestPost-0.0.1-SNAPSHOT.jar"]
 \end{verbatim}
-
 \end{itemize}
+
+Para terminar, destacar que, en la raíz de la carpeta \textbf{``docker''}, se ha creado un script, de nombre \textbf{build\_and\_release.sh}, que permite regenerar las imágenes de los diversos contenedores de la práctica, taggearlos y subirlas a ``dockerhub.io''. Para esta última operación, habrá que estar loggeado con los permisos adecuados.
 
 \pagebreak
 \section{Instrucciones para el despliegue de la aplicación}
