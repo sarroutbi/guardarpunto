@@ -40,7 +40,7 @@ El repositorio anterior, básicamente, contiene una serie de carpetas adicionale
 
 \begin{enumerate}
 \item{\textbf{docker} :} Esta carpeta contiene los ficheros Dockerfile que permiten la construcción de los distintos contenedores que sustituyen a las máquinas virtuales del proyeto original.
-\item{\textbf{helm} :} Bajo este directorio aparecen los ficheros necesarios para realizar el despliegue basado en \textbf{helm}, el gestor de paquetes de Kubernetes que permite
+\item{\textbf{helm} :} Bajo este directorio aparecen los ficheros necesarios para realizar el despliegue basado en \textbf{helm}, el gestor de paquetes de Kubernetes que permite una mejor automatización, reuso, gestión y versionado de los ficheros de despliegue de Kubernetes.
 \item{\textbf{doc} :} Contiene los ficheros necesarios para la elaboración de la presente documentación.
 \end{enumerate}
 
@@ -61,7 +61,7 @@ Esta sección describe las características del despliegue de Kubernetes llevado
 \subsubsection{Vista física}
 
 Esta vista ``física'' pretende representar los containers que estarán corriendo realmente en el cluster una vez la aplicación distribuída haya sido desplegada. Será la herramienta de orquestación Kubernetes la encargada de que siempre estén corriendo estos 5 pods, cada uno de ellos formado por un container, por simplicidad.\\
-En un despliegue con minikube, todos los containers estarán corriendo en el mismo host, pero en un cluster real de Kubernetes, formado por  más hosts, cada pod podrí estar corriendo en cualquier host de forma que incluso podrían ser movidos de un host a otro dependiendo de las circunstancias. Por ejemplo, las dos instancias del servicio “internalsvc” podrían estar corriendo en distintos hosts cada una.\\
+En un despliegue con minikube, todos los containers estarán corriendo en el mismo host, pero en un cluster real de Kubernetes, formado por  más hosts, cada pod podría estar corriendo en cualquier host de forma que incluso podrían ser movidos de un host a otro dependiendo de las circunstancias. Por ejemplo, las dos instancias del servicio “internalsvc” podrían estar corriendo en distintos hosts cada una.\\
 Kubernetes es el encargado de garantizar la conectividad entre todos los pods, basada en nombres de servicio que serán accesibles a través del servicio de DNS que Kubernetes ofrece, por lo que el código de las aplicaciones ha debido ser modificado para que no haga referencia a IPs, sino a nombres de dominios, dado que las IPs efectivas que tienen asociados los distintos containers, pueden considerarse efímeras, ya que pueden cambiar cada vez que Kubernetes redespliega los containers, o bien cuando se realice una migración de pods, etc.
 
 \begin{center}
